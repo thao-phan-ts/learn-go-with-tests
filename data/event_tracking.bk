@@ -1,0 +1,390 @@
+package cmd
+
+import (
+	"database/sql"
+	"encoding/json"
+	"errors"
+	"fmt"
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/mileusna/useragent"
+	"log"
+	"strings"
+	"time"
+)
+
+type UserValue struct {
+	ID            int    `db:"id"`
+	ProvinceGroup string `db:"province_group"`
+	AgeGroup      int    `db:"age_group"`
+	DeviceGroup   string `db:"device_group"`
+	Gender        string `db:"gender"`
+	Career        string `db:"career"`
+	Value         int    `db:"value"`
+	// Add other fields based on your actual table structure
+	CreatedAt *time.Time `db:"created_at"`
+	UpdatedAt *time.Time `db:"updated_at"`
+}
+
+type ProvinceGroup struct {
+	ID         int    `db:"id"`
+	Code       string `db:"code"`
+	Name       string `db:"name"`
+	ProvinceID int    `db:"province_id"`
+}
+
+type AgeGroup struct {
+	ID   int    `db:"id"`
+	Code string `db:"code"`
+	Name string `db:"name"`
+	From int    `db:"from"`
+	To   int    `db:"to"`
+}
+
+type DeviceGroup struct {
+	ID       int    `db:"id"`
+	Code     string `db:"code"`
+	DeviceOS string `db:"device_os"`
+}
+
+type CardInfo struct {
+	CardCategory string `json:"cardCategory"`
+}
+
+type ContactInfo struct {
+	CurAddress           string `json:"curAddress"`
+	CurAddressDistId     string `json:"curAddressDistId"`
+	CurAddressProvinceId string `json:"curAddressProvinceId"`
+	CurAddressWardId     string `json:"curAddressWardId"`
+}
+
+type PersonalInfo struct {
+	Birthday string `json:"birthday"`
+	FullName string `json:"fullName"`
+	IdCard   string `json:"idCard"`
+	Gender   string `json:"gender"`
+}
+
+type WorkingInfo struct {
+	EmploymentId       string `json:"employmentId"`
+	EmploymentStatusId string `json:"employmentStatusId"`
+	Income             int    `json:"income"`
+}
+
+type UserData struct {
+	CardInfo     CardInfo     `json:"cardInfo"`
+	ContactInfo  ContactInfo  `json:"contactInfo"`
+	PersonalInfo PersonalInfo `json:"personalInfo"`
+	WorkingInfo  WorkingInfo  `json:"workingInfo"`
+}
+
+type LeadCollectedData struct {
+	BrowserInfo BrowserInfo `json:"browser_info"`
+	Sender      string      `json:"sender"`
+	VisitorId   string      `json:"visitor_id"`
+}
+
+type BrowserInfo struct {
+	ChainIp   string `json:"chain_ip"`
+	Referer   string `json:"referer"`
+	UserAgent string `json:"user_agent"`
+}
+
+func ConnectDBWithDatabase(databaseName string) (*sql.DB, error) {
+	username := "sdet_automation"
+	password := "bEmX3SM8wJ4NR7Wv2AZc"
+	host := "dop-rs7-release-mysql.ckzhnzkexzci.ap-southeast-1.rds.amazonaws.com"
+	port := "3306"
+
+	// Construct the DSN with database name
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true&charset=utf8mb4",
+		username,
+		password,
+		host,
+		port,
+		databaseName,
+	)
+
+	db, err := sql.Open("mysql", dsn)
+	if err != nil {
+		return nil, fmt.Errorf("failed to open database: %w", err)
+	}
+
+	if err := db.Ping(); err != nil {
+		db.Close()
+		return nil, fmt.Errorf("failed to ping database: %w", err)
+	}
+
+	return db, nil
+}
+
+func QueryUserValuesWithParams(db *sql.DB, provinceGroup string, ageGroup string, deviceGroup string, gender string, career string) ([]UserValue, error) {
+
+	query := `
+        SELECT * FROM event_tracking.mkt_user_values
+        WHERE province_group = ?
+        AND age_group = ?
+        AND device_group = ?
+        AND gender = ?
+        AND career = ?;
+    `
+
+	rows, err := db.Query(query, provinceGroup, ageGroup, deviceGroup, gender, career)
+	if err != nil {
+		return nil, fmt.Errorf("failed to execute query: %w", err)
+	}
+	defer rows.Close()
+
+	// Get column names to match with struct fields
+	columns, err := rows.Columns()
+	if err != nil {
+		return nil, fmt.Errorf("failed to get columns: %w", err)
+	}
+
+	var results []UserValue
+
+	for rows.Next() {
+		var uv UserValue
+		// Create a slice of pointers to scan into
+		scanArgs := make([]interface{}, len(columns))
+
+		// Map column names to struct field pointers
+		for i, col := range columns {
+			switch col {
+			case "id":
+				scanArgs[i] = &uv.ID
+			case "value":
+				scanArgs[i] = &uv.Value
+			case "province_group":
+				scanArgs[i] = &uv.ProvinceGroup
+			case "age_group":
+				scanArgs[i] = &uv.AgeGroup
+			case "device_group":
+				scanArgs[i] = &uv.DeviceGroup
+			case "gender":
+				scanArgs[i] = &uv.Gender
+			case "career":
+				scanArgs[i] = &uv.Career
+			case "created_at":
+				scanArgs[i] = &uv.CreatedAt
+			case "updated_at":
+				scanArgs[i] = &uv.UpdatedAt
+			default:
+				var dummy interface{}
+				scanArgs[i] = &dummy
+			}
+		}
+
+		err := rows.Scan(scanArgs...)
+		if err != nil {
+			return nil, fmt.Errorf("failed to scan row: %w", err)
+		}
+
+		results = append(results, uv)
+	}
+
+	if err = rows.Err(); err != nil {
+		return nil, fmt.Errorf("error iterating rows: %w", err)
+	}
+
+	return results, nil
+}
+
+func GetAgeGroupDetails(db *sql.DB, userAge int) (*AgeGroup, error) {
+	query := `
+        SELECT a.code, a.name, a.from, a.to
+        FROM event_tracking.age_groups a
+        WHERE ? >= a.from AND ? <= a.to
+        LIMIT 1;
+    `
+
+	var ag AgeGroup
+	err := db.QueryRow(query, userAge, userAge).Scan(&ag.Code, &ag.Name, &ag.From, &ag.To)
+	if err != nil {
+		return nil, fmt.Errorf("failed to query age group: %w", err)
+	}
+
+	return &ag, nil
+}
+
+// GetProvinceGroup retrieves the province group code from the database based on the province_id
+func GetProvinceGroup(db *sql.DB, curAddressProvinceId string) (*ProvinceGroup, error) {
+	query := `
+        SELECT code
+        FROM event_tracking.province_groups
+        WHERE province_id = ?;
+    `
+
+	var provinceGroup ProvinceGroup
+	err := db.QueryRow(query, curAddressProvinceId).Scan(&provinceGroup.Code)
+	if err != nil {
+		return nil, fmt.Errorf("failed to query province group: %w", err)
+	}
+
+	return &provinceGroup, nil
+}
+func CalculateAge(birthday string) (int, error) {
+	// Parse the birthday string
+	birthDate, err := time.Parse("2006-01-02", birthday)
+	if err != nil {
+		return 0, fmt.Errorf("invalid date format: %w", err)
+	}
+
+	// Get current date
+	now := time.Now()
+
+	// Calculate the age
+	age := now.Year() - birthDate.Year()
+
+	// Check if birthday hasn't occurred this year yet
+	thisYearBirthday := time.Date(now.Year(), birthDate.Month(), birthDate.Day(), 0, 0, 0, 0, birthDate.Location())
+	if now.Before(thisYearBirthday) {
+		age--
+	}
+
+	// Handle negative age (birthdate in the future)
+	if age < 0 {
+		return 0, fmt.Errorf("birth date cannot be in the future")
+	}
+
+	return age, nil
+}
+
+func GetFormDataByToken(db *sql.DB, leadUniqueToken string) ([]byte, error) {
+	query := `
+        SELECT form_data 
+        FROM digital_journey.applications 
+        WHERE lead_unique_token = ?
+        LIMIT 1;
+    `
+
+	var formData []byte
+	err := db.QueryRow(query, leadUniqueToken).Scan(&formData)
+	if err != nil {
+		if errors.Is(err, sql.ErrNoRows) {
+			return nil, fmt.Errorf("no application found with token: %s", leadUniqueToken)
+		}
+		return nil, fmt.Errorf("failed to query application: %w", err)
+	}
+
+	return formData, nil
+}
+
+func GetFormDataByTokenParsed(db *sql.DB, leadUniqueToken string) (*UserData, error) {
+	formData, err := GetFormDataByToken(db, leadUniqueToken)
+	if err != nil {
+		return nil, err
+	}
+
+	var userData UserData
+	err = json.Unmarshal(formData, &userData)
+	if err != nil {
+		return nil, fmt.Errorf("failed to parse form_data JSON: %w", err)
+	}
+
+	return &userData, nil
+}
+
+func GetLeadCollectedData(db *sql.DB, leadUniqueToken string) ([]byte, error) {
+	query := `
+        SELECT lead_collected_data 
+        FROM digital_journey.applications 
+        WHERE lead_unique_token = ?;
+    `
+
+	var leadCollectedData []byte
+	err := db.QueryRow(query, leadUniqueToken).Scan(&leadCollectedData)
+	if err != nil {
+		if errors.Is(err, sql.ErrNoRows) {
+			return nil, fmt.Errorf("no application found with token: %s", leadUniqueToken)
+		}
+		return nil, fmt.Errorf("failed to query application: %w", err)
+	}
+	return leadCollectedData, nil
+}
+
+func GetLeadCollectedDataParsed(db *sql.DB, leadUniqueToken string) (*LeadCollectedData, error) {
+	results, err := GetLeadCollectedData(db, leadUniqueToken)
+	if err != nil {
+		return nil, err
+	}
+
+	var leadCollectedData LeadCollectedData
+	err = json.Unmarshal(results, &leadCollectedData)
+	if err != nil {
+		return nil, fmt.Errorf("failed to parse form_data JSON: %w", err)
+	}
+
+	return &leadCollectedData, nil
+}
+
+func GetDeviceCode(userAgent string) string {
+
+	ua := useragent.Parse(userAgent)
+	//fmt.Printf("\nDevice: %s - OS: %s\n", ua.Device, ua.OS)
+
+	return strings.ToLower(ua.OS)
+}
+
+func main() {
+	db, err := ConnectDBWithDatabase("event_tracking")
+	if err != nil {
+		log.Fatal("Error connecting to database:", err)
+	}
+	defer db.Close()
+
+	fmt.Println("Successfully connected to the database!")
+
+	// Query for specific token
+	leadUniqueToken := "QiJ4tG9E"
+	fmt.Print("lead_unique_token: ", leadUniqueToken)
+
+	// Get raw form_data
+	formData, err := GetFormDataByToken(db, leadUniqueToken)
+	if err != nil {
+		log.Printf("Error getting form data: %v", err)
+	} else {
+		fmt.Printf("\nForm data retrieved: %s\n", string(formData))
+	}
+
+	// Get parsed form_data
+	userData, err := GetFormDataByTokenParsed(db, leadUniqueToken)
+	if err != nil {
+		log.Printf("Error parsing form data: %v", err)
+	}
+
+	// career
+	fmt.Printf("career: %s\n", userData.WorkingInfo.EmploymentStatusId)
+
+	// age_groups
+	age, err := CalculateAge(userData.PersonalInfo.Birthday)
+	ageGroup, err := GetAgeGroupDetails(db, age)
+	if err == nil {
+		fmt.Printf("age_group: %s\n", ageGroup.Code)
+	}
+
+	// province_id
+	provinceGroup, err := GetProvinceGroup(db, userData.ContactInfo.CurAddressProvinceId)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("province_group:", provinceGroup.Code)
+	}
+
+	//device_os
+	leadCollectedData, err := GetLeadCollectedDataParsed(db, leadUniqueToken)
+	deviceOs := GetDeviceCode(leadCollectedData.BrowserInfo.UserAgent)
+	fmt.Println("device_group: ", deviceOs)
+
+	// gender
+	fmt.Printf("gender: %s\n", userData.PersonalInfo.Gender)
+
+	// userValue
+	results, err := QueryUserValuesWithParams(db, provinceGroup.Code, ageGroup.Code, deviceOs, userData.PersonalInfo.Gender, userData.WorkingInfo.EmploymentStatusId)
+	if err != nil {
+		log.Fatal("Error with parameterized query:", err)
+	}
+	for i, record := range results {
+		fmt.Printf("Record %d: userValue = %d\n", i+1, record.Value)
+	}
+
+}

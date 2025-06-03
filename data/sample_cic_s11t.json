@@ -1,0 +1,662 @@
+{
+  "TrangThai": "0",
+  "Data": {
+    "MASOPHIEU": "Check 23052024",
+    "TL001": "S11T",
+    "TL002": "2024/S11T",
+    "TL003": "Tên đơn vị hỏi tin",
+    "TL004": "Hà Nội",
+    "TL005": "1234567890",
+    "TL006": "20240523 08:41:21.871",
+    "TL007": "20240523 08:41:21.911",
+    "TL008": "test cic",
+    "TL009": "taikhoantest",
+    "TL099": "OUT 06: Có duy nhất 1 mã CIC có thông tin",
+    "CCCD": "08007xxxxx21",
+    "TENKH": "NGUYỄN VĂN A",
+    "BC100": {
+      "TTC04": "HUỲNH VĂN A",
+      "MACIC": "8031031407",
+      "CN003": "Địa chỉ khách hàng",
+      "CN008": "0800xxxxx21",
+      "CN100": false
+    },
+    "BC200": {
+      "BC210": 570,
+      "BC220": "6",
+      "BC230": "20240412",
+      "BC240": "16"
+    },
+    "BC300": {
+      "BC310": {
+        "BC3101": [
+          {
+            "TTC01": "11111111",
+            "TTC02": "Ngân hàng TMCP A - Chi nhánh A1",
+            "BC31011": "20240328",
+            "BC31012": [
+              {
+                "BC310121": "03",
+                "BC310122": [
+                  {
+                    "BC3101222": 3300,
+                    "BC3101223": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "TTC01": "22222222",
+            "TTC02": "Ngân hàng TMCP B- Chi nhánh B1",
+            "BC31011": "20240325",
+            "BC31012": [
+              {
+                "BC310121": "03",
+                "BC310122": [
+                  {
+                    "BC3101222": 13083,
+                    "BC3101223": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "TTC01": "33333333",
+            "TTC02": "Ngân hàng TMCP B- Chi nhánh B2",
+            "BC31011": "20240327",
+            "BC31012": [
+              {
+                "BC310121": "03",
+                "BC310122": [
+                  {
+                    "BC3101222": 1000,
+                    "BC3101223": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "TTC01": "44444444",
+            "TTC02": "Ngân hàng TMCP C- Chi nhánh C1",
+            "BC31011": "20240310",
+            "BC31012": [
+              {
+                "BC310121": "01",
+                "BC310122": [
+                  {
+                    "BC3101222": 5000,
+                    "BC3101223": 0
+                  }
+                ]
+              },
+              {
+                "BC310121": "03",
+                "BC310122": [
+                  {
+                    "BC3101222": 20770,
+                    "BC3101223": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "TTC01": "55555555",
+            "TTC02": "Ngân hàng TMCP C- Chi nhánh C2",
+            "BC31011": "20240324",
+            "BC31012": [
+              {
+                "BC310121": "03",
+                "BC310122": [
+                  {
+                    "BC3101222": 1104,
+                    "BC3101223": 0
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "BC3102": [
+          {
+            "TTC01": "66666666",
+            "TTC02": "Ngân hàng TMCP D- Chi nhánh D1",
+            "BC31021": [
+              {
+                "BC310211": "900-LC Express Credit Main Card -",
+                "BC310212": "0",
+                "BC310213": -999,
+                "BC310214": -999,
+                "BC310215": -999,
+                "BC310216": -999
+              },
+              {
+                "BC310211": "900-VISA EMV Signature Privilege",
+                "BC310212": "0",
+                "BC310213": -999,
+                "BC310214": -999,
+                "BC310215": -999,
+                "BC310216": -999
+              }
+            ]
+          },
+          {
+            "TTC01": "77777777",
+            "TTC02": "Ngân hàng TMCP E – Chi nhánh Hà Nội ",
+            "BC31021": [
+              {
+                "BC310211": "VISA",
+                "BC310212": "1",
+                "BC310213": 500,
+                "BC310214": 527,
+                "BC310215": 516,
+                "BC310216": 38
+              }
+            ]
+          },
+          {
+            "TTC01": "88888888",
+            "TTC02": "Ngân hàng TMCP E – Chi nhánh Đà Nẵng ",
+            "BC31021": [
+              {
+                "BC310211": "Signature - Priority - Visa Credit",
+                "BC310212": "1",
+                "BC310213": 150,
+                "BC310214": 147,
+                "BC310215": 7,
+                "BC310216": 12
+              }
+            ]
+          },
+          {
+            "TTC01": "99999999",
+            "TTC02": "Ngân hàng TMCP F – Chi nhánh Hà Nội ",
+            "BC31021": [
+              {
+                "BC310211": "JCB JSpeedy Cre Classic",
+                "BC310212": "1",
+                "BC310213": 50,
+                "BC310214": 43,
+                "BC310215": 0,
+                "BC310216": 0
+              }
+            ]
+          },
+          {
+            "TTC01": "12121212",
+            "TTC02": "Ngân hàng TMCP H – Chi nhánh Hà Nội ",
+            "BC31021": [
+              {
+                "BC310211": "MASTERCARD",
+                "BC310212": "1",
+                "BC310213": 500,
+                "BC310214": 0,
+                "BC310215": 0,
+                "BC310216": 0
+              }
+            ]
+          }
+        ]
+      },
+      "BC320": {
+        "BC3201": [
+          {
+            "BC32011": "202403",
+            "BC32012": -999,
+            "BC32013": 674,
+            "BC32014": 500
+          },
+          {
+            "BC32011": "202402",
+            "BC32012": 44295,
+            "BC32013": 703,
+            "BC32014": 500
+          },
+          {
+            "BC32011": "202401",
+            "BC32012": 49796,
+            "BC32013": 689,
+            "BC32014": 500
+          },
+          {
+            "BC32011": "202312",
+            "BC32012": 49941,
+            "BC32013": 691,
+            "BC32014": 500
+          },
+          {
+            "BC32011": "202311",
+            "BC32012": 50087,
+            "BC32013": 689,
+            "BC32014": 500
+          },
+          {
+            "BC32011": "202310",
+            "BC32012": 50230,
+            "BC32013": 687,
+            "BC32014": 500
+          },
+          {
+            "BC32011": "202309",
+            "BC32012": 55934,
+            "BC32013": 765,
+            "BC32014": 500
+          },
+          {
+            "BC32011": "202308",
+            "BC32012": 55148,
+            "BC32013": 782,
+            "BC32014": 500
+          },
+          {
+            "BC32011": "202307",
+            "BC32012": 55305,
+            "BC32013": 725,
+            "BC32014": 500
+          },
+          {
+            "BC32011": "202306",
+            "BC32012": 55406,
+            "BC32013": 769,
+            "BC32014": 500
+          },
+          {
+            "BC32011": "202305",
+            "BC32012": 55613,
+            "BC32013": 764,
+            "BC32014": 500
+          }
+        ],
+        "BC3203": [
+          {
+            "TTC01": "11111111",
+            "TTC02": "Ngân hàng TMCP A- Chi nhánh A1",
+            "BC32031": [
+              {
+                "BC320311": "20210714",
+                "BC320312": 4,
+                "BC320313": 1
+              },
+              {
+                "BC320311": "20210820",
+                "BC320312": 4,
+                "BC320313": 4
+              },
+              {
+                "BC320311": "20211214",
+                "BC320312": 3,
+                "BC320313": 1
+              },
+              {
+                "BC320311": "20220120",
+                "BC320312": 5,
+                "BC320313": 6
+              },
+              {
+                "BC320311": "20220218",
+                "BC320312": 1,
+                "BC320313": 4
+              },
+              {
+                "BC320311": "20221118",
+                "BC320312": 7,
+                "BC320313": 4
+              },
+              {
+                "BC320311": "20230220",
+                "BC320312": 5,
+                "BC320313": 5
+              },
+              {
+                "BC320311": "20230320",
+                "BC320312": 1,
+                "BC320313": 3
+              },
+              {
+                "BC320311": "20230518",
+                "BC320312": 5,
+                "BC320313": 3
+              },
+              {
+                "BC320311": "20230720",
+                "BC320312": 6,
+                "BC320313": 3
+              },
+              {
+                "BC320311": "20231020",
+                "BC320312": 6,
+                "BC320313": 4
+              },
+              {
+                "BC320311": "20240118",
+                "BC320312": 7,
+                "BC320313": 3
+              },
+              {
+                "BC320311": "20240220",
+                "BC320312": 0,
+                "BC320313": 4
+              },
+              {
+                "BC320311": "20240328",
+                "BC320312": 7,
+                "BC320313": 12
+              }
+            ]
+          },
+          {
+            "TTC01": "22222222",
+            "TTC02": "Ngân hàng TMCP B- Chi nhánh B1",
+            "BC32031": [
+              {
+                "BC320311": "20230117",
+                "BC320312": 440,
+                "BC320313": 8
+              },
+              {
+                "BC320311": "20230216",
+                "BC320312": 449,
+                "BC320313": 8
+              },
+              {
+                "BC320311": "20230518",
+                "BC320312": 407,
+                "BC320313": 9
+              },
+              {
+                "BC320311": "20231017",
+                "BC320312": 481,
+                "BC320313": 8
+              },
+              {
+                "BC320311": "20231218",
+                "BC320312": 495,
+                "BC320313": 9
+              },
+              {
+                "BC320311": "20240221",
+                "BC320312": 505,
+                "BC320313": 12
+              },
+              {
+                "BC320311": "20240319",
+                "BC320312": 516,
+                "BC320313": 38
+              }
+            ]
+          }
+        ],
+        "BC3204": [
+          {
+            "BC32042": "202403",
+            "BC32043": 44257,
+            "BC32041": [
+              {
+                "TTC01": "11111111",
+                "TTC02": "Ngân hàng TMCP A- Chi nhánh A1",
+                "BC320431": "20240327"
+              },
+              {
+                "TTC01": "22222222",
+                "TTC02": "Ngân hàng TMCP B- Chi nhánh B1",
+                "BC320431": "20240310"
+              },
+              {
+                "TTC01": "33333333",
+                "TTC02": "Ngân hàng TMCP C- Chi nhánh C1",
+                "BC320431": "20240325"
+              },
+              {
+                "TTC01": "44444444",
+                "TTC02": "Ngân hàng TMCP D- Chi nhánh D1",
+                "BC320431": "20240328"
+              },
+              {
+                "TTC01": "55555555",
+                "TTC02": "Ngân hàng TMCP E- Chi nhánh E1",
+                "BC320431": "20240324"
+              }
+            ]
+          },
+          {
+            "BC32042": "202402",
+            "BC32043": 44295,
+            "BC32041": [
+              {
+                "TTC01": "11111111",
+                "TTC02": "Ngân hàng TMCP A- Chi nhánh A1",
+                "BC320431": "20240229"
+              },
+              {
+                "TTC01": "22222222",
+                "TTC02": "Ngân hàng TMCP B- Chi nhánh B1",
+                "BC320431": "20240229"
+              }
+            ]
+          },
+          {
+            "BC32042": "202401",
+            "BC32043": 27978,
+            "BC32041": [
+              {
+                "TTC01": "33333333",
+                "TTC02": "Ngân hàng TMCP C- Chi nhánh C1",
+                "BC320431": "20240131"
+              },
+              {
+                "TTC01": "44444444",
+                "TTC02": "Ngân hàng TMCP C- Chi nhánh C2",
+                "BC320431": "20240131"
+              }
+            ]
+          },
+          {
+            "BC32042": "202312",
+            "BC32043": 25913,
+            "BC32041": [
+              {
+                "TTC01": "55555555",
+                "TTC02": "Ngân hàng TMCP D- Chi nhanh D1",
+                "BC320431": "20231231"
+              }
+            ]
+          },
+          {
+            "BC32042": "202309",
+            "BC32043": 1120,
+            "BC32041": [
+              {
+                "TTC01": "11111111",
+                "TTC02": "Ngân hàng TMCP A- Chi nhánh A1",
+                "BC320431": "20230925"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "BC400": {
+      "BC410": [
+        {
+          "TTC01": "22222222",
+          "TTC02": "Ngân hàng TMCP B- Chi nhánh B1",
+          "BC4101": "20240328",
+          "BC4102": "20240229",
+          "BC4103": [
+            {
+              "BC41031": "5201812",
+              "BC41032": "01",
+              "BC41033": "NGUYEN VAN A",
+              "BC41034": 4431,
+              "BC41035": "20220914",
+              "BC41037": "TD: 994,995; TBD: 02, AP 3, X LONG KHE, H CAN DUOC, T LONG AN. GCN QSD DAT QSH NHA O; CV 781256, SO VAO SO CAP GCN SO: CH07842; CH 03333 DO UBND H CAN DUOC CAP NGAY 21/07/2020"
+            }
+          ]
+        },
+        {
+          "TTC01": "11111111",
+          "TTC02": "Ngân hàng TMCP A- Chi nhánh A1",
+          "BC4101": "20240325",
+          "BC4102": "20240229",
+          "BC4103": [
+            {
+              "BC41031": "AAAAAAAAA.2.1",
+              "BC41032": "01",
+              "BC41034": 7795,
+              "BC41035": "20230206",
+              "BC41037": "Dia chi: 29 DUONG SO 17B, KHU PHO 2, PHUONG; Dia chi: AN LAC A, QUAN BINH TAN, THANH PHO; Dia chi: HO CHI MINH.; Dien tich dat: 64.0M2; Dien tich XD: ; So/ma so so do: 797772XXXXxxxxx; Ngay cap so do: 04/12/2007; Noi cap so: UY BAN NHAN DAN QUAN BINH TAN; Noi cap so: THANH PHO HO CHI MINH.; Noi cap so: ; Du an: ; Ngay ban giao nha: ; Ngay ban giao chung nhan so huu: .; Ma can:"
+            },
+            {
+              "BC41031": "33790867.1.1",
+              "BC41032": "01",
+              "BC41034": 5280,
+              "BC41035": "20230306",
+              "BC41037": "Dia chi: 433/23 NGUYEN VAN LUONG, PHUONG 12, QUAN 6, THANH PHO HO CHI MINH; Dia chi: ; Dia chi: TD 14, TBD 19; Dien tich dat: 47.2M2; Dien tich XD: ; So/ma so so do: BB 43ABCD; Ngay cap so do: 03/04/2012. DA CAP NHAT THAY DOI CHU TAI SAN; Noi cap so: UY BAN NHAN DAN QUAN 6, THANH PHO HO CHI MINH; Noi cap so: .; Noi cap so: .; Du an: .; Ngay ban giao nha: .; Ngay ban giao chung nhan so huu: .; Ma can:"
+            },
+            {
+              "BC41031": "AABB0867.1.2",
+              "BC41032": "01",
+              "BC41034": 14330,
+              "BC41035": "20240306",
+              "BC41037": "Dia chi: 29 LO H BUI HUU DIEN, KHU PHO 3,; Dia chi: P.AN LAC A, Q. BINH TAN, TPHCM; Dia chi: TD SO 538, TBD SO 52; Dien tich dat: 128.6M2; Dien tich XD: .; So/ma so so do: DA 801AAA; Ngay cap so do: 26/04/2021; Noi cap so: SO TAI NGUYEN VA MOI TRUONG TPHCM; Noi cap so: .; Noi cap so: .; Du an: .; Ngay ban giao nha: .; Ngay ban giao chung nhan so huu: .; Ma can:"
+            }
+          ]
+        },
+        {
+          "TTC01": "22222222",
+          "TTC02": "Ngân hàng TMCP B- Chi nhánh B1",
+          "BC4101": "20240325",
+          "BC4102": "20240328",
+          "BC4103": [
+            {
+              "BC41034": -888,
+              "BC41037": "Không có bảo đảm tiền vay bằng tài sản"
+            }
+          ]
+        },
+        {
+          "TTC01": "33333333",
+          "TTC02": "Ngân hàng TMCP C- Chi nhánh C1",
+          "BC4101": "20240327",
+          "BC4102": "20240229",
+          "BC4103": [
+            {
+              "BC41031": "6302014313096",
+              "BC41032": "02",
+              "BC41033": "Nguyen Van A",
+              "BC41034": 1403,
+              "BC41035": "20230504",
+              "BC41037": "Chủng loại:TOYOTA CAMRY 2.5Q-Biển số đăng ký:62A-316.87-Số khung:MR2B63HK604013738-Số máy:0C46213AXXA"
+            }
+          ]
+        },
+        {
+          "TTC01": "44444444",
+          "TTC02": "Ngân hàng TMCP D- Chi nhánh D1",
+          "BC4101": "20240310",
+          "BC4102": "20240229",
+          "BC4103": [
+            {
+              "BC41031": "05600006XXX31",
+              "BC41032": "01",
+              "BC41034": 7736,
+              "BC41035": "20211111",
+              "BC41037": "B1, 01QSDD TAI THUA 623 TBD SO 3, AP 2, LONG KHE, CAN DUOC , LONG THÀNH (HUB LA GH 019-XXXXX41)"
+            },
+            {
+              "BC41031": "08800008XXX17",
+              "BC41032": "01",
+              "BC41034": 17863,
+              "BC41035": "20230321",
+              "BC41037": "TD 1424 + 1425, TBD 4 CP 122392 + CP 122315 B1, 02 QSDD NN TAI TD SO 1424+1425, TBD SO 4, X. PHUOC TUY, H. CAN DUOC, T. LONG AN (HUB GIA DINH GH REF 019%807XXX) B1, 02 QSDD NN TAI TD SO 1424+1425, TBD SO 4, X. PHUOC TUY, H. CAN DUOC, T. LONG AN (HUB LONG AN GH REF 019%807XXX)"
+            },
+            {
+              "BC41031": "0560000XXX325",
+              "BC41032": "01",
+              "BC41034": 6180,
+              "BC41035": "20211220",
+              "BC41037": "B1; 02 QSDD TDS 162+816, TBD SO 8 X LONG TRACH, H CAN DUOC, T.LONG AN (HUB LONG AN NHAN GIU HO 019-690258)"
+            },
+            {
+              "BC41031": "0560000XXX334",
+              "BC41032": "01",
+              "BC41034": 5422,
+              "BC41035": "20211111",
+              "BC41037": "B1, 01QSDD TAI THUA 622 TBD SO 3, AP 2, LONG KHE, CAN DUOC , LONG AN (HUB LA GH 019-67CCC1)"
+            }
+          ]
+        },
+        {
+          "TTC01": "55555555",
+          "TTC02": "Ngân hàng TMCP E- Chi nhánh Hà Nội",
+          "BC4101": "20240310",
+          "BC4102": "20240319",
+          "BC4103": [
+            {
+              "BC41034": -888,
+              "BC41037": "Không có bảo đảm tiền vay bằng tài sản"
+            }
+          ]
+        },
+        {
+          "TTC01": "66666666",
+          "TTC02": "Ngân hàng TMCP E- Chi nhánh E1",
+          "BC4101": "20240324",
+          "BC4102": "20240229",
+          "BC4103": [
+            {
+              "BC41031": "6421XXX.1.1",
+              "BC41032": "01",
+              "BC41033": "Nguyen Van A",
+              "BC41034": 1819,
+              "BC41035": "20220127",
+              "BC41037": "THUA 1238 TBD 8 QSDD CV781976 HUYNH VAN TAMXa Long Trach huyen Can Duoc tinh LONG AN"
+            }
+          ]
+        },
+        {
+          "TTC01": "11111111",
+          "TTC02": "Ngân hàng TMCP A- Chi nhánh A1",
+          "BC4101": "20240324",
+          "BC4102": "20240229",
+          "BC4103": [
+            {
+              "BC41034": -888,
+              "BC41037": "Không có bảo đảm tiền vay bằng tài sản"
+            }
+          ]
+        }
+      ]
+    },
+    "BC500": {
+      "BC510": [
+        {
+          "TTC01": "22222222",
+          "TTC02": "Ngân hàng TMCP B- Chi nhánh B1",
+          "BC5101": "372390639",
+          "BC5102": "20220914",
+          "BC5103": "20470914"
+        },
+        {
+          "TTC01": "33333333",
+          "TTC02": "Ngân hàng TMCP C- Chi nhánh C1",
+          "BC5101": "33790867.0002400.01",
+          "BC5102": "20190313",
+          "BC5103": "20580206"
+        }
+      ],
+      "BC520": [
+        {
+          "TTC01": "01101023",
+          "TTC02": "Tên đơn vị hỏi tin",
+          "BC5201": "Tức thời",
+          "BC5202": "20240522 10:03:47"
+        }
+      ]
+    },
+    "TL101": "0"
+  }
+}

@@ -1,0 +1,338 @@
+{
+  "s11a": {
+    "Body": {
+      "LSQHTD": {
+        "DoNo12Thang": {
+          "THANG": [
+            {
+              "DuNoThe": "-",
+              "DuNoVay": "-",
+              "NgaySL": "04/2025",
+              "TongDuNo": "-"
+            },
+            {
+              "DuNoThe": "34",
+              "DuNoVay": "75",
+              "NgaySL": "03/2025",
+              "TongDuNo": "109"
+            },
+            {
+              "DuNoThe": "22",
+              "DuNoVay": "69",
+              "NgaySL": "02/2025",
+              "TongDuNo": "91"
+            },
+            {
+              "DuNoThe": "22",
+              "DuNoVay": "92",
+              "NgaySL": "01/2025",
+              "TongDuNo": "114"
+            },
+            {
+              "DuNoThe": "23",
+              "DuNoVay": "101",
+              "NgaySL": "12/2024",
+              "TongDuNo": "124"
+            },
+            {
+              "DuNoThe": "20",
+              "DuNoVay": "52",
+              "NgaySL": "11/2024",
+              "TongDuNo": "72"
+            },
+            {
+              "DuNoThe": "10",
+              "DuNoVay": "54",
+              "NgaySL": "10/2024",
+              "TongDuNo": "64"
+            },
+            {
+              "DuNoThe": "9",
+              "DuNoVay": "52",
+              "NgaySL": "09/2024",
+              "TongDuNo": "61"
+            },
+            {
+              "DuNoThe": "3",
+              "DuNoVay": "41",
+              "NgaySL": "08/2024",
+              "TongDuNo": "44"
+            },
+            {
+              "DuNoThe": "",
+              "DuNoVay": "41",
+              "NgaySL": "07/2024",
+              "TongDuNo": "41"
+            },
+            {
+              "DuNoThe": "",
+              "DuNoVay": "44",
+              "NgaySL": "06/2024",
+              "TongDuNo": "44"
+            },
+            {
+              "DuNoThe": "0",
+              "DuNoVay": "45",
+              "NgaySL": "05/2024",
+              "TongDuNo": "45"
+            }
+          ]
+        },
+        "LichSuChamTTTheTD36Thang": {
+          "SoLanChamTT": "",
+          "SoNgayChamTTMAX": "",
+          "TTCHAMTT": ""
+        },
+        "NoCanChuYTrong12Thang": {
+          "NoCanChuYChiTiet": {
+            "THANG": []
+          }
+        },
+        "NoXau60Thang": {
+          "NoXauChiTiet": {
+            "TCTD": []
+          }
+        }
+      },
+      "TTDUNOHT": {
+        "ChiTietNoVay": {
+          "TCTD": [
+            {
+              "ChiTietDuNo": [
+                {
+                  "LoaiDuNo": {
+                    "DuNoUSD": "0",
+                    "DuNoVND": "14",
+                    "NhomNo": "Dư nợ cho vay ngắn hạn",
+                    "TENLOAI": "Dư nợ đủ tiêu chuẩn"
+                  }
+                }
+              ],
+              "TTChung": {
+                "MaTCTD": "01309001",
+                "NgaySL": "23/04/2025",
+                "TenTCTD": "Ngân hàng TMCP Việt Nam Thịnh Vượng"
+              },
+              "TongCong_USD": "0",
+              "TongCong_VND": "14"
+            },
+            {
+              "ChiTietDuNo": [],
+              "TTChung": {
+                "MaTCTD": "",
+                "NgaySL": "",
+                "TenTCTD": ""
+              },
+              "TongCong_USD": "",
+              "TongCong_VND": ""
+            },
+            {
+              "ChiTietDuNo": [
+                {
+                  "LoaiDuNo": {
+                    "DuNoUSD": "0",
+                    "DuNoVND": "16",
+                    "NhomNo": "Dư nợ cho vay ngắn hạn",
+                    "TENLOAI": "Dư nợ đủ tiêu chuẩn"
+                  }
+                }
+              ],
+              "TTChung": {
+                "MaTCTD": "01805001",
+                "NgaySL": "27/04/2025",
+                "TenTCTD": "Công ty Tài chính TNHH MTV TNEX"
+              },
+              "TongCong_USD": "0",
+              "TongCong_VND": "16"
+            },
+            {
+              "ChiTietDuNo": [],
+              "TTChung": {
+                "MaTCTD": "",
+                "NgaySL": "",
+                "TenTCTD": ""
+              },
+              "TongCong_USD": "",
+              "TongCong_VND": ""
+            },
+            {
+              "ChiTietDuNo": [
+                {
+                  "LoaiDuNo": {
+                    "DuNoUSD": "0",
+                    "DuNoVND": "26",
+                    "NhomNo": "Dư nợ cho vay trung hạn",
+                    "TENLOAI": "Dư nợ đủ tiêu chuẩn"
+                  }
+                }
+              ],
+              "TTChung": {
+                "MaTCTD": "01828001",
+                "NgaySL": "23/04/2025",
+                "TenTCTD": "Công ty Tài chính Cổ phần Tín Việt"
+              },
+              "TongCong_USD": "0",
+              "TongCong_VND": "26"
+            },
+            {
+              "ChiTietDuNo": [],
+              "TTChung": {
+                "MaTCTD": "",
+                "NgaySL": "",
+                "TenTCTD": ""
+              },
+              "TongCong_USD": "",
+              "TongCong_VND": ""
+            },
+            {
+              "ChiTietDuNo": [
+                {
+                  "LoaiDuNo": {
+                    "DuNoUSD": "0",
+                    "DuNoVND": "2",
+                    "NhomNo": "Dư nợ cho vay ngắn hạn",
+                    "TENLOAI": "Dư nợ đủ tiêu chuẩn"
+                  }
+                }
+              ],
+              "TTChung": {
+                "MaTCTD": "01833001",
+                "NgaySL": "22/04/2025",
+                "TenTCTD": "Công ty Tài chính tín dụng tiêu dùng TNHH MB Shinsei"
+              },
+              "TongCong_USD": "0",
+              "TongCong_VND": "2"
+            },
+            {
+              "ChiTietDuNo": [],
+              "TTChung": {
+                "MaTCTD": "",
+                "NgaySL": "",
+                "TenTCTD": ""
+              },
+              "TongCong_USD": "",
+              "TongCong_VND": ""
+            },
+            {
+              "ChiTietDuNo": [
+                {
+                  "LoaiDuNo": {
+                    "DuNoUSD": "0",
+                    "DuNoVND": "14",
+                    "NhomNo": "Dư nợ cho vay ngắn hạn",
+                    "TENLOAI": "Dư nợ đủ tiêu chuẩn"
+                  }
+                }
+              ],
+              "TTChung": {
+                "MaTCTD": "79358001",
+                "NgaySL": "25/04/2025",
+                "TenTCTD": "Ngân hàng TMCP Tiên Phong - Chi nhánh thành phố Hồ Chí Minh"
+              },
+              "TongCong_USD": "0",
+              "TongCong_VND": "14"
+            },
+            {
+              "ChiTietDuNo": [],
+              "TTChung": {
+                "MaTCTD": "",
+                "NgaySL": "",
+                "TenTCTD": ""
+              },
+              "TongCong_USD": "",
+              "TongCong_VND": ""
+            }
+          ]
+        },
+        "DuNoTheTD": {
+          "DuNoTheTDChiTiet": {
+            "DuNo": [
+              {
+                "HMTheTD": "15",
+                "SoLuongThe": "1",
+                "SoNgayChamThanhToan": "0",
+                "SoTienChamThanhToan": "0",
+                "SoTienPhaiThanhToan": "15"
+              },
+              {
+                "HMTheTD": "14",
+                "SoLuongThe": "2",
+                "SoNgayChamThanhToan": "0",
+                "SoTienChamThanhToan": "0",
+                "SoTienPhaiThanhToan": "7"
+              },
+              {
+                "HMTheTD": "10",
+                "SoLuongThe": "1",
+                "SoNgayChamThanhToan": "0",
+                "SoTienChamThanhToan": "0",
+                "SoTienPhaiThanhToan": "2"
+              },
+              {
+                "HMTheTD": "12",
+                "SoLuongThe": "1",
+                "SoNgayChamThanhToan": "0",
+                "SoTienChamThanhToan": "0",
+                "SoTienPhaiThanhToan": "10"
+              }
+            ],
+            "TCTD": [
+              {
+                "NgaySL": "31/03/2025",
+                "TenTCTDPhatHanh": "Ngân hàng TMCP Việt Nam Thịnh Vượng"
+              },
+              {
+                "NgaySL": "31/03/2025",
+                "TenTCTDPhatHanh": "Ngân hàng TMCP Phát triển thành phố Hồ Chí Minh"
+              },
+              {
+                "NgaySL": "31/03/2025",
+                "TenTCTDPhatHanh": "Ngân hàng TMCP Tiên Phong - Chi nhánh thành phố Hồ Chí Minh"
+              },
+              {
+                "NgaySL": "31/03/2025",
+                "TenTCTDPhatHanh": "Ngân hàng TMCP Bản Việt"
+              }
+            ]
+          }
+        },
+        "NoVAMC": {
+          "TCTD": []
+        }
+      },
+      "TTKH": {
+        "CMND-HC": "048087001633",
+        "DKKD": "",
+        "GiayToKhac": "201524836",
+        "MST": "",
+        "MaCIC": "4931260384",
+        "TGD-DaiDienPL": "",
+        "TenKhachHang": "LÊ CẢNH ÂN",
+        "TruSoChinh-DiaChi": "38A/8, TRẦN PHÚ, P. HẢI CHÂU 1, Q. HẢI CHÂU, DAN"
+      },
+      "TTKHAC": {
+        "NoiDung": ""
+      },
+      "TTTongHopKHAC": {
+        "HDTD": [],
+        "TCTDTraCuu12Thang": {
+          "TCTDTraCuu": []
+        },
+        "TSDB": {
+          "SoLuongTSDB": "",
+          "SoTCTD": "",
+          "TSDBTIENVAY": "Không có"
+        }
+      }
+    },
+    "Header": {
+      "DiaChi": "Tòa nhà TPBank, Số 57 phố Lý Thường Kiệt, Quận Hoàn Kiếm, Hà Nội",
+      "DienThoai": "",
+      "DonViTraCuu": "Ngân hàng TMCP Tiên Phong",
+      "MaSoPhieu": "TPB250502.0991.CC06",
+      "ThoiGianGui": "20250502 16:55",
+      "ThoiGianYC": "20250502 16:54",
+      "UserID": "h01358001hang2"
+    }
+  }
+}
