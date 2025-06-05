@@ -1,0 +1,5 @@
+database:
+  username: "sdet_automation"
+  password: "bEmX3SM8wJ4NR7Wv2AZc"
+  host: "dop-rs7-release-mysql.ckzhnzkexzci.ap-southeast-1.rds.amazonaws.com"
+  port: "3306"

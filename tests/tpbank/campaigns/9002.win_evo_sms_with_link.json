@@ -1,0 +1,21 @@
+{
+    "active": true,
+    "campaign_code": "win_evo_sms_with_link",
+    "campaign_type": "self_registration",
+    "challenge_type": "captcha.v3",
+    "id": 9002,
+    "lender_id": 9,
+    "must_match": false,
+    "partner_callback": {
+        "url": ""
+    },
+    "partner_code": "win_evo",
+    "partner_name": "TS",
+    "product_code": "tpb_winevo",
+    "product_sub_type": "credit_card",
+    "product_type": "credit_card",
+    "redirect_type": "",
+    "source": "esms",
+    "ui_version": "win",
+    "weight": 0
+}

@@ -1,0 +1,21 @@
+{
+    "active": true,
+    "campaign_code": "evo_native_mwg",
+    "campaign_type": "self_registration",
+    "challenge_type": "captcha.enterprise",
+    "id": 9011,
+    "lender_id": 9,
+    "must_match": false,
+    "partner_callback": {
+        "url": ""
+    },
+    "partner_code": "evo_native",
+    "partner_name": "EVO NATIVE",
+    "product_code": "tpb_evo_native",
+    "product_sub_type": "credit_card",
+    "product_type": "credit_card",
+    "redirect_type": "",
+    "source": "mwg",
+    "ui_version": "tpb_evo_native",
+    "weight": 0
+}

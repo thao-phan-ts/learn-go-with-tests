@@ -1,0 +1,106 @@
+{
+    "active": true,
+    "add_on_services": {
+    },
+    "auth_settings": {
+        "callback": {
+            "auth_required": true
+        },
+        "default_auth_type": "otp",
+        "face_id": {
+            "enabled": true
+        }
+    },
+    "decision_engines": {
+        "appraising.quick_approval": {
+            "evaluation_type": "evaluate",
+            "max_wait_seconds": 5,
+            "tree_uuid": "207ea140-c0aa-4503-a647-642a95b864d6",
+            "use_add_on_services": [
+                "abnormal_check",
+                "check_cif_no_debit",
+                "delinquent_check",
+                "duplicate_approval",
+                "eligibility_check",
+                "id_card_blacklist_check",
+                "pdl_check",
+                "pdl_email_check",
+                "prescreening",
+                "prescreening_old_id",
+                "repeated_customer_check"
+            ]
+        }
+    },
+    "document_schema": {
+        "expressions": []
+    },
+    "domain": "https://evocard.tpb.vn/preonboarding/mwg_pos",
+    "ekyc_settings": {
+        "client_settings": {
+            "flow_id": "dop_evoappvn"
+        }
+    },
+    "id": 9441,
+    "lead_expiry": 720,
+    "lead_offer_expiry": 0,
+    "lender_id": 9,
+    "name": "v1.0.off-store.mwg_pos.other",
+    "otp_service": {
+        "auth": {
+            "sms_template": "\u003cOTP_CODE\u003e",
+            "type": "lender"
+        },
+        "credit_insight": null
+    },
+    "tags": [
+        {
+            "name": "campaign_type",
+            "value": "self_registration"
+        },
+        {
+            "name": "campaign_type",
+            "value": "preselection"
+        },
+        {
+            "name": "telco_code",
+            "value": "vnsky"
+        },
+        {
+            "name": "telco_code",
+            "value": "vietnamobile"
+        },
+        {
+            "name": "telco_code",
+            "value": "gmobile"
+        },
+        {
+            "name": "telco_code",
+            "value": "indochina"
+        },
+        {
+            "name": "telco_code",
+            "value": "mobicast"
+        },
+        {
+            "name": "lead_source",
+            "value": "mwg_pos"
+        },
+        {
+            "name": "ekyc_status",
+            "value": "unverified"
+        },
+        {
+            "name": "product_code",
+            "value": "tpb_evo_native"
+        }
+    ],
+    "ui_flow": [
+        "otp",
+        "app_form.id_card_info",
+        "app_form.extra_info",
+        "appraising.quick_approval"
+    ],
+    "ui_flow_settings": {},
+    "ui_version": "v9.4.1.0",
+    "weight": 1
+}

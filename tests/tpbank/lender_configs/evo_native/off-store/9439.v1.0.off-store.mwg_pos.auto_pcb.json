@@ -1,0 +1,527 @@
+{
+    "active": true,
+    "add_on_services": {
+        "id_card_blacklist_check": {
+            "dispatch": [
+                {
+                    "state": "ekyc.id_card"
+                }
+            ],
+            "enabled": true
+        },
+        "face_blacklist_check": {
+            "dispatch": [
+                {
+                    "state": "ekyc.selfie.active"
+                }
+            ],
+            "enabled": true
+        },
+        "nfc_check": {
+            "dispatch": [
+                {
+                    "state": "ekyc.selfie.active"
+                }
+            ],
+            "enabled": true
+        },
+        "nfc_verify": {
+            "dispatch": [
+                {
+                    "state": "ekyc.nfc_scan"
+                }
+            ],
+            "enabled": true
+        },
+        "nfc_id_tampering": {
+            "dispatch": [
+                {
+                    "state": "ekyc.nfc_scan"
+                }
+            ],
+            "enabled": true
+        },
+        "prescreening_old_id": {
+            "dispatch": [
+                {
+                    "state": "ekyc.confirm"
+                }
+            ],
+            "enabled": false
+        },
+        "repeated_customer_check": {
+            "dispatch": [
+                {
+                    "state": "ekyc.confirm",
+                    "use_id_card_fields": [
+                        "old_id_number"
+                    ]
+                }
+            ],
+            "enabled": false
+        },
+        "h2h_pcb_old": {
+            "dispatch": [
+                {
+                    "state": "ekyc.confirm",
+                    "use_id_card_fields": [
+                        "old_id_number"
+                    ]
+                }
+            ],
+            "enabled": false
+        },
+        "h2h_cic_s11a_r14_old": {
+            "dispatch": [
+                {
+                    "cic_types": [
+                        "s11a",
+                        "r14"
+                    ],
+                    "state": "ekyc.confirm",
+                    "use_id_card_fields": [
+                        "old_id_number"
+                    ]
+                }
+            ],
+            "enabled": false
+        },
+        "delinquent_check": {
+            "dispatch": [
+                {
+                    "state": "app_form.additional_info",
+                    "use_ts_form_fields": [
+                        "reference_phone1",
+                        "reference_phone2"
+                    ]
+                }
+            ],
+            "enabled": true
+        },
+        "store_detection": {
+            "dispatch": [
+                {
+                    "state": "ekyc.confirm"
+                }
+            ],
+            "enabled": true
+        },
+        "distance_detection": {
+            "dispatch": [
+                {
+                    "state": "ekyc.confirm"
+                }
+            ],
+            "enabled": true
+        },
+        "prescreening_potential_fraud": {
+            "dispatch": [
+                {
+                    "state": "app_form.additional_info"
+                }
+            ],
+            "enabled": true
+        }
+    },
+    "auth_settings": {
+        "callback": {
+            "auth_required": false
+        },
+        "default_auth_type": "otp",
+        "face_id": {
+            "enabled": true
+        },
+        "id_card_auth": {
+            "enabled": true
+        }
+    },
+    "decision_engines": {
+        "appraising.fourth_approval": {
+            "credit_tree_uuid": "b8098581-9378-4b16-9108-8901593a210d",
+            "evaluation_type": "evaluate",
+            "max_wait_seconds": 1200,
+            "enable_long_appraising": true,
+            "risk_grade_tree_uuid": "796428a0-60b2-4478-979c-855c4a5cfba2",
+            "tree_uuid": "4315eb58-6250-406f-a7e4-28f8016dcd57",
+            "use_add_on_services": [
+                "abnormal_check",
+                "ascore_v3",
+                "ascore_v3_wo_cic",
+                "ascore_cic",
+                "ascore_wo_cic",
+                "check_cif_no_debit",
+                "de",
+                "delinquent_check",
+                "duplicate_approval",
+                "ekyc",
+                "eligibility_check",
+                "face_blacklist_check",
+                "h2h_cic_r14",
+                "h2h_cic_r14_cif",
+                "h2h_cic_r14_old",
+                "h2h_cic_s11a",
+                "h2h_cic_s11a_cif",
+                "h2h_cic_s11a_old",
+                "h2h_cic_s11a_r14",
+                "h2h_cic_s11a_r14_cif",
+                "h2h_cic_s11a_r14_old",
+                "h2h_cic_s11t",
+                "h2h_pcb",
+                "h2h_pcb_cif",
+                "h2h_pcb_old",
+                "id_card_blacklist_check",
+                "id_card_tampering",
+                "pdl_check",
+                "pdl_email_check",
+                "prescreening",
+                "prescreening_old_id",
+                "prescreening_potential_fraud",
+                "repeated_customer_check",
+                "nfc_id_tampering",
+                "nfc_verify",
+                "store_detection",
+                "distance_detection"
+            ]
+        },
+        "appraising.before_push": {
+            "credit_tree_uuid": "b8098581-9378-4b16-9108-8901593a210d",
+            "evaluation_type": "evaluate",
+            "max_wait_seconds": 5,
+            "risk_grade_tree_uuid": "796428a0-60b2-4478-979c-855c4a5cfba2",
+            "tree_uuid": "4315eb58-6250-406f-a7e4-28f8016dcd57",
+            "use_add_on_services": [
+                "abnormal_check",
+                "ascore_v3",
+                "ascore_v3_wo_cic",
+                "ascore_cic",
+                "ascore_wo_cic",
+                "check_cif_no_debit",
+                "de",
+                "delinquent_check",
+                "duplicate_approval",
+                "ekyc",
+                "eligibility_check",
+                "face_blacklist_check",
+                "h2h_cic_r14",
+                "h2h_cic_r14_cif",
+                "h2h_cic_r14_old",
+                "h2h_cic_s11a",
+                "h2h_cic_s11a_cif",
+                "h2h_cic_s11a_old",
+                "h2h_cic_s11a_r14",
+                "h2h_cic_s11a_r14_cif",
+                "h2h_cic_s11a_r14_old",
+                "h2h_cic_s11t",
+                "h2h_pcb",
+                "h2h_pcb_cif",
+                "h2h_pcb_old",
+                "id_card_blacklist_check",
+                "id_card_tampering",
+                "pdl_check",
+                "pdl_email_check",
+                "prescreening",
+                "prescreening_old_id",
+                "prescreening_potential_fraud",
+                "repeated_customer_check",
+                "nfc_id_tampering",
+                "nfc_verify",
+                "store_detection",
+                "distance_detection"
+            ]
+        },
+        "appraising.verify_card_status": {
+            "credit_tree_uuid": "b8098581-9378-4b16-9108-8901593a210d",
+            "evaluation_type": "evaluate",
+            "max_wait_seconds": 5,
+            "risk_grade_tree_uuid": "796428a0-60b2-4478-979c-855c4a5cfba2",
+            "tree_uuid": "45123c68-e73d-494a-b55c-b3ea6f1fdacc",
+            "use_add_on_services": [
+                "ascore_v3",
+                "ascore_v3_wo_cic",
+                "ascore_cic",
+                "ascore_wo_cic",
+                "duplicate_approval",
+                "eligibility_check",
+                "h2h_cic_r14",
+                "h2h_cic_r14_old",
+                "h2h_cic_s11a",
+                "h2h_cic_s11a_old",
+                "h2h_cic_s11a_r14",
+                "h2h_cic_s11a_r14_old",
+                "h2h_cic_s11t",
+                "h2h_pcb",
+                "h2h_pcb_old",
+                "prescreening",
+                "prescreening_old_id",
+                "store_detection",
+                "distance_detection"
+            ]
+        },
+        "appraising.nfc_check": {
+            "evaluation_type": "evaluate",
+            "max_wait_seconds": 15,
+            "tree_uuid": "d6ab4328-3234-4b3f-98de-c4b785eb6236",
+            "use_add_on_services": [
+                "nfc_check"
+            ]
+        }
+    },
+    "document_schema": {
+        "expressions": []
+    },
+    "domain": "https://evocard.tpb.vn/preonboarding/mwg_pos",
+    "ekyc_settings": {
+        "client_settings": {
+            "flow_id": "dop_evoappvn"
+        },
+        "face": {
+            "features": {
+                "face_compare": {
+                    "enabled": true,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 2,
+                    "retry_counter_group": "ekyc_selfie_compare_retry_count"
+                },
+                "liveness": {
+                    "enabled": true,
+                    "exceeded_fails_command": "next_state",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_selfie_liveness_retry_count",
+                    "selfie_type": "flash",
+                    "video_enabled": true
+                },
+                "sanity": {
+                    "counter_seconds": 1800,
+                    "enabled": true,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_selfie_sanity_count"
+                },
+                "search_face": {
+                    "enabled": true,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_selfie_search_retry_count"
+                }
+            }
+        },
+        "id_card": {
+            "back_features": {
+                "face_compare": {
+                    "enabled": false,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 2,
+                    "retry_counter_group": "ekyc_id_card_back_compare_retry_count"
+                },
+                "id_tampering": {
+                    "enabled": false,
+                    "exceeded_fails_command": "no_action",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_id_card_back_tempering_retry_count"
+                },
+                "ocr": {
+                    "counter_seconds": 1800,
+                    "enabled": true,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_id_card_back_ocr_retry_count"
+                },
+                "sanity": {
+                    "counter_seconds": 1800,
+                    "enabled": true,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_id_card_back_sanity_retry_count"
+                },
+                "search_id_photo": {
+                    "enabled": false,
+                    "max_fails": 0
+                }
+            },
+            "enable_index_face": false,
+            "features": {
+                "face_compare": {
+                    "enabled": false,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_id_card_compare_retry_count"
+                },
+                "id_tampering": {
+                    "enabled": true,
+                    "counter_seconds": 1800,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "level": "concurrent",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_id_card_tampering_retry_count",
+                    "tree_uuid": "c6eb0ca4-a21a-4cc8-b0aa-0787a6736efe"
+                },
+                "ocr": {
+                    "enabled": false,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_id_card_ocr_retry_count"
+                },
+                "sanity": {
+                    "enabled": false,
+                    "exceeded_fails_command": "lock",
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_id_card_sanity_retry_count"
+                },
+                "search_id_photo": {
+                    "enabled": false,
+                    "max_fails": 0
+                }
+            },
+            "front_features": {
+                "face_compare": {
+                    "enabled": false,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 2,
+                    "retry_counter_group": "ekyc_id_card_front_compare_retry_count"
+                },
+                "id_tampering": {
+                    "enabled": false,
+                    "exceeded_fails_command": "no_action",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_id_card_front_tampering_retry_count"
+                },
+                "index": {
+                    "from_state": "",
+                    "to_state": "",
+                    "use_workflow": false
+                },
+                "ocr": {
+                    "counter_seconds": 1800,
+                    "enabled": true,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_id_card_front_ocr_retry_count",
+                    "enable_compare_with_app_form": true,
+                    "use_fields": ["name", "id_number", "birth_date", "gender"]
+                },
+                "ocr_compare": {
+                    "enabled": true,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 1,
+                    "retry_counter_group": "ekyc_id_card_front_ocr_compare_retry_count",
+                    "enable_compare_with_app_form": true,
+                    "use_fields": ["old_id_number"]
+                },
+                "required_id_card_with_chip": {
+                    "counter_seconds": 1800,
+                    "enabled": true,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_id_card_front_new_nid_retry_count"
+                },
+                "qr_code": {
+                    "enabled": true,
+                    "timeout_seconds": 20
+                },
+                "sanity": {
+                    "counter_seconds": 1800,
+                    "enabled": true,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_id_card_sanity_front_count",
+                    "sync_check_enabled": true
+                },
+                "search_id_photo": {
+                    "enabled": false,
+                    "max_fails": 0
+                }
+            }
+        },
+        "log_event": true
+    },
+    "id": 9439,
+    "lead_expiry": 720,
+    "lead_offer_expiry": 0,
+    "lender_id": 9,
+    "name": "v1.0.off-store.mwg_pos.auto_pcb",
+    "otp_service": {
+        "auth": {
+            "sms_template": "\u003cOTP_CODE\u003e",
+            "type": "lender"
+        },
+        "credit_insight": null
+    },
+    "tags": [
+        {
+            "name": "telco_code",
+            "value": "viettel"
+        },
+        {
+            "name": "telco_code",
+            "value": "mobifone"
+        },
+        {
+            "name": "telco_code",
+            "value": "vinaphone"
+        },
+        {
+            "name": "lead_source",
+            "value": "mwg_pos"
+        },
+        {
+            "name": "flow_type",
+            "value": "auto_pcb"
+        },
+        {
+            "name": "product_code",
+            "value": "tpb_evo_native"
+        }
+    ],
+    "ui_flow": [
+        "inform.success",
+        "ekyc.id_card",
+        "ekyc.selfie.active",
+        "appraising.nfc_check",
+        "ekyc.nfc_scan",
+        "ekyc.confirm",
+        "app_form.additional_info",
+        "appraising.fourth_approval",
+        "esign.intro",
+        "esign.review",
+        "esign.otp"
+    ],
+    "ui_flow_settings": {
+        "inform.success": {
+            "can_move_next_state": true,
+            "ui_version": "v9.4.2.1"
+        },
+        "ekyc.id_card": {
+            "ignore_conflict_field": true,
+            "ui_version": "v9.4.1.0"
+        },
+        "ekyc.selfie.active": {
+            "ui_version": "v9.4.1.0"
+        },
+        "appraising.nfc_check": {
+            "ui_version": "v9.4.1.0"
+        },
+        "ekyc.nfc_scan": {
+            "ui_version": "v9.4.1.0"
+        },
+        "esign.review": {
+            "state_decision": {
+                "tree_uuid": "497345a4-fcbe-4fdf-a088-7fe357a20c31",
+                "use_add_on_services": [
+                    "esign"
+                ]
+            }
+        },
+        "esign.intro": {
+            "ui_version": "v9.4.2.1"
+        }
+    },
+    "ui_version": "v9.4.2.0",
+    "weight": 1
+}

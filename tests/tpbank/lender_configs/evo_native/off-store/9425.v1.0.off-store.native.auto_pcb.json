@@ -1,0 +1,399 @@
+{
+    "active": false,
+    "add_on_services": {
+        "delinquent_check": {
+            "dispatch": [
+                {
+                    "state": "app_form.additional_info",
+                    "use_ts_form_fields": [
+                        "reference_phone1",
+                        "reference_phone2"
+                    ]
+                }
+            ],
+            "enabled": true
+        },
+        "eligibility_check": {
+            "dispatch": [
+                {
+                    "state": "app_form.saleman_confirm"
+                }
+            ],
+            "enabled": true
+        },
+        "prescreening_potential_fraud": {
+            "dispatch": [
+                {
+                    "state": "esign.otp"
+                }
+            ],
+            "enabled": true
+        },
+        "store_detection": {
+            "dispatch": [
+                {
+                    "state": "appraising.fourth_approval"
+                }
+            ],
+            "enabled": true
+        }
+    },
+    "auth_settings": {
+        "callback": {
+            "auth_required": false
+        },
+        "default_auth_type": "otp",
+        "face_id": {
+            "enabled": true
+        }
+    },
+    "decision_engines": {
+        "appraising.fourth_approval": {
+            "credit_tree_uuid": "b8098581-9378-4b16-9108-8901593a210d",
+            "evaluation_type": "evaluate",
+            "max_wait_seconds": 5,
+            "risk_grade_tree_uuid": "796428a0-60b2-4478-979c-855c4a5cfba2",
+            "tree_uuid": "4315eb58-6250-406f-a7e4-28f8016dcd57",
+            "use_add_on_services": [
+                "abnormal_check",
+                "ascore_v3",
+                "ascore_v3_wo_cic",
+                "ascore_cic",
+                "ascore_wo_cic",
+                "check_cif_no_debit",
+                "de",
+                "delinquent_check",
+                "duplicate_approval",
+                "ekyc",
+                "eligibility_check",
+                "face_blacklist_check",
+                "h2h_cic_r14",
+                "h2h_cic_r14_cif",
+                "h2h_cic_r14_old",
+                "h2h_cic_s11a",
+                "h2h_cic_s11a_cif",
+                "h2h_cic_s11a_old",
+                "h2h_cic_s11a_r14",
+                "h2h_cic_s11a_r14_cif",
+                "h2h_cic_s11a_r14_old",
+                "h2h_pcb",
+                "h2h_pcb_cif",
+                "h2h_pcb_old",
+                "id_card_blacklist_check",
+                "id_card_tampering",
+                "pdl_check",
+                "pdl_email_check",
+                "prescreening",
+                "prescreening_old_id",
+                "prescreening_potential_fraud",
+                "repeated_customer_check",
+                "nfc_id_tampering",
+                "nfc_verify"
+            ]
+        },
+        "appraising.before_push": {
+            "credit_tree_uuid": "b8098581-9378-4b16-9108-8901593a210d",
+            "evaluation_type": "evaluate",
+            "max_wait_seconds": 5,
+            "risk_grade_tree_uuid": "796428a0-60b2-4478-979c-855c4a5cfba2",
+            "tree_uuid": "4315eb58-6250-406f-a7e4-28f8016dcd57",
+            "use_add_on_services": [
+                "abnormal_check",
+                "ascore_v3",
+                "ascore_v3_wo_cic",
+                "ascore_cic",
+                "ascore_wo_cic",
+                "check_cif_no_debit",
+                "de",
+                "delinquent_check",
+                "duplicate_approval",
+                "ekyc",
+                "eligibility_check",
+                "face_blacklist_check",
+                "h2h_cic_r14",
+                "h2h_cic_r14_cif",
+                "h2h_cic_r14_old",
+                "h2h_cic_s11a",
+                "h2h_cic_s11a_cif",
+                "h2h_cic_s11a_old",
+                "h2h_cic_s11a_r14",
+                "h2h_cic_s11a_r14_cif",
+                "h2h_cic_s11a_r14_old",
+                "h2h_pcb",
+                "h2h_pcb_cif",
+                "h2h_pcb_old",
+                "id_card_blacklist_check",
+                "id_card_tampering",
+                "pdl_check",
+                "pdl_email_check",
+                "prescreening",
+                "prescreening_old_id",
+                "prescreening_potential_fraud",
+                "repeated_customer_check",
+                "nfc_id_tampering",
+                "nfc_verify"
+            ]
+        },
+        "appraising.verify_card_status": {
+            "credit_tree_uuid": "b8098581-9378-4b16-9108-8901593a210d",
+            "evaluation_type": "evaluate",
+            "max_wait_seconds": 5,
+            "risk_grade_tree_uuid": "796428a0-60b2-4478-979c-855c4a5cfba2",
+            "tree_uuid": "45123c68-e73d-494a-b55c-b3ea6f1fdacc",
+            "use_add_on_services": [
+                "ascore_v3",
+                "ascore_v3_wo_cic",
+                "ascore_cic",
+                "ascore_wo_cic",
+                "duplicate_approval",
+                "eligibility_check",
+                "h2h_cic_r14",
+                "h2h_cic_r14_old",
+                "h2h_cic_s11a",
+                "h2h_cic_s11a_old",
+                "h2h_cic_s11a_r14",
+                "h2h_cic_s11a_r14_old",
+                "h2h_pcb",
+                "h2h_pcb_old",
+                "prescreening",
+                "prescreening_old_id"
+            ]
+        }
+    },
+    "document_schema": {
+        "expressions": []
+    },
+    "domain": "https://evocard.tpb.vn",
+    "ekyc_settings": {
+        "client_settings": {
+            "flow_id": "dop_evoappvn"
+        },
+        "face": {
+            "features": {
+                "face_compare": {
+                    "enabled": true,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 2,
+                    "retry_counter_group": "ekyc_selfie_compare_retry_count"
+                },
+                "liveness": {
+                    "enabled": true,
+                    "exceeded_fails_command": "next_state",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_selfie_liveness_retry_count",
+                    "selfie_type": "flash",
+                    "video_enabled": true
+                },
+                "sanity": {
+                    "counter_seconds": 1800,
+                    "enabled": true,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_selfie_sanity_count"
+                },
+                "search_face": {
+                    "enabled": true,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_selfie_search_retry_count"
+                }
+            }
+        },
+        "id_card": {
+            "back_features": {
+                "face_compare": {
+                    "enabled": false,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 2,
+                    "retry_counter_group": "ekyc_id_card_back_compare_retry_count"
+                },
+                "id_tampering": {
+                    "enabled": false,
+                    "exceeded_fails_command": "no_action",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_id_card_back_tempering_retry_count"
+                },
+                "ocr": {
+                    "counter_seconds": 1800,
+                    "enabled": true,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_id_card_back_ocr_retry_count"
+                },
+                "sanity": {
+                    "counter_seconds": 1800,
+                    "enabled": true,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_id_card_back_sanity_retry_count"
+                },
+                "search_id_photo": {
+                    "enabled": false,
+                    "max_fails": 0
+                }
+            },
+            "enable_index_face": false,
+            "features": {
+                "face_compare": {
+                    "enabled": false,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_id_card_compare_retry_count"
+                },
+                "id_tampering": {
+                    "enabled": true,
+                    "counter_seconds": 1800,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "level": "concurrent",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_id_card_tampering_retry_count",
+                    "tree_uuid": "c6eb0ca4-a21a-4cc8-b0aa-0787a6736efe"
+                },
+                "ocr": {
+                    "enabled": false,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_id_card_ocr_retry_count"
+                },
+                "sanity": {
+                    "enabled": false,
+                    "exceeded_fails_command": "lock",
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_id_card_sanity_retry_count"
+                },
+                "search_id_photo": {
+                    "enabled": false,
+                    "max_fails": 0
+                }
+            },
+            "front_features": {
+                "face_compare": {
+                    "enabled": false,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 2,
+                    "retry_counter_group": "ekyc_id_card_front_campare_retry_count"
+                },
+                "id_tampering": {
+                    "enabled": false,
+                    "exceeded_fails_command": "no_action",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_id_card_front_tampering_retry_count"
+                },
+                "index": {
+                    "from_state": "",
+                    "to_state": "",
+                    "use_workflow": false
+                },
+                "ocr": {
+                    "counter_seconds": 1800,
+                    "enabled": true,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_id_card_front_ocr_retry_count"
+                },
+                "required_id_card_with_chip": {
+                    "counter_seconds": 1800,
+                    "enabled": true,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_id_card_front_new_nid_retry_count"
+                },
+                "qr_code": {
+                    "enabled": true,
+                    "timeout_seconds": 20
+                },
+                "sanity": {
+                    "counter_seconds": 1800,
+                    "enabled": true,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_id_card_sanity_front_count",
+                    "sync_check_enabled": true
+                },
+                "search_id_photo": {
+                    "enabled": false,
+                    "max_fails": 0
+                }
+            }
+        },
+        "log_event": true
+    },
+    "id": 9425,
+    "lead_expiry": 720,
+    "lead_offer_expiry": 0,
+    "lender_id": 9,
+    "name": "v1.0.off-store.native.auto_pcb",
+    "otp_service": {
+        "auth": {
+            "sms_template": "\u003cOTP_CODE\u003e",
+            "type": "lender"
+        },
+        "credit_insight": null
+    },
+    "tags": [
+        {
+            "name": "telco_code",
+            "value": "viettel"
+        },
+        {
+            "name": "telco_code",
+            "value": "mobifone"
+        },
+        {
+            "name": "telco_code",
+            "value": "vinaphone"
+        },
+        {
+            "name": "lead_source",
+            "value": "mwg"
+        },
+        {
+            "name": "lead_source",
+            "value": "viettel_store"
+        },
+        {
+            "name": "lead_source",
+            "value": "frt"
+        },
+        {
+            "name": "flow_type",
+            "value": "auto_pcb"
+        },
+        {
+            "name": "product_code",
+            "value": "tpb_evo_native"
+        }
+    ],
+    "ui_flow": [
+        "inform.success",
+        "app_form.additional_info",
+        "app_form.saleman_confirm",
+        "app_form.acquisition_reward",
+        "esign.intro",
+        "esign.review",
+        "esign.otp",
+        "appraising.fourth_approval"
+    ],
+    "ui_flow_settings": {
+        "inform.success": {
+            "can_move_next_state": true
+        },
+        "esign.review": {
+            "state_decision": {
+                "tree_uuid": "497345a4-fcbe-4fdf-a088-7fe357a20c31",
+                "use_add_on_services": [
+                    "esign"
+                ]
+            }
+        }
+    },
+    "ui_version": "v9.4.2.0",
+    "weight": 1
+}

@@ -1,0 +1,32 @@
+{
+    "id": 9004,
+    "lender_id": 9,
+    "partner_code": "mwg_pos",
+    "partner_name": "Mobile World Group",
+    "presigned_url_template": "https://evocard.tpb.vn/callback",
+    "restrictions": {
+        "accepted_users": [
+            "mwg_user"
+        ]
+    },
+    "settings": {
+        "callback": {
+            "url": ""
+        },
+        "dedup": {
+            "should_resume": true,
+            "should_not_resume_completed_app": true
+        },
+        "field_source": "mwg_pos_mapping",
+        "product": {
+            "default_product_code": "tpb_evo_native",
+            "product_sub_type": "credit_card"
+        },
+        "one_link": {
+            "domain": "https://evoappvn.onelink.me/QA15",
+            "pid": "evo_thegioididong_posapp",
+            "deep_link": "evoappvn://mobile/deeplinking?screen_name=dop_native_introduction_screen&unique_token={uniqueToken}&lead_source={leadSource}"
+        }
+    },
+    "source": "mwg_pos"
+}

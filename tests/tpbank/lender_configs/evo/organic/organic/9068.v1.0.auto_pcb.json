@@ -1,0 +1,370 @@
+{
+    "active": false,
+    "add_on_services": {
+        "prescreening_potential_fraud": {
+            "dispatch": [
+                {
+                    "state": "esign.otp"
+                }
+            ],
+            "enabled": true
+        },
+        "nfc_verify": {
+            "dispatch": [
+                {
+                    "state": "ekyc.nfc_scan"
+                }
+            ],
+            "enabled": true
+        }
+    },
+    "auth_settings": {
+        "callback": {
+            "auth_required": false
+        },
+        "default_auth_type": "otp",
+        "face_id": {
+            "enabled": true
+        }
+    },
+    "decision_engines": {
+        "appraising.before_push": {
+            "credit_tree_uuid": "42dfcdf3-768b-471b-a3b3-45b1246d3c5d",
+            "evaluation_type": "evaluate",
+            "max_wait_seconds": 5,
+            "risk_grade_tree_uuid": "36921b7a-e585-4a34-80f5-575594b2ae8d",
+            "tree_uuid": "5be9bd43-de66-4c99-be5a-ee3eac9475de",
+            "use_add_on_services": [
+                "abnormal_check",
+                "ascore_v3",
+                "ascore_v3_wo_cic",
+                "check_cif_no_debit",
+                "de",
+                "delinquent_check",
+                "duplicate_approval",
+                "ekyc",
+                "eligibility_check",
+                "face_blacklist_check",
+                "get_eligible_offer",
+                "h2h_cic_r14",
+                "h2h_cic_r14_cif",
+                "h2h_cic_r14_old",
+                "h2h_cic_s11a",
+                "h2h_cic_s11a_cif",
+                "h2h_cic_s11a_old",
+                "h2h_cic_s11a_r14",
+                "h2h_cic_s11a_r14_cif",
+                "h2h_cic_s11a_r14_old",
+                "h2h_pcb",
+                "h2h_pcb_cif",
+                "h2h_pcb_old",
+                "id_card_blacklist_check",
+                "id_card_tampering",
+                "low_risk_check",
+                "nfc_verify",
+                "pdl_check",
+                "pdl_email_check",
+                "prescreening",
+                "prescreening_old_id",
+                "prescreening_potential_fraud",
+                "repeated_customer_check"
+            ]
+        },
+        "appraising.verify_card_status": {
+            "credit_tree_uuid": "42dfcdf3-768b-471b-a3b3-45b1246d3c5d",
+            "evaluation_type": "evaluate",
+            "max_wait_seconds": 5,
+            "risk_grade_tree_uuid": "36921b7a-e585-4a34-80f5-575594b2ae8d",
+            "tree_uuid": "2f89ed2a-092a-41a6-9fee-14c9b5d930b6",
+            "use_add_on_services": [
+                "ascore_v3",
+                "ascore_v3_wo_cic",
+                "get_eligible_offer",
+                "de",
+                "eligibility_check",
+                "h2h_cic_r14",
+                "h2h_cic_r14_old",
+                "h2h_cic_s11a",
+                "h2h_cic_s11a_old",
+                "h2h_cic_s11a_r14",
+                "h2h_cic_s11a_r14_old",
+                "h2h_pcb",
+                "h2h_pcb_old",
+                "prescreening",
+                "prescreening_old_id"
+            ]
+        },
+        "appraising.nfc_verify": {
+            "evaluation_type": "evaluate",
+            "max_wait_seconds": 30,
+            "tree_uuid": "34b3e36e-931e-4a6e-a60e-c7c477032e34",
+            "use_add_on_services": [
+                "nfc_verify"
+            ]
+        }
+    },
+    "document_schema": {
+        "expressions": []
+    },
+    "domain": "https://evocard.tpb.vn",
+    "ekyc_settings": {
+        "client_settings": {
+            "flow_id": "dop_web"
+        },
+        "face": {
+            "features": {
+                "face_compare": {
+                    "enabled": true,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 2,
+                    "retry_counter_group": "ekyc_selfie_compare_retry_count"
+                },
+                "liveness": {
+                    "enabled": true,
+                    "exceeded_fails_command": "next_state",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_selfie_liveness_retry_count",
+                    "video_enabled": true
+                },
+                "sanity": {
+                    "counter_seconds": 1800,
+                    "enabled": true,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_selfie_sanity_count"
+                },
+                "search_face": {
+                    "enabled": true,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_selfie_search_retry_count"
+                }
+            }
+        },
+        "id_card": {
+            "back_features": {
+                "face_compare": {
+                    "enabled": false,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 2,
+                    "retry_counter_group": "ekyc_id_card_back_compare_retry_count"
+                },
+                "id_tampering": {
+                    "enabled": false,
+                    "exceeded_fails_command": "no_action",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_id_card_back_tempering_retry_count"
+                },
+                "ocr": {
+                    "counter_seconds": 1800,
+                    "enabled": true,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_id_card_back_ocr_retry_count"
+                },
+                "sanity": {
+                    "counter_seconds": 1800,
+                    "enabled": true,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_id_card_back_sanity_retry_count"
+                },
+                "search_id_photo": {
+                    "enabled": false,
+                    "max_fails": 0
+                }
+            },
+            "enable_index_face": false,
+            "features": {
+                "face_compare": {
+                    "enabled": false,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_id_card_compare_retry_count"
+                },
+                "id_tampering": {
+                    "enabled": true,
+                    "exceeded_fails_command": "next_state",
+                    "level": "concurrent",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_id_card_tampering_retry_count",
+                    "tree_uuid": "c6eb0ca4-a21a-4cc8-b0aa-0787a6736efe"
+                },
+                "ocr": {
+                    "enabled": false,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_id_card_front_ocr_retry_count"
+                },
+                "required_id_card_with_chip": {
+                    "counter_seconds": 1800,
+                    "enabled": true,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_id_card_front_new_nid_retry_count"
+                },
+                "sanity": {
+                    "enabled": false,
+                    "exceeded_fails_command": "lock",
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_id_card_sanity_retry_count"
+                },
+                "search_id_photo": {
+                    "enabled": false,
+                    "max_fails": 0
+                }
+            },
+            "front_features": {
+                "face_compare": {
+                    "enabled": true,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 2,
+                    "retry_counter_group": "ekyc_id_card_front_campare_retry_count"
+                },
+                "id_tampering": {
+                    "enabled": false,
+                    "exceeded_fails_command": "no_action",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_id_card_front_tampering_retry_count"
+                },
+                "index": {
+                    "from_state": "",
+                    "to_state": "",
+                    "use_workflow": false
+                },
+                "ocr": {
+                    "counter_seconds": 1800,
+                    "enabled": true,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_id_card_front_ocr_retry_count"
+                },
+                "qr_code": {
+                    "enabled": true,
+                    "timeout_seconds": 20
+                },
+                "sanity": {
+                    "counter_seconds": 1800,
+                    "enabled": true,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_id_card_sanity_front_count",
+                    "sync_check_enabled": true
+                },
+                "search_id_photo": {
+                    "enabled": false,
+                    "max_fails": 0
+                }
+            }
+        },
+        "log_event": true
+    },
+    "id": 9068,
+    "lead_expiry": 720,
+    "lead_offer_expiry": 0,
+    "lender_id": 9,
+    "name": "v1.0.auto_pcb",
+    "otp_service": {
+        "auth": {
+            "sms_template": "\u003cOTP_CODE\u003e",
+            "type": "lender"
+        },
+        "credit_insight": {
+            "sms_version": "dop"
+        }
+    },
+    "tags": [
+        {
+            "name": "telco_code",
+            "value": "viettel"
+        },
+        {
+            "name": "telco_code",
+            "value": "mobifone"
+        },
+        {
+            "name": "telco_code",
+            "value": "vinaphone"
+        },
+        {
+            "name": "telco_code",
+            "value": "vietnamobile"
+        },
+        {
+            "name": "telco_code",
+            "value": "gmobile"
+        },
+        {
+            "name": "telco_code",
+            "value": "indochina"
+        },
+        {
+            "name": "telco_code",
+            "value": "mobicast"
+        },
+        {
+            "name": "lead_source",
+            "value": "organic"
+        },
+        {
+            "name": "lead_source",
+            "value": "esms"
+        },
+        {
+            "name": "lead_source",
+            "value": "evo"
+        },
+        {
+            "name": "lead_source",
+            "value": "evoapp"
+        },
+        {
+            "name": "flow_type",
+            "value": "auto_pcb"
+        },
+        {
+            "name": "product_code",
+            "value": "tpb_01"
+        }
+    ],
+    "ui_flow": [
+        "esign.intro",
+        "esign.review",
+        "esign.otp",
+        "app_form.card_design",
+        "ekyc.nfc_scan",
+        "appraising.nfc_verify"
+    ],
+    "ui_flow_settings": {
+        "esign.intro": {
+            "can_skip": false,
+            "hide_ui_navigation": true,
+            "ignore_conflict_field": false
+        },
+        "esign.otp": {
+            "can_skip": false,
+            "hide_ui_navigation": true,
+            "ignore_conflict_field": false
+        },
+        "esign.review": {
+            "can_skip": false,
+            "hide_ui_navigation": true,
+            "ignore_conflict_field": false,
+            "state_decision": {
+                "tree_uuid": "5180f8f2-4aba-48be-921a-493af26f3692",
+                "use_add_on_services": [
+                    "esign"
+                ]
+            },
+            "ui_version": "v9.1.5.0-nfc"
+        }
+    },
+    "ui_version": "v9.1.5.0",
+    "weight": 1
+}

@@ -1,0 +1,8 @@
+{
+    "active": true,
+    "id": 16,
+    "lender_id": 9,
+    "password": "{{PASSWORD}}",
+    "service_type": "internal",
+    "user_name": "{{USERNAME}}"
+}

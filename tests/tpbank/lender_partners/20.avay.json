@@ -1,0 +1,26 @@
+{
+    "id": 20,
+    "lender_id": 9,
+    "partner_code": "avay",
+    "partner_name": "Avay",
+    "presigned_url_template": "https://evocard.tpb.vn/callback",
+    "restrictions": {
+        "accepted_users": [
+            "avay_dop"
+        ]
+    },
+    "settings": {
+        "callback": {
+            "url": "https://avay-v2.trustingsocial.com/v2/dop/callback"
+        },
+        "dedup": {
+            "should_resume": true
+        },
+        "field_source": "standard_provider",
+        "product": {
+            "default_product_code": "tpb_01",
+            "product_sub_type": "credit_card"
+        }
+    },
+    "source": "avay"
+}

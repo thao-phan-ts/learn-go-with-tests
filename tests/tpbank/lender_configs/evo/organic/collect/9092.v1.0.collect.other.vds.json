@@ -1,0 +1,315 @@
+{
+    "active": true,
+    "add_on_services": {},
+    "auth_settings": {
+        "callback": {
+            "auth_required": false
+        },
+        "default_auth_type": "otp",
+        "face_id": {
+            "enabled": true
+        }
+    },
+    "decision_engines": {
+        "appraising.quick_approval": {
+            "evaluation_type": "evaluate",
+            "max_wait_seconds": 5,
+            "tree_uuid": "34b3e36e-931e-4a6e-a60e-c7c477032e34",
+            "use_add_on_services": []
+        }
+    },
+    "document_schema": {
+        "expressions": []
+    },
+    "domain": "https://evocard.tpb.vn",
+    "ekyc_settings": {
+        "face": {
+            "features": {
+                "face_compare": {
+                    "enabled": true,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 2,
+                    "retry_counter_group": "ekyc_selfie_compare_retry_count"
+                },
+                "liveness": {
+                    "enabled": true,
+                    "exceeded_fails_command": "next_state",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_selfie_liveness_retry_count",
+                    "video_enabled": true
+                },
+                "sanity": {
+                    "counter_seconds": 1800,
+                    "enabled": true,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_selfie_sanity_count"
+                },
+                "search_face": {
+                    "enabled": true,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_selfie_search_retry_count"
+                }
+            }
+        },
+        "id_card": {
+            "back_features": {
+                "face_compare": {
+                    "enabled": false,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 2,
+                    "retry_counter_group": "ekyc_id_card_back_compare_retry_count"
+                },
+                "id_tampering": {
+                    "enabled": false,
+                    "exceeded_fails_command": "no_action",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_id_card_back_tempering_retry_count"
+                },
+                "ocr": {
+                    "counter_seconds": 1800,
+                    "enabled": true,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_id_card_back_ocr_retry_count"
+                },
+                "sanity": {
+                    "counter_seconds": 1800,
+                    "enabled": true,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_id_card_back_sanity_retry_count"
+                },
+                "search_id_photo": {
+                    "enabled": false,
+                    "max_fails": 0
+                }
+            },
+            "enable_index_face": false,
+            "features": {
+                "face_compare": {
+                    "enabled": false,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_id_card_compare_retry_count"
+                },
+                "id_tampering": {
+                    "enabled": true,
+                    "exceeded_fails_command": "next_state",
+                    "level": "concurrent",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_id_card_tampering_retry_count",
+                    "tree_uuid": "c6eb0ca4-a21a-4cc8-b0aa-0787a6736efe"
+                },
+                "ocr": {
+                    "enabled": false,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_id_card_ocr_retry_count"
+                },
+                "sanity": {
+                    "enabled": false,
+                    "exceeded_fails_command": "lock",
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_id_card_sanity_retry_count"
+                },
+                "search_id_photo": {
+                    "enabled": false,
+                    "max_fails": 0
+                }
+            },
+            "front_features": {
+                "face_compare": {
+                    "enabled": true,
+                    "exceeded_fails_command": "reject",
+                    "max_fails": 2,
+                    "retry_counter_group": "ekyc_id_card_front_campare_retry_count"
+                },
+                "id_tampering": {
+                    "enabled": false,
+                    "exceeded_fails_command": "no_action",
+                    "max_fails": 3,
+                    "retry_counter_group": "ekyc_id_card_front_tampering_retry_count"
+                },
+                "index": {
+                    "from_state": "",
+                    "to_state": "",
+                    "use_workflow": false
+                },
+                "ocr": {
+                    "counter_seconds": 1800,
+                    "enabled": true,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_id_card_front_ocr_retry_count"
+                },
+                "required_id_card_with_chip": {
+                    "counter_seconds": 1800,
+                    "enabled": true,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_id_card_front_new_nid_retry_count"
+                },
+                "qr_code": {
+                    "enabled": true,
+                    "timeout_seconds": 20
+                },
+                "sanity": {
+                    "counter_seconds": 1800,
+                    "enabled": true,
+                    "exceeded_fails_command": "lock",
+                    "lock_seconds": 1800,
+                    "max_fails": 5,
+                    "retry_counter_group": "ekyc_id_card_sanity_front_count",
+                    "sync_check_enabled": true
+                },
+                "search_id_photo": {
+                    "enabled": false,
+                    "max_fails": 0
+                }
+            }
+        },
+        "log_event": true
+    },
+    "id": 9092,
+    "lead_expiry": 720,
+    "lead_offer_expiry": 0,
+    "lender_id": 9,
+    "name": "v1.0.collect.other.vds",
+    "otp_service": {
+        "auth": {
+            "sms_template": "\u003cOTP_CODE\u003e",
+            "type": "lender"
+        },
+        "credit_insight": null
+    },
+    "tags": [
+        {
+            "name": "telco_code",
+            "value": "vnsky"
+        },
+        {
+            "name": "campaign_type",
+            "value": "self_registration"
+        },
+        {
+            "name": "campaign_type",
+            "value": "preselection"
+        },
+        {
+            "name": "telco_code",
+            "value": "vietnamobile"
+        },
+        {
+            "name": "telco_code",
+            "value": "gmobile"
+        },
+        {
+            "name": "telco_code",
+            "value": "indochina"
+        },
+        {
+            "name": "telco_code",
+            "value": "mobicast"
+        },
+        {
+            "name": "lead_source",
+            "value": "vds"
+        },
+
+        {
+            "name": "ekyc_status",
+            "value": "unverified"
+        },
+        {
+            "name": "flow_type",
+            "value": "normal"
+        },
+        {
+            "name": "product_code",
+            "value": "tpb_01"
+        }
+    ],
+    "ui_flow": [
+        "app_form.basic_info",
+        "appraising.quick_approval"
+    ],
+    "ui_flow_settings": {
+        "app_form.basic_info": {
+            "can_skip": false,
+            "ignore_conflict_field": false,
+            "ui_navigation": [
+                "app_form.basic_info",
+                "2",
+                "3",
+                "4"
+            ]
+        },
+        "app_form.contact_info": {
+            "can_skip": false,
+            "ignore_conflict_field": false,
+            "ui_navigation": [
+                "1",
+                "app_form.contact_info",
+                "3",
+                "4"
+            ]
+        },
+        "app_form.personal_info": {
+            "can_skip": false,
+            "ignore_conflict_field": false,
+            "ui_navigation": [
+                "app_form.personal_info",
+                "2",
+                "3",
+                "4"
+            ]
+        },
+        "appraising.quick_approval": {
+            "can_skip": false,
+            "ignore_conflict_field": false
+        },
+        "appraising.second_approval": {
+            "can_skip": false,
+            "ignore_conflict_field": false
+        },
+        "ekyc.confirm": {
+            "can_skip": false,
+            "ignore_conflict_field": false,
+            "ui_navigation": [
+                "1",
+                "2",
+                "3",
+                "ekyc.confirm"
+            ]
+        },
+        "ekyc.id_card": {
+            "can_skip": false,
+            "ignore_conflict_field": true,
+            "ui_navigation": [
+                "1",
+                "2",
+                "ekyc.id_card",
+                "4"
+            ]
+        },
+        "ekyc.selfie.flash": {
+            "can_skip": false,
+            "ignore_conflict_field": false,
+            "ui_navigation": [
+                "1",
+                "2",
+                "ekyc.selfie.flash",
+                "4"
+            ]
+        }
+    },
+    "ui_version": "v1.0",
+    "weight": 1
+}

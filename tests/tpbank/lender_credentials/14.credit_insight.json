@@ -1,0 +1,8 @@
+{
+    "active": true,
+    "id": 14,
+    "lender_id": 9,
+    "password": "{{PASSWORD}}",
+    "service_type": "credit_insight",
+    "user_name": "{{USERNAME}}"
+}

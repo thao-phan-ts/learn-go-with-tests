@@ -1,0 +1,325 @@
+{
+    "active": true,
+    "add_on_services": {
+        "check_cif_no_debit": {
+            "dispatch": [
+                {
+                    "state": "app_form.extra_info"
+                }
+            ],
+            "enabled": true
+        },
+        "delinquent_check": {
+            "dispatch": [
+                {
+                    "state": "app_form.extra_info"
+                }
+            ],
+            "enabled": true
+        },
+        "pdl_check": {
+            "dispatch": [
+                {
+                    "state": "app_form.extra_info"
+                }
+            ],
+            "enabled": true
+        },
+        "prescreening": {
+            "dispatch": [
+                {
+                    "state": "app_form.extra_info"
+                }
+            ],
+            "enabled": true
+        },
+        "prescreening_old_id": {
+            "dispatch": [
+                {
+                    "state": "app_form.extra_info"
+                }
+            ],
+            "enabled": true
+        },
+        "repeated_customer_check": {
+            "dispatch": [
+                {
+                    "state": "app_form.extra_info",
+                    "use_id_card_fields": [
+                        "id_number",
+                        "old_id_number"
+                    ]
+                }
+            ],
+            "enabled": true
+        },
+        "pdl_email_check": {
+            "dispatch": [
+                {
+                    "state": "app_form.extra_info"
+                }
+            ],
+            "enabled": false
+        },
+        "eligibility_check": {
+            "dispatch": [
+                {
+                    "state": "app_form.extra_info"
+                }
+            ],
+            "enabled": true
+        },
+        "ascore_whitelist": {
+            "dispatch": [
+                {
+                    "state": "appraising.quick_approval"
+                }
+            ],
+            "enabled": true
+        },
+        "h2h_pcb": {
+            "dispatch": [
+                {
+                    "state": "appraising.quick_approval",
+                    "use_id_card_fields": [
+                        "id_number"
+                    ]
+                }
+            ],
+            "enabled": true
+        },
+        "h2h_pcb_old": {
+            "dispatch": [
+                {
+                    "state": "appraising.quick_approval",
+                    "use_id_card_fields": [
+                        "old_id_number"
+                    ]
+                }
+            ],
+            "enabled": true
+        },
+        "h2h_cic_s11a_r14": {
+            "dispatch": [
+                {
+                    "cic_types": [
+                        "s11a",
+                        "r14"
+                    ],
+                    "state": "appraising.second_approval",
+                    "use_id_card_fields": [
+                        "id_number"
+                    ]
+                }
+            ],
+            "enabled": false
+        },
+        "h2h_cic_s11a_r14_old": {
+            "dispatch": [
+                {
+                    "cic_types": [
+                        "s11a",
+                        "r14"
+                    ],
+                    "state": "appraising.second_approval",
+                    "use_id_card_fields": [
+                        "old_id_number"
+                    ]
+                }
+            ],
+            "enabled": false
+        },
+        "h2h_cic_s11t": {
+            "dispatch": [
+                {
+                    "cic_types": [
+                        "s11t"
+                    ],
+                    "state": "appraising.second_approval",
+                    "use_id_card_fields": [
+                        "id_number"
+                    ]
+                }
+            ],
+            "enabled": true
+        },
+        "ascore_v3": {
+            "dispatch": [
+                {
+                    "state": "appraising.second_approval"
+                }
+            ],
+            "enabled": true
+        },
+        "ascore_v3_wo_cic": {
+            "dispatch": [
+                {
+                    "state": "appraising.second_approval"
+                }
+            ],
+            "enabled": true
+        },
+        "ascore_cic": {
+            "dispatch": [
+                {
+                    "state": "appraising.second_approval"
+                }
+            ],
+            "enabled": true
+        },
+        "ascore_wo_cic": {
+            "dispatch": [
+                {
+                    "state": "appraising.second_approval"
+                }
+            ],
+            "enabled": true
+        }
+    },
+    "auth_settings": {
+        "callback": {
+            "auth_required": true
+        },
+        "default_auth_type": "otp",
+        "face_id": {
+            "enabled": true
+        }
+    },
+    "decision_engines": {
+        "appraising.quick_approval": {
+            "evaluation_type": "evaluate",
+            "max_wait_seconds": 5,
+            "tree_uuid": "207ea140-c0aa-4503-a647-642a95b864d6",
+            "use_add_on_services": [
+                "abnormal_check",
+                "check_cif_no_debit",
+                "delinquent_check",
+                "duplicate_approval",
+                "eligibility_check",
+                "pdl_check",
+                "pdl_email_check",
+                "prescreening",
+                "prescreening_old_id",
+                "repeated_customer_check"
+            ]
+        },
+        "appraising.second_approval": {
+            "evaluation_type": "evaluate",
+            "max_wait_seconds": 15,
+            "tree_uuid": "207ea140-c0aa-4503-a647-642a95b864d6",
+            "use_add_on_services": [
+                "abnormal_check",
+                "check_cif_no_debit",
+                "delinquent_check",
+                "duplicate_approval",
+                "eligibility_check",
+                "h2h_pcb",
+                "h2h_pcb_old",
+                "pdl_check",
+                "pdl_email_check",
+                "prescreening",
+                "prescreening_old_id",
+                "repeated_customer_check"
+            ]
+        },
+        "appraising.third_approval": {
+            "credit_tree_uuid": "b8098581-9378-4b16-9108-8901593a210d",
+            "evaluation_type": "evaluate",
+            "max_wait_seconds": 1800,
+            "enable_long_appraising": true,
+            "risk_grade_tree_uuid": "796428a0-60b2-4478-979c-855c4a5cfba2",
+            "tree_uuid": "4315eb58-6250-406f-a7e4-28f8016dcd57",
+            "use_add_on_services": [
+                "abnormal_check",
+                "ascore_cic",
+                "ascore_wo_cic",
+                "ascore_v3",
+                "ascore_v3_wo_cic",
+                "check_cif_no_debit",
+                "delinquent_check",
+                "duplicate_approval",
+                "eligibility_check",
+                "h2h_cic_r14",
+                "h2h_cic_r14_old",
+                "h2h_cic_s11a",
+                "h2h_cic_s11a_old",
+                "h2h_cic_s11a_r14",
+                "h2h_cic_s11a_r14_old",
+                "h2h_cic_s11t",
+                "h2h_pcb",
+                "h2h_pcb_old",
+                "pdl_check",
+                "pdl_email_check",
+                "prescreening",
+                "prescreening_old_id",
+                "repeated_customer_check"
+            ]
+        }
+    },
+    "document_schema": {
+        "expressions": []
+    },
+    "domain": "https://evocard.tpb.vn/preonboarding/mwg_pos",
+    "ekyc_settings": {
+        "client_settings": {
+            "flow_id": "dop_evoappvn"
+        }
+    },
+    "id": 9437,
+    "lead_expiry": 720,
+    "lead_offer_expiry": 0,
+    "lender_id": 9,
+    "name": "v1.0.off-store.mwg_pos.vt-vnp-mbf",
+    "otp_service": {
+        "auth": {
+            "sms_template": "\u003cOTP_CODE\u003e",
+            "type": "lender"
+        },
+        "credit_insight": null
+    },
+    "tags": [
+        {
+            "name": "campaign_type",
+            "value": "self_registration"
+        },
+        {
+            "name": "campaign_type",
+            "value": "preselection"
+        },
+        {
+            "name": "telco_code",
+            "value": "viettel"
+        },
+        {
+            "name": "telco_code",
+            "value": "mobifone"
+        },
+        {
+            "name": "telco_code",
+            "value": "vinaphone"
+        },
+        {
+            "name": "lead_source",
+            "value": "mwg_pos"
+        },
+        {
+            "name": "ekyc_status",
+            "value": "unverified"
+        },
+        {
+            "name": "product_code",
+            "value": "tpb_evo_native"
+        }
+    ],
+    "ui_flow": [
+        "otp",
+        "app_form.id_card_info",
+        "app_form.extra_info",
+        "appraising.quick_approval",
+        "appraising.second_approval",
+        "appraising.third_approval"
+    ],
+    "ui_flow_settings": {},
+    "ui_version": "v9.4.1.0",
+    "weight": 1
+}

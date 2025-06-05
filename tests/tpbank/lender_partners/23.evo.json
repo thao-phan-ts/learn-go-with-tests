@@ -1,0 +1,26 @@
+{
+    "id": 23,
+    "lender_id": 9,
+    "partner_code": "evo",
+    "partner_name": "EVO",
+    "presigned_url_template": "https://evocard.tpb.vn/callback",
+    "restrictions": {
+        "accepted_users": [
+            "evo_user"
+        ]
+    },
+    "settings": {
+        "callback": {
+            "url": ""
+        },
+        "dedup": {
+            "should_resume": true
+        },
+        "field_source": "standard_provider",
+        "product": {
+            "default_product_code": "tpb_01",
+            "product_sub_type": "credit_card"
+        }
+    },
+    "source": "evo"
+}

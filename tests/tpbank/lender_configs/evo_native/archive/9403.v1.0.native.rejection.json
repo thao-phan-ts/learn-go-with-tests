@@ -1,0 +1,83 @@
+{
+    "active": false,
+    "add_on_services": {},
+    "auth_settings": {
+        "callback": {
+            "auth_required": false
+        },
+        "default_auth_type": "otp",
+        "face_id": {
+            "enabled": false
+        }
+    },
+    "decision_engines": {},
+    "document_schema": {
+        "expressions": []
+    },
+    "domain": "https://evocard.tpb.vn",
+    "ekyc_settings": {},
+    "id": 9403,
+    "lead_expiry": 720,
+    "lead_offer_expiry": 0,
+    "lender_id": 9,
+    "name": "v1.0.native.rejection",
+    "otp_service": {
+        "auth": {
+            "sms_template": "\u003cOTP_CODE\u003e",
+            "type": "lender"
+        },
+        "credit_insight": null
+    },
+    "tags": [
+        {
+            "name": "telco_code",
+            "value": "vnsky"
+        },
+        {
+            "name": "telco_code",
+            "value": "viettel"
+        },
+        {
+            "name": "telco_code",
+            "value": "mobifone"
+        },
+        {
+            "name": "telco_code",
+            "value": "vinaphone"
+        },
+        {
+            "name": "telco_code",
+            "value": "vietnamobile"
+        },
+        {
+            "name": "telco_code",
+            "value": "gmobile"
+        },
+        {
+            "name": "telco_code",
+            "value": "indochina"
+        },
+        {
+            "name": "telco_code",
+            "value": "mobicast"
+        },
+        {
+            "name": "lead_source",
+            "value": "evo_native"
+        },
+        {
+            "name": "flow_type",
+            "value": "rejection"
+        },
+        {
+            "name": "product_code",
+            "value": "tpb_evo_native"
+        }
+    ],
+    "ui_flow": [
+        "failure"
+    ],
+    "ui_flow_settings": {},
+    "ui_version": "v9.4.1.0",
+    "weight": 1
+}

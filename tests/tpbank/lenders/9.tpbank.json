@@ -1,0 +1,7 @@
+{
+    "active": true,
+    "code": "tpbank",
+    "flow_selector": "weighted_random",
+    "id": 9,
+    "name": "TPBank"
+}

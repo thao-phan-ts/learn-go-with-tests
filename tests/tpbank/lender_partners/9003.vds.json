@@ -1,0 +1,30 @@
+{
+    "id": 9003,
+    "lender_id": 9,
+    "partner_code": "vds",
+    "partner_name": "Viettel Digital Solution",
+    "presigned_url_template": "https://evocard.tpb.vn/callback",
+    "restrictions": {
+        "accepted_users": [
+            "vds_user"
+        ]
+    },
+    "settings": {
+        "callback": {
+            "url": ""
+        },
+        "dedup": {
+            "should_resume": true
+        },
+        "field_source": "standard_provider",
+        "product": {
+            "default_product_code": "tpb_01",
+            "product_sub_type": "credit_card"
+        },
+        "params": {
+            "enable_webview": true,
+            "partner_code": "vds"
+        }
+    },
+    "source": "vds"
+}

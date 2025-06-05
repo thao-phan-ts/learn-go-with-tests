@@ -1,0 +1,21 @@
+{
+  "active": true,
+  "campaign_code": "tpb_training",
+  "campaign_type": "self_registration",
+  "challenge_type": "none",
+  "id": 9010,
+  "lender_id": 9,
+  "must_match": false,
+  "partner_callback": {
+    "url": ""
+  },
+  "partner_code": "evo",
+  "partner_name": "Training",
+  "product_code": "tpb_01",
+  "product_sub_type": "credit_card",
+  "product_type": "credit_card",
+  "redirect_type": "",
+  "source": "training",
+  "ui_version": "evo_cc",
+  "weight": 0
+}

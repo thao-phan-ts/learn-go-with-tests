@@ -1,0 +1,26 @@
+{
+    "id": 21,
+    "lender_id": 9,
+    "partner_code": "masan",
+    "partner_name": "Masan",
+    "presigned_url_template": "https://masan.goevo.vn/callback",
+    "restrictions": {
+        "accepted_users": [
+            "masan_user"
+        ]
+    },
+    "settings": {
+        "callback": {
+            "url": ""
+        },
+        "dedup": {
+            "should_resume": true
+        },
+        "field_source": "standard_provider",
+        "product": {
+            "default_product_code": "tpb_masan",
+            "product_sub_type": "credit_card"
+        }
+    },
+    "source": "masan"
+}

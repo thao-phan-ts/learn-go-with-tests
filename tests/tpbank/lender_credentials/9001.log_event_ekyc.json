@@ -1,0 +1,8 @@
+{
+    "active": true,
+    "id": 9001,
+    "lender_id": 9,
+    "password": "{{PASSWORD}}",
+    "service_type": "ekyc_log_event",
+    "user_name": "{{USERNAME}}"
+}

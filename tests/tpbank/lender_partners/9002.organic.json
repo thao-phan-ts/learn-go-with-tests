@@ -1,0 +1,27 @@
+{
+    "id": 9002,
+    "lender_id": 9,
+    "partner_code": "organic_api",
+    "partner_name": "Organic API",
+    "presigned_url_template": "https://evocard.tpb.vn/callback",
+    "restrictions": {
+        "accepted_users": [
+            "alice_portal_user"
+        ]
+    },
+    "settings": {
+        "callback": {
+            "url": ""
+        },
+        "dedup": {
+            "should_resume": true,
+            "resume_other_source": true
+        },
+        "field_source": "standard_provider",
+        "product": {
+            "default_product_code": "tpb_01",
+            "product_sub_type": "credit_card"
+        }
+    },
+    "source": "organic"
+}

@@ -1,0 +1,21 @@
+{
+  "active": false,
+  "campaign_code": "tpb_mwg",
+  "campaign_type": "self_registration",
+  "challenge_type": "captcha",
+  "id": 9007,
+  "lender_id": 9,
+  "must_match": false,
+  "partner_callback": {
+    "url": ""
+  },
+  "partner_code": "evo",
+  "partner_name": "Mobile World Group",
+  "product_code": "tpb_01",
+  "product_sub_type": "credit_card",
+  "product_type": "credit_card",
+  "redirect_type": "",
+  "source": "mwg",
+  "ui_version": "evo_cc",
+  "weight": 0
+}

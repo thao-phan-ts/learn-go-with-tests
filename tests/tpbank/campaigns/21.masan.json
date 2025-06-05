@@ -1,0 +1,21 @@
+{
+    "active": true,
+    "campaign_code": "masan",
+    "campaign_type": "self_registration",
+    "challenge_type": "captcha.v3",
+    "id": 21,
+    "lender_id": 9,
+    "must_match": false,
+    "partner_callback": {
+        "url": ""
+    },
+    "partner_code": "",
+    "partner_name": "",
+    "product_code": "tpb_02",
+    "product_sub_type": "credit_card",
+    "product_type": "credit_card",
+    "redirect_type": "",
+    "source": "masan",
+    "ui_version": "v2.0.masan",
+    "weight": 5
+}

@@ -1,0 +1,21 @@
+{
+  "active": true,
+  "campaign_code": "tpb_frt_online",
+  "campaign_type": "self_registration",
+  "challenge_type": "captcha",
+  "id": 9013,
+  "lender_id": 9,
+  "must_match": false,
+  "partner_callback": {
+    "url": ""
+  },
+  "partner_code": "evo",
+  "partner_name": "FPT Retail Online",
+  "product_code": "tpb_01",
+  "product_sub_type": "credit_card",
+  "product_type": "credit_card",
+  "redirect_type": "",
+  "source": "frt_online",
+  "ui_version": "evo_cc",
+  "weight": 0
+}
