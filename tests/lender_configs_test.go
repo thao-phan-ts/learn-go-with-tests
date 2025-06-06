@@ -28,4 +28,6 @@ func TestLenderConfigs(t *testing.T) {
 	}
 	logrus.Infof("%#v", lenderConfig)
 
+	// from telco_code -> get flow_type of app
+
 }

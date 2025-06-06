@@ -1,8 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	fmt.Println("Learn go with tests")
+	fmt.Println("API test runner")
 
 }

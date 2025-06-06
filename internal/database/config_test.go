@@ -1,4 +1,4 @@
-package config
+package database
 
 import (
 	"fmt"
@@ -10,26 +10,26 @@ import (
 
 type DBConfig struct {
 	Database struct {
-		Username string `mapstructure:"username"`
-		Password string `mapstructure:"password"`
-		Host     string `mapstructure:"host"`
-		Port     string `mapstructure:"port"`
-	} `mapstructure:"database"`
+		Username string `destructure:"username"`
+		Password string `destructure:"password"`
+		Host     string `destructure:"host"`
+		Port     string `destructure:"port"`
+	} `destructure:"database"`
 }
 
 func TestConfig(t *testing.T) {
 	viper.SetConfigName("local") // Config file name without extension
 	viper.SetConfigType("yaml")  // Config file type
-	viper.AddConfigPath(".")     // Look for the config file in the current directory
+	viper.AddConfigPath(".")     // Look for the configs file in the current directory
 
 	viper.AutomaticEnv()
 	viper.SetEnvPrefix("env")
 	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 
-	// Read the config file
+	// Read the configs file
 	err := viper.ReadInConfig()
 	if err != nil {
-		log.Fatalf("Error reading config file, %s", err)
+		log.Fatalf("Error reading configs file, %s", err)
 	}
 
 	viper.BindEnv("database.username", "DB_USERNAME")
@@ -46,9 +46,9 @@ func TestConfig(t *testing.T) {
 	fmt.Printf("Host: %s\n", host)
 	fmt.Printf("Port: %s\n", port)
 
-	// Create an instance of DBConfig
+	// Create an instance of Config
 	var config DBConfig
-	// Unmarshal the config file into the DBConfig struct
+	// Unmarshal the configs file into the Config struct
 	err = viper.Unmarshal(&config)
 	if err != nil {
 		log.Fatalf("Unable to decode into struct, %v", err)
