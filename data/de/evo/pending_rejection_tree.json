@@ -1,0 +1,59 @@
+{
+    "name": "TPBANK PENDING REJECTION TREE",
+    "uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0",
+    "client_code": "tpbank",
+    "form_uuid": "7f3ad9fe-3adb-4d6b-bf87-9763f3fc7379",
+    "active": true,
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "winback_rejection",
+                "title": "Khách hàng thuộc luồng winback",
+                "evaluation": "lead_source == 'pdt'",
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "pending_rejection_basic_info",
+                "title": "Khách hàng chưa cung cấp thông tin cơ bản",
+                "evaluation": "!array_string_contain(conv_array_string(state_info.traversed_states),'app_form.basic_info')",
+                "output": {
+                    "status": "flow_changed",
+                    "flow_type": "rejection",
+                    "next_state": "app_form.basic_info",
+                    "switch_flow": {
+                        "tags": {
+                            "flow_type": "rejection"
+                        }
+                    }
+                }
+            },
+            {
+                "name": "pending_rejection_ekyc_selfie",
+                "title": "Khách hàng chưa chụp ảnh chân dung",
+                "evaluation": "!array_string_contain(conv_array_string(state_info.traversed_states),'ekyc.selfie.active') && !array_string_contain(conv_array_string(state_info.traversed_states),'ekyc.selfie.flash')",
+                "output": {
+                    "status": "flow_changed",
+                    "flow_type": "rejection",
+                    "next_state": "ekyc.selfie.flash",
+                    "switch_flow": {
+                        "tags": {
+                            "flow_type": "rejection"
+                        }
+                    }
+                }
+            }
+        ],
+        "fallback": {
+            "name": "instant_rejected",
+            "title": "Khách hàng bị từ chối",
+            "output": {
+                "status": "rejected",
+                "flow_type": "rejection"
+            }
+        }
+    }
+}

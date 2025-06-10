@@ -1,0 +1,171 @@
+{
+    "name": "TPBANK EVO - WINBACK - QUICK APPROVAL TREE",
+    "uuid": "c55b015c-d841-4821-84e5-138ec47ebdb5",
+    "client_code": "tpbank",
+    "form_uuid": "7f3ad9fe-3adb-4d6b-bf87-9763f3fc7379",
+    "active": true,
+    "root": {
+        "name": "root",
+        "title": "TPBANK EVO - Knockout Decision Tree",
+        "nodes": [
+            {
+                "name": "other_telco",
+                "title": "(BR22) Other Telco",
+                "evaluation": "!(telco_code IN ('viettel','mobifone','vinaphone'))",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "age_not_in_range",
+                "title": "Tuổi < 22 hoặc > 60",
+                "evaluation": "birthday != nil && !range_number(time_year(time_now()) - time_year(birthday) + 1, 22, 60)",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "job_not_in_range",
+                "title": "Khách hàng có việc làm không thỏa điều kiện",
+                "evaluation": "job_status == 'ES_5' || job_id IN ('E1','E2','E3','E4','E5','E6','E20','E24','E25','E26','E27','E15') || (job_id IN ('E7','E8','E9','E10','E11','E12','E13','E14','E15','E28','E29','E30','E31','E32','E33','E34','E35') && payment_method_id IN ('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17'))",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "income_under_cut_off",
+                "title": "Lương nhỏ hơn 5 triệu",
+                "evaluation": "income > 0 && income < 5000000",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "current_address_not_in_supported_places",
+                "title": "(BR06) Nơi ở hiện tại không thuộc địa bàn triển khai",
+                "evaluation": "eligible_location == false",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "id_card_expired",
+                "title": "(BR17) CMND quá hạn sử dụng",
+                "evaluation": "id_card_issued_date != nil && time_age(id_card_issued_date) >= 15",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "cccd_expired",
+                "title": "(BR17) CCCD quá hạn sử dụng",
+                "evaluation": "id_card_expired_date != nil && range_time(id_card_expired_date,'0001-01-01',time_now())",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "has_pdl_found_status",
+                "title": "Có hồ sơ vay với PDL",
+                "evaluation": "nb_pdl_found_status > 0",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "has_pdl_email_check_found_status",
+                "title": "Có hồ sơ vay với PDL sử dụng email",
+                "evaluation": "nb_pdl_email_check_found_status > 0",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "phone_is_ref_of_blacklist",
+                "title": "(BR28.1) Số điện thoại của KH nằm trong danh sách đen",
+                "evaluation": "delinquent_check_phone_is_ref_of_blacklist == true",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "ref_is_blacklist",
+                "title": "(BR28.2) Số điện thoại người thân của KH nằm trong danh sách đen",
+                "evaluation": "delinquent_check_ref_is_blacklist == true",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "preapproval_not_success",
+                "title": "Kết quả preapproval không thành công",
+                "evaluation": "preapproval_flow_type != 'auto_cic'",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "new_id_number",
+                "title": "KH chưa thực hiện ekyc ocr hoặc thay đổi số CMND",
+                "evaluation": "length(preapproval_ocr_id_number) == 0 || preapproval_ocr_id_number != id_card_number",
+                "output": {
+                    "status": "flow_changed",
+                    "flow_type": "preapproval_new_nid",
+                    "next_state": "ekyc.id_card",
+                    "switch_flow": {
+                        "tags": {
+                            "flow_type": "preapproval_new_nid"
+                        }
+                    }
+                }
+            },
+            {
+                "name": "nfc_scan",
+                "title": "KH chưa thực hiện ekyc nfc scan",
+                "evaluation": "done_scan_nfc_step == false",
+                "output": {
+                    "status": "flow_changed",
+                    "flow_type": "preapproval_nfc_scan",
+                    "next_state": "ekyc.nfc_scan",
+                    "switch_flow": {
+                        "tags": {
+                            "flow_type": "preapproval_nfc_scan"
+                        }
+                    }
+                }
+            }
+        ],
+        "fallback": {
+            "name": "passed_prescreen",
+            "title": "Khách hàng tiếp tục luồng hiện tại",
+            "output": {
+                "virtual_card": true,
+                "status": "accepted"
+            }
+        }
+    }
+}

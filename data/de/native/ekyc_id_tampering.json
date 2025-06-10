@@ -1,0 +1,262 @@
+{
+    "name": "TPBANK EKYC TAMPERING TREE",
+    "uuid": "7c1bbd41-89b6-4dfd-a8ed-e0a9e4d35df0",
+    "client_code": "tpbank",
+    "form_uuid": "a06114d6-d898-4187-82f5-73fe342ef997",
+    "active": true,
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "id_tampering.photocopy",
+                "title": "CMND/CCCD/Passport photo đen trắng",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'photocopy')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "photocopy"
+                }
+            },
+            {
+                "name": "id_tampering.non_liveness",
+                "title": "CMND/CCCD/ Passport được chụp từ ảnh CMND/CCCD/ passport trên màn hình (ví dụ chụp từ ảnh trên màn hình điện thoại, máy tính",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'non-liveness')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "non-liveness"
+                }
+            },
+            {
+                "name": "id_tampering.cut",
+                "title": "CMND/CCCD bị cắt góc",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'cut')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "cut"
+                }
+            },
+            {
+                "name": "id_tampering.hole",
+                "title": "CMND/CCCD bị đục lỗ",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'hole')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "hole"
+                }
+            },
+            {
+                "name": "id_tampering.photo_tampered",
+                "title": "Kiểm tra CMND có dấu hiệu bị thay ảnh (vật lý và số)",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'photo_tampered')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "photo_tampered"
+                }
+            },
+            {
+                "name": "id_tampering.info_tampered",
+                "title": "Kiểm tra CMND có dấu hiệu bị chỉnh sửa thông tin (vật lý và số)",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'info_tampered')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "info_tampered"
+                }
+            },
+            {
+                "name": "id_tampering.age_not_match",
+                "title": "Dự đoán tuổi của ảnh thẻ trên CMND so với tuổi của CMND",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'age_not_match')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "info_tampered"
+                }
+            },
+            {
+                "name": "id_tampering.id_not_follow_rule",
+                "title": "Ảnh chụp bị mờ hoặc có vật che/ vết bẩn. Vui lòng đặt CMND/CCCD vào khung hình của máy ảnh ở nơi đủ sáng, hình chụp đầy đủ, rõ nét, không có vật che/vết bẩn, không bị mờ/chói sáng",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'id_not_follow_rule')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "info_tampered"
+                }
+            },
+            {
+                "name": "id_tampering.invalid_expiry_date",
+                "title": "Ngày hết hạn CMND không hợp lệ",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'invalid_expiry_date')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "info_tampered"
+                }
+            },
+            {
+                "name": "id_tampering.incorrect_issue_date",
+                "title": "Ngày cấp CMND không hợp lệ",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'incorrect_issue_date')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "info_tampered"
+                }
+            },
+            {
+                "name": "id_tampering.incorrect_native_place",
+                "title": "Nguyên quán không tuân theo quy tắc trên CMND",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'incorrect_native_place')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "info_tampered"
+                }
+            },
+            {
+                "name": "id_tampering.abnormal_emblem",
+                "title": "Quốc huy không đúng với mẫu Quốc huy trên CMND",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'abnormal_emblem')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "abnormal_emblem"
+                }
+            },
+            {
+                "name": "id_tampering.no_emblem",
+                "title": "Quốc huy quốc huy bị che toàn bộ",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'no_emblem')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "no_emblem"
+                }
+            },
+            {
+                "name": "id_tampering.emblem_covered",
+                "title": "Quốc huy quốc huy bị che một phần",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'emblem_covered')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "emblem_covered"
+                }
+            },
+            {
+                "name": "id_tampering.not_in_same_card",
+                "title": "Mặt trước và mặt sau của CMND/CCCD có dấu hiệu không phải của cùng một CMND/CCCD",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'not_in_same_card')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "not_in_same_card"
+                }
+            },
+            {
+                "name": "id_tampering.wrong_format_in_dob",
+                "title": "Sau Sinh ngày có dấu hai chấm (:)",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'wrong_format_in_dob')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "info_tampered"
+                }
+            },
+            {
+                "name": "id_tampering.wrong_font_in_residential_place",
+                "title": "Kiểm tra ký tự đặc biệt ở Nơi ĐKHK thường trú",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'wrong_font_in_residential_place')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "info_tampered"
+                }
+            },
+            {
+                "name": "id_tampering.wrong_font",
+                "title": "Kiểm tra các ký tự đặc biệt trong phần thông tin của CMND",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'wrong_font')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "info_tampered"
+                }
+            },
+            {
+                "name": "id_tampering.id_with_printed_fonts",
+                "title": "CMND 9 số được cấp trước 22/12/2008 nhưng dùng font chữ in",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'id_with_printed_fonts')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "info_tampered"
+                }
+            },
+            {
+                "name": "id_tampering.id_with_typewriter_fonts",
+                "title": "CMND 9 số được cấp sau 2013 nhưng dùng font chữ đánh máy",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'id_with_typewriter_fonts')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "info_tampered"
+                }
+            },
+            {
+                "name": "id_tampering.wrong_format_in_recognizable_feature_phrase",
+                "title": "Kiểm tra dấu hiệu đặc biệt 'Đặc điểm nhân dạng' của mặt sau CCCD",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'wrong_format_in_recognizable_feature_phrase')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "info_tampered"
+                }
+            },
+            {
+                "name": "id_tampering.tax_name_unmatched",
+                "title": "Kiểm tra thông tin trên CMND/CCCD và thông tin tra cứu mã số thuế thu nhập cá nhân",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'tax_name_unmatched')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "info_tampered"
+                }
+            },
+            {
+                "name": "id_tampering.signer_name_unmatched",
+                "title": "Kiểm tra người ký ở mặt sau CMND 12 số/CCCD",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'signer_name_unmatched')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "info_tampered"
+                }
+            },
+            {
+                "name": "id_tampering.signer_name_unmatched_overlap",
+                "title": "Kiểm tra người ký ở mặt sau CMND 12 số/CCCD",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'signer_name_unmatched_overlap')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "info_tampered"
+                }
+            },
+            {
+                "name": "id_tampering.qr_info_not_match",
+                "title": "Ảnh chụp bị mờ hoặc có vật che/ vết bẩn. Vui lòng đặt CMND/CCCD vào khung hình của máy ảnh ở nơi đủ sáng, hình chụp đầy đủ, rõ nét, không có vật che/vết bẩn, không bị mờ/chói sáng",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'qr_info_not_match')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "info_tampered"
+                }
+            },
+            {
+                "name": "id_tampering.mrz_not_follow_rule",
+                "title": "Ảnh chụp bị mờ hoặc có vật che/ vết bẩn. Vui lòng đặt CMND/CCCD vào khung hình của máy ảnh ở nơi đủ sáng, hình chụp đầy đủ, rõ nét, không có vật che/vết bẩn, không bị mờ/chói sáng",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'mrz_not_follow_rule')",
+                "output": {
+                    "status": "retried",
+                    "message_code": "info_tampered"
+                }
+            },
+            {
+                "name": "id_tampering.card_expired",
+                "title": "(BR17) CMND/CCCD hết hạn",
+                "evaluation": "array_string_contain(conv_array_string(id_card_tampering.feature_verdicts),'card_expired')",
+                "output": {
+                    "status": "rejected",
+                    "message_code": "card_expired"
+                }
+            }
+        ],
+        "fallback": {
+            "name": "pass_all_ekyc_rules",
+            "title": "Thỏa mãn tất cả điều kiện về ekyc",
+            "output": {
+                "status": "accepted"
+            }
+        }
+    }
+}

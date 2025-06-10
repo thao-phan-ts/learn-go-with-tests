@@ -1,0 +1,119 @@
+{
+    "name": "TPBANK EVO - NORMAL - CREDIT ASSIGNMENT TREE v1",
+    "uuid": "a12ac235-8433-4f1e-a81c-d7bfdabbeaa7",
+    "client_code": "tpbank",
+    "form_uuid": "7f3ad9fe-3adb-4d6b-bf87-9763f3fc7379",
+    "active": true,
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "is_semi_flow",
+                "title": "Khách hàng được phân luồng semi",
+                "evaluation": "ascore_risk_grade == 'UNDEFINED'",
+                "scoring": "5000000",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "is_auto_from_auto_pcb_and_low_max_credit_limit_ic",
+                "title": "KH được phân luồng auto sau khi đã được phân vào luồng auto_pcb có credit limit thấp",
+                "evaluation": "max_credit_limit_ic < min_credit_limit_ic && decision_flow_type IN ('auto', 'auto_pcb')",
+                "scoring": "5000000",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "low_max_credit_limit_ic",
+                "title": "Khách hàng bị từ chối",
+                "evaluation": "max_credit_limit_ic < min_credit_limit_ic",
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "cred_abc_income_score",
+                "title": "Khách hàng có rủi ro xếp hạng tín dụng A/B/C và có điểm income score",
+                "evaluation": "telco_code IN ('mobifone','vinaphone') && ascore_risk_grade IN ('A','B','C') && predicted_income > 0",
+                "scoring": "million_floor(cap_value(min_number(max_number(credit_limit_ic2,credit_limit_ic3,min_credit_limit_ic),max_credit_limit_ic), dscore_cap_limit, dscore_cap_multiplier))",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "cred_def_income_score_max_ic1_ic2_gt0",
+                "title": "Khách hàng có rủi ro xếp hạng tín dụng D/E/F và có điểm income score",
+                "evaluation": "telco_code IN ('mobifone','vinaphone') && ascore_risk_grade IN ('D','E','F') && predicted_income > 0 && credit_limit_ic2 > 0",
+                "scoring": "million_floor(cap_value(min_number(max_number(min_number(credit_limit_ic2,credit_limit_ic3),min_credit_limit_ic),max_credit_limit_ic), dscore_cap_limit, dscore_cap_multiplier))",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "cred_def_income_score_max_ic1_ic2_eq0",
+                "title": "Khách hàng có rủi ro xếp hạng tín dụng D/E/F và có điểm income score",
+                "evaluation": "telco_code IN ('mobifone','vinaphone') && ascore_risk_grade IN ('D','E','F') && predicted_income > 0",
+                "scoring": "million_floor(cap_value(min_number(max_number(credit_limit_ic3,min_credit_limit_ic),max_credit_limit_ic), dscore_cap_limit, dscore_cap_multiplier))",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "cred_abc_no_income_score",
+                "title": "Khách hàng có rủi ro xếp hạng tín dụng A/B/C và không có điểm income score",
+                "evaluation": "telco_code IN ('mobifone','vinaphone') && ascore_risk_grade IN ('A','B','C') && predicted_income == 0",
+                "scoring": "million_floor(cap_value(min_number(max_number(credit_limit_ic2,min_number(30000000,credit_limit_ic4),min_credit_limit_ic),max_credit_limit_ic), dscore_cap_limit, dscore_cap_multiplier))",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "cred_def_no_income_score_max_ic1_ic2_gt0",
+                "title": "Khách hàng có rủi ro xếp hạng tín dụng D/E/F và không có điểm income score",
+                "evaluation": "telco_code IN ('mobifone','vinaphone') && ascore_risk_grade IN ('D','E','F') && predicted_income == 0 && credit_limit_ic2 > 0",
+                "scoring": "million_floor(cap_value(min_number(max_number(min_number(credit_limit_ic2,credit_limit_ic4),min_credit_limit_ic),max_credit_limit_ic), dscore_cap_limit, dscore_cap_multiplier))",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "cred_def_no_income_score_max_ic1_ic2_eq0",
+                "title": "Khách hàng có rủi ro xếp hạng tín dụng D/E/F và không có điểm income score",
+                "evaluation": "telco_code IN ('mobifone','vinaphone') && ascore_risk_grade IN ('D','E','F') && predicted_income == 0 && credit_limit_ic2 == 0",
+                "scoring": "million_floor(cap_value(min_number(max_number(credit_limit_ic4,min_credit_limit_ic),max_credit_limit_ic), dscore_cap_limit, dscore_cap_multiplier))",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "undefined_cred_or_no_income_score",
+                "title": "Khách hàng không đánh giá được xếp hạng tín dụng và không có điểm income score",
+                "evaluation": "ascore_risk_grade IN ('', 'UNDEFINED') && predicted_income == 0",
+                "scoring": "million_floor(cap_value(min_number(max_number((3 * card_surrogate_monthly_income),min_credit_limit_ic),max_credit_limit_ic), dscore_cap_limit, dscore_cap_multiplier))",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "is_auto_from_auto_pcb",
+                "title": "KH được phân luồng auto sau khi đã được phân vào luồng auto_pcb",
+                "evaluation": "decision_flow_type IN ('auto', 'auto_pcb')",
+                "scoring": "5000000",
+                "output": {
+                    "status": "accepted"
+                }
+            }
+        ],
+        "fallback": {
+            "name": "low_credit_limit",
+            "title": "Credit limit < 5000000",
+            "output": {
+                "status": "rejected",
+                "flow_type": "rejection"
+            }
+        }
+    }
+}

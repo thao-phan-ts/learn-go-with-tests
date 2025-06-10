@@ -1,0 +1,73 @@
+{
+    "name": "TPBANK FATCA TREE v1",
+    "uuid": "5180f8f2-4aba-48be-921a-493af26f3692",
+    "client_code": "tpbank",
+    "form_uuid": "7f3ad9fe-3adb-4d6b-bf87-9763f3fc7379",
+    "active": true,
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "is_us_nationality",
+                "title": "Khách hàng là công dân Hoa Kỳ hoặc là thường trú nhân hợp pháp tại Hoa Kỳ (có thẻ xanh)",
+                "evaluation": "esign.contract_form.isUSNationality != nil && esign.contract_form.isUSNationality == true",
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "is_born_in_us",
+                "title": "Khách hàng sinh ra tại Hoa Kỳ",
+                "evaluation": "esign.contract_form.isBornInUS != nil && esign.contract_form.isBornInUS == true",
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "is_instruct_deposit_to_or_withdraw_from_us_address",
+                "title": "Khách hàng cung cấp hướng dẫn chuyển tiền thường xuyên tới một tài khoản được duy trì tại Hoa Kỳ hoặc hướng đẫn nhận tiền thường xuyên từ 1 địa chỉ tại Hoa Kỳ",
+                "evaluation": "esign.contract_form.isInstructDepositToOrWithdrawFromUSAddress != nil && esign.contract_form.isInstructDepositToOrWithdrawFromUSAddress == true",
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "is_have_us_address_or_us_number",
+                "title": "Khách hàng có địa chỉ Hoa Kỳ hoặc số điện thoại Hoa Kỳ",
+                "evaluation": "esign.contract_form.isHaveUSAddressOrUSNumber != nil && esign.contract_form.isHaveUSAddressOrUSNumber == true",
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "is_delegate_to_us_address",
+                "title": "Khách hàng có ủy quyền cho người có địa chỉ tại Hoa Kỳ",
+                "evaluation": "esign.contract_form.isDelegateToUSAddress != nil && esign.contract_form.isDelegateToUSAddress == true",
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "is_have_unique_us_mail_address",
+                "title": "Khách hàng có địa chỉ gửi qua hoặc giữ thư là địa chỉ duy nhất của bạn tại Hoa Kỳ",
+                "evaluation": "esign.contract_form.isHaveUniqueUSMailAddress != nil && esign.contract_form.isHaveUniqueUSMailAddress == true",
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            }
+        ],
+        "fallback": {
+            "name": "passed_all_fatca_rules",
+            "title": "Khách hàng thoả mãn điều kiện AML và FATCA",
+            "output": {
+                "status": "accepted"
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "name": "EVO NATIVE - CREDIT ASSIGNMENT TREE",
+    "uuid": "b8098581-9378-4b16-9108-8901593a210d",
+    "client_code": "tpbank",
+    "form_uuid": "a06114d6-d898-4187-82f5-73fe342ef997",
+    "active": true,
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "is_offline_merchant_flow_with_uw_state_conditions",
+                "title": "TPBank EVO offline merchant flow at final state",
+                "evaluation": "is_offline_merchant == true && valid_uw_state_conditions == true && customer_is_at_store == true",
+                "sub_tree_uuid": "b326661d-cc16-4e7e-b8d2-1f4a6a89cb37"
+            },
+            {
+                "name": "is_offline_merchant_flow",
+                "title": "TPBank EVO offline merchant flow",
+                "evaluation": "is_offline_merchant == true && valid_uw_state_conditions == false",
+                "sub_tree_uuid": "b326661d-cc16-4e7e-b8d2-1f4a6a89cb37"
+            }
+        ],
+        "fallback": {
+            "name": "is_normal_flow",
+            "title": "TPBank EVO normal flow",
+            "sub_tree_uuid": "24145a10-8c61-4273-9a75-dfdaffd94f27"
+        }
+    }
+}

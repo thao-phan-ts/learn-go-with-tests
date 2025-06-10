@@ -1,0 +1,17 @@
+{
+    "name": "EVO NATIVE - RISK GRADES TREE - MAX POS CREDIT LIMIT",
+    "uuid": "b5437831-167a-4120-bc25-eb06a1e2e23f",
+    "client_code": "tpbank",
+    "form_uuid": "a06114d6-d898-4187-82f5-73fe342ef997",
+    "active": true,
+    "root": {
+        "name": "root",
+        "nodes": [],
+        "fallback": {
+            "name": "fallback_root",
+            "output": {
+                "value": 75000000
+            }
+        }
+    }
+}

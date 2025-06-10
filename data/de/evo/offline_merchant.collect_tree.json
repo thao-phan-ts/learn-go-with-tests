@@ -1,0 +1,201 @@
+{
+    "name": "TPBANK EVO - OFFLINE MERCHANT - COLLECT FLOW ASSIGNMENT TREE",
+    "uuid": "9f91133c-6255-4a90-9310-ccd364f6a0e4",
+    "client_code": "tpbank",
+    "form_uuid": "7f3ad9fe-3adb-4d6b-bf87-9763f3fc7379",
+    "active": false,
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "ascore_pending",
+                "title": "(FF_01) KH chưa có kết quả ascore tại thời điểm thẩm định",
+                "evaluation": "ascore_risk_grade == 'UNDEFINED' && is_reappraising == false",
+                "output": {
+                    "status": "flow_changed",
+                    "flow_type": "semi",
+                    "next_state": "inform.success",
+                    "virtual_card": true,
+                    "switch_flow": {
+                        "tags": {
+                            "esign_flow_type": "semi",
+                            "onboarding_channel": "offline"
+                        }
+                    }
+                }
+            },
+            {
+                "name": "ff_04_semi_manual4",
+                "title": "(FF_04) Khách hàng có ebank account is potential fraud và có đủ kết quả cic",
+                "evaluation": "ebank_risk_id_potential_fraud == true && auto_pcb_ready == true && cic_pending == false",
+                "nodes": [
+                    {
+                        "name": "semi_manual4_esuccess",
+                        "title": "KH phân luồng semi, chuyển sang màn hình success do đã thực hiện esign",
+                        "evaluation": "is_reappraising && done_esign_step",
+                        "output": {
+                            "status": "flow_changed",
+                            "flow_type": "semi",
+                            "virtual_card": true,
+                            "switch_flow": {
+                                "tags": {
+                                    "esign_flow_type": "semi",
+                                    "onboarding_channel": "offline"
+                                }
+                            },
+                            "sub_flow_type": "manual4",
+                            "next_state": "success"
+                        }
+                    }
+                ],
+                "fallback": {
+                    "name": "semi_manual4",
+                    "title": "KH phân luồng semi, chuyển sang màn hình esign intro",
+                    "output": {
+                        "status": "flow_changed",
+                        "flow_type": "semi",
+                        "next_state": "inform.success",
+                        "virtual_card": true,
+                        "switch_flow": {
+                            "tags": {
+                                "esign_flow_type": "semi",
+                                "onboarding_channel": "offline"
+                            }
+                        },
+                        "sub_flow_type": "manual4"
+                    }
+                }
+            },
+            {
+                "name": "ff_05_semi_manual24",
+                "title": "(FF_05) Khách hàng có ebank account is potential fraud và chưa có kết quả cic",
+                "evaluation": "ebank_risk_id_potential_fraud == true && auto_pcb_ready == true && cic_pending == true",
+                "nodes": [
+                    {
+                        "name": "semi_manual24_esuccess",
+                        "title": "KH phân luồng semi, chuyển sang màn hình success do đã thực hiện esign",
+                        "evaluation": "is_reappraising && done_esign_step",
+                        "output": {
+                            "status": "flow_changed",
+                            "flow_type": "semi",
+                            "virtual_card": true,
+                            "switch_flow": {
+                                "tags": {
+                                    "esign_flow_type": "semi",
+                                    "onboarding_channel": "offline"
+                                }
+                            },
+                            "sub_flow_type": "manual24",
+                            "next_state": "success"
+                        }
+                    }
+                ],
+                "fallback": {
+                    "name": "semi_manual24",
+                    "title": "KH phân luồng semi, chuyển sang màn hình esign intro",
+                    "output": {
+                        "status": "flow_changed",
+                        "flow_type": "semi",
+                        "next_state": "inform.success",
+                        "virtual_card": true,
+                        "switch_flow": {
+                            "tags": {
+                                "esign_flow_type": "semi",
+                                "onboarding_channel": "offline"
+                            }
+                        },
+                        "sub_flow_type": "manual24"
+                    }
+                }
+            },
+            {
+                "name": "auto_cic_flow",
+                "title": "(FF_02) KH có đủ kết quả cic",
+                "evaluation": "cic_pending == false && auto_pcb_ready == true",
+                "nodes": [
+                    {
+                        "name": "auto_cic_esuccess",
+                        "title": "KH được phân luồng auto cic, chuyển sang màn hình success do đã thực hiện esign",
+                        "evaluation": "is_reappraising && done_esign_step",
+                        "output": {
+                            "status": "flow_changed",
+                            "flow_type": "auto_cic",
+                            "virtual_card": true,
+                            "switch_flow": {
+                                "tags": {
+                                    "esign_flow_type": "auto_cic",
+                                    "onboarding_channel": "offline"
+                                }
+                            },
+                            "next_state": "success"
+                        }
+                    }
+                ],
+                "fallback": {
+                    "name": "auto_cic",
+                    "title": "KH được phân luồng auto cic, chuyển sang màn hình esign intro",
+                    "output": {
+                        "status": "flow_changed",
+                        "flow_type": "auto_cic",
+                        "next_state": "inform.success",
+                        "virtual_card": true,
+                        "switch_flow": {
+                            "tags": {
+                                "esign_flow_type": "auto_cic",
+                                "onboarding_channel": "offline"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "name": "auto_pcb_flow",
+                "title": "(FF_03) KH chưa có đủ kết quả cic",
+                "evaluation": "cic_pending == true && auto_pcb_ready == true",
+                "nodes": [
+                    {
+                        "name": "auto_pcb_esuccess",
+                        "title": "KH được phân luồng auto pcb, chuyển sang màn hình success do đã thực hiện esign",
+                        "evaluation": "is_reappraising && done_esign_step",
+                        "output": {
+                            "status": "flow_changed",
+                            "flow_type": "auto_pcb",
+                            "virtual_card": true,
+                            "switch_flow": {
+                                "tags": {
+                                    "esign_flow_type": "auto_pcb",
+                                    "onboarding_channel": "offline"
+                                }
+                            },
+                            "next_state": "success"
+                        }
+                    }
+                ],
+                "fallback": {
+                    "name": "auto_pcb",
+                    "title": "KH được phân luồng auto pcb, chuyển sang màn hình esign intro",
+                    "output": {
+                        "status": "flow_changed",
+                        "flow_type": "auto_pcb",
+                        "next_state": "inform.success",
+                        "virtual_card": true,
+                        "switch_flow": {
+                            "tags": {
+                                "esign_flow_type": "auto_pcb",
+                                "onboarding_channel": "offline"
+                            }
+                        }
+                    }
+                }
+            }
+        ],
+        "fallback": {
+            "name": "unmatched_flow_assignment",
+            "title": "Khách hàng không thoả mãn điều kiện phân luồng",
+            "output": {
+                "status": "rejected",
+                "flow_type": "rejection"
+            }
+        }
+    }
+}

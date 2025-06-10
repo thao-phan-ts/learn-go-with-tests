@@ -1,0 +1,325 @@
+{
+    "name": "EVO NATIVE - FLOW ASSIGNMENT TREE - OFFLINE MERCHANT FINAL",
+    "uuid": "976f8623-7485-4a68-8ed7-16a3af6a8c06",
+    "client_code": "tpbank",
+    "form_uuid": "a06114d6-d898-4187-82f5-73fe342ef997",
+    "active": true,
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "auto_pcb_holding_timeout",
+                "title": "Khách hàng ở luồng Auto PCB đã quá thời gian chờ nhưng chưa có kết quả CIC",
+                "evaluation": "de_flow_type == 'auto_pcb' && application_status == 'holding' && cic_pending",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "cic_timeout",
+                "title": "Chưa có kết quả CIC sau khi chờ tại 4th appraising",
+                "evaluation": "cic_pending && (\n  (\n    lead_source in ('mwg', 'mwg_pos', 'evo_native', 'frt') && \n    application_state == 'appraising.fourth_approval' && \n    enable_reject_at_4th_appraising\n  ) || \n  (\n    lead_source == 'mwg_pos' &&\n    application_state == 'appraising.third_approval' &&\n    enable_reject_at_3rd_appraising\n  )\n)",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "ascore_pending_semi",
+                "title": "KH chưa có kết quả ascore",
+                "evaluation": "ascore_risk_grade == 'UNDEFINED' && is_reappraising == false",
+                "nodes": [
+                    {
+                        "name": "ascore_pending_rejection",
+                        "title": "KH chưa có kết quả ascore và không thỏa điều kiện mở thẻ",
+                        "evaluation": "enable_reject_semi == true && lead_source == 'mwg_pos'",
+                        "output": {
+                            "status": "rejected",
+                            "flow_type": "rejection"
+                        }
+                    },
+                    {
+                        "name": "ascore_pending_semi_esuccess",
+                        "title": "KH chưa có kết quả ascore, đã thực hiện esign otp",
+                        "evaluation": "done_esign_step == true",
+                        "output": {
+                            "status": "flow_changed",
+                            "flow_type": "semi",
+                            "virtual_card": true,
+                            "switch_flow": {
+                                "tags": {
+                                    "flow_type": "semi"
+                                }
+                            },
+                            "next_state": "success"
+                        }
+                    },
+                    {
+                        "name": "ascore_pending_semi_esign",
+                        "title": "KH chưa có kết quả ascore, đã thực hiện inform.success",
+                        "evaluation": "done_inform_success_step == true",
+                        "output": {
+                            "status": "flow_changed",
+                            "flow_type": "semi",
+                            "virtual_card": true,
+                            "switch_flow": {
+                                "tags": {
+                                    "flow_type": "semi"
+                                }
+                            },
+                            "next_state": "esign.intro"
+                        }
+                    }
+                ],
+                "fallback": {
+                    "name": "ascore_pending_semi_inform_success",
+                    "title": "KH chưa có kết quả ascore và chưa thực hiện esign otp",
+                    "output": {
+                        "status": "flow_changed",
+                        "flow_type": "semi",
+                        "virtual_card": true,
+                        "switch_flow": {
+                            "tags": {
+                                "flow_type": "semi"
+                            }
+                        },
+                        "next_state": "inform.success"
+                    }
+                }
+            },
+            {
+                "name": "ebank_risk_id_potential_fraud",
+                "title": "(FF_04) Khách hàng có ebank account is potential fraud",
+                "evaluation": "ebank_risk_id_potential_fraud == true",
+                "nodes": [
+                    {
+                        "name": "potential_fraud_rejection",
+                        "title": "Phân luồng semi và không thỏa điều kiện mở thẻ",
+                        "evaluation": "enable_reject_semi == true && lead_source == 'mwg_pos'",
+                        "output": {
+                            "status": "rejected",
+                            "flow_type": "rejection"
+                        }
+                    },
+                    {
+                        "name": "semi_manual24_esuccess",
+                        "title": "KH phân luồng semi_manual24, đã thực hiện esign otp",
+                        "evaluation": "auto_pcb_ready && cic_pending && done_esign_step",
+                        "output": {
+                            "status": "flow_changed",
+                            "flow_type": "semi",
+                            "virtual_card": true,
+                            "switch_flow": {
+                                "tags": {
+                                    "flow_type": "semi"
+                                }
+                            },
+                            "sub_flow_type": "manual24",
+                            "next_state": "success"
+                        }
+                    },
+                    {
+                        "name": "semi_manual24_esign",
+                        "title": "KH phân luồng semi_manual24, đã thực hiện inform.success",
+                        "evaluation": "auto_pcb_ready && cic_pending && done_inform_success_step",
+                        "output": {
+                            "status": "flow_changed",
+                            "flow_type": "semi",
+                            "virtual_card": true,
+                            "switch_flow": {
+                                "tags": {
+                                    "flow_type": "semi"
+                                }
+                            },
+                            "sub_flow_type": "manual24",
+                            "next_state": "esign.intro"
+                        }
+                    },
+                    {
+                        "name": "semi_manual24_inform_success",
+                        "title": "KH phân luồng semi_manual24",
+                        "evaluation": "auto_pcb_ready && cic_pending",
+                        "output": {
+                            "status": "flow_changed",
+                            "flow_type": "semi",
+                            "virtual_card": true,
+                            "switch_flow": {
+                                "tags": {
+                                    "flow_type": "semi"
+                                }
+                            },
+                            "sub_flow_type": "manual24",
+                            "next_state": "inform.success"
+                        }
+                    },
+                    {
+                        "name": "semi_manual4_esuccess",
+                        "title": "KH phân luồng semi_manual4, đã thực hiện esign otp",
+                        "evaluation": "auto_pcb_ready && !cic_pending && done_esign_step",
+                        "output": {
+                            "status": "flow_changed",
+                            "flow_type": "semi",
+                            "virtual_card": true,
+                            "switch_flow": {
+                                "tags": {
+                                    "flow_type": "semi"
+                                }
+                            },
+                            "sub_flow_type": "manual4",
+                            "next_state": "success"
+                        }
+                    },
+                    {
+                        "name": "semi_manual4_esuccess",
+                        "title": "KH phân luồng semi_manual4, đã thực hiện inform.success",
+                        "evaluation": "auto_pcb_ready && !cic_pending && done_inform_success_step",
+                        "output": {
+                            "status": "flow_changed",
+                            "flow_type": "semi",
+                            "virtual_card": true,
+                            "switch_flow": {
+                                "tags": {
+                                    "flow_type": "semi"
+                                }
+                            },
+                            "sub_flow_type": "manual4",
+                            "next_state": "esign.intro"
+                        }
+                    },
+                    {
+                        "name": "semi_manual4_inform_success",
+                        "title": "KH phân luồng semi_manual4",
+                        "evaluation": "auto_pcb_ready && !cic_pending",
+                        "output": {
+                            "status": "flow_changed",
+                            "flow_type": "semi",
+                            "virtual_card": true,
+                            "switch_flow": {
+                                "tags": {
+                                    "flow_type": "semi"
+                                }
+                            },
+                            "sub_flow_type": "manual4",
+                            "next_state": "inform.success"
+                        }
+                    }
+                ],
+                "fallback": {
+                    "name": "auto_pcb_not_ready",
+                    "title": "Khách hàng chưa có kết quả pcb",
+                    "output": {
+                        "status": "rejected",
+                        "flow_type": "rejection"
+                    }
+                }
+            },
+            {
+                "name": "auto_pcb_esuccess",
+                "title": "KH phân luồng auto_pcb, đã thực hiện esign otp",
+                "evaluation": "auto_pcb_ready && cic_pending && done_esign_step",
+                "output": {
+                    "status": "flow_changed",
+                    "flow_type": "auto_pcb",
+                    "virtual_card": true,
+                    "switch_flow": {
+                        "tags": {
+                            "flow_type": "auto_pcb"
+                        }
+                    },
+                    "next_state": "success"
+                }
+            },
+            {
+                "name": "auto_pcb_esign",
+                "title": "KH phân luồng auto_pcb, đã thực hiện inform.success",
+                "evaluation": "auto_pcb_ready && cic_pending && done_inform_success_step",
+                "output": {
+                    "status": "flow_changed",
+                    "flow_type": "auto_pcb",
+                    "virtual_card": true,
+                    "switch_flow": {
+                        "tags": {
+                            "flow_type": "auto_pcb"
+                        }
+                    },
+                    "next_state": "esign.intro"
+                }
+            },
+            {
+                "name": "auto_pcb_inform_success",
+                "title": "KH phân luồng auto_pcb",
+                "evaluation": "auto_pcb_ready && cic_pending",
+                "output": {
+                    "status": "flow_changed",
+                    "flow_type": "auto_pcb",
+                    "virtual_card": true,
+                    "switch_flow": {
+                        "tags": {
+                            "flow_type": "auto_pcb"
+                        }
+                    },
+                    "next_state": "inform.success"
+                }
+            },
+            {
+                "name": "auto_cic_esuccess",
+                "title": "KH phân luồng auto_cic, đã thực hiện esign otp",
+                "evaluation": "auto_pcb_ready && !cic_pending && done_esign_step",
+                "output": {
+                    "status": "flow_changed",
+                    "flow_type": "auto_cic",
+                    "virtual_card": true,
+                    "switch_flow": {
+                        "tags": {
+                            "flow_type": "auto_cic"
+                        }
+                    },
+                    "next_state": "success"
+                }
+            },
+            {
+                "name": "auto_cic_esign",
+                "title": "KH phân luồng auto_cic, đã thực hiện inform.success",
+                "evaluation": "auto_pcb_ready && !cic_pending && done_inform_success_step",
+                "output": {
+                    "status": "flow_changed",
+                    "flow_type": "auto_cic",
+                    "virtual_card": true,
+                    "switch_flow": {
+                        "tags": {
+                            "flow_type": "auto_cic"
+                        }
+                    },
+                    "next_state": "esign.intro"
+                }
+            },
+            {
+                "name": "auto_cic_inform_success",
+                "title": "KH phân luồng auto_cic",
+                "evaluation": "auto_pcb_ready && !cic_pending",
+                "output": {
+                    "status": "flow_changed",
+                    "flow_type": "auto_cic",
+                    "virtual_card": true,
+                    "switch_flow": {
+                        "tags": {
+                            "flow_type": "auto_cic"
+                        }
+                    },
+                    "next_state": "inform.success"
+                }
+            }
+        ],
+        "fallback": {
+            "name": "not_found_suitable_flow",
+            "title": "Khách hàng không thỏa điều kiện mở thẻ",
+            "output": {
+                "status": "rejected",
+                "flow_type": "rejection"
+            }
+        }
+    }
+}

@@ -1,0 +1,638 @@
+{
+    "name": "EVO NATIVE - KNOCKOUT DECISION TREE - NORMAL",
+    "uuid": "e8edb17e-43c9-48fa-80b0-217db93256da",
+    "client_code": "tpbank",
+    "form_uuid": "a06114d6-d898-4187-82f5-73fe342ef997",
+    "active": true,
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "other_telco",
+                "title": "(BR22) Other Telco",
+                "evaluation": "!(telco_code IN ('viettel','mobifone','vinaphone'))",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "age_not_in_range",
+                "title": "Tuổi < 22 hoặc > 60",
+                "evaluation": "birthday != nil && !range_number(time_year(time_now()) - time_year(birthday) + 1, 22, 60)",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "has_pdl_found_status",
+                "title": "Có hồ sơ vay với PDL",
+                "evaluation": "nb_pdl_found_status > 0",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "has_pdl_email_check_found_status",
+                "title": "Có hồ sơ vay với PDL sử dụng email",
+                "evaluation": "nb_pdl_email_check_found_status > 0",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "selfie_in_tpb_blacklist",
+                "title": "(eKYC10.01) Ảnh selfie nằm trong tập tpbank blacklist",
+                "evaluation": "tpb_blacklist001_selfie_check_status == 'found'",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "selfie_in_ts_blacklist",
+                "title": "(eKYC10.02) Ảnh selfie nằm trong tập ts blacklist",
+                "evaluation": "selfie_blacklist_check_status == 'found'",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "idcard_face_in_tpb_blacklist",
+                "title": "(eKYC11.01) Ảnh CMND mặt trước nằm trong tập tpbank blacklist",
+                "evaluation": "tpb_blacklist001_idcard_check_status == 'found'",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "idcard_face_in_ts_blacklist",
+                "title": "(eKYC11.02) Ảnh CMND mặt trước nằm trong tập ts blacklist",
+                "evaluation": "id_cards_blacklist_check_status == 'found'",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "job_not_in_range_group_1",
+                "title": "(BR04.01) Khách hàng có việc làm không thỏa điều kiện",
+                "evaluation": "job_status == 'ES_5' || job_id_in_group_1 == true",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "job_not_in_range_group_2",
+                "title": "(BR04.02) Khách hàng có việc làm không thỏa điều kiện",
+                "evaluation": "job_id_in_group_2_and_cash_payment_method == true",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "job_is_worker",
+                "title": "(BR04.04) Khách hàng là công nhân",
+                "evaluation": "job_id == 'E15'",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "income_under_cut_off",
+                "title": "Lương nhỏ hơn 5 triệu",
+                "evaluation": "income > 0 && income < 5000000",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "current_address_not_in_supported_places",
+                "title": "(BR06) Nơi ở hiện tại không thuộc địa bàn triển khai",
+                "evaluation": "eligible_location == false",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "prescreening.blacklist",
+                "title": "Khách hàng nằm trong danh sách đen",
+                "evaluation": "prescreening_code == 'prescreening.blacklist' || prescreening_old_id_code == 'prescreening.blacklist'",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "prescreening.duplicated",
+                "title": "Khách hàng đã đăng kí trước đó",
+                "evaluation": "prescreening_code == 'prescreening.duplicated' || prescreening_old_id_code == 'prescreening.duplicated'",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "prescreening.existed_card",
+                "title": "Khách hàng đã mở thẻ trước đó",
+                "evaluation": "prescreening_code == 'prescreening.existed_card' || prescreening_old_id_code == 'prescreening.existed_card'",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "ekyc_unmatched_faces",
+                "title": "(eKYC06) Hình CMND và hình selfie không khớp",
+                "evaluation": "ekyc_face_compare_status == 'unmatched'",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "ekyc_face_nb_duplicate_nids_rule_1",
+                "title": "(eKYC07) Tìm thấy khuôn mặt KH trong cơ sở dữ liệu hiện tại với số CMND khác với số CMND mà Khách hàng cung cấp",
+                "evaluation": "ekyc_face_nb_duplicate_nids > 0 && length(old_id_card_number) > 0",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "ekyc_face_nb_duplicate_nids_rule_2",
+                "title": "(eKYC07) Tìm thấy khuôn mặt KH trong cơ sở dữ liệu hiện tại với số CMND khác với số CMND mà Khách hàng cung cấp",
+                "evaluation": "ekyc_face_nb_duplicate_nids > 0 && length(old_id_card_number) == 0 && !(ekyc_face_max_duplicate_nid_length == 9 && length(id_card_number) == 12)",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "id_card_expired",
+                "title": "(BR17) CMND quá hạn sử dụng",
+                "evaluation": "id_card_issued_date != nil && time_age(id_card_issued_date) >= 15",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "cccd_expired",
+                "title": "(BR17) CCCD quá hạn sử dụng",
+                "evaluation": "id_card_expired_date != nil && range_time(id_card_expired_date,'0001-01-01',time_now())",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "bad_debt",
+                "title": "(BR12.I) Có nợ nhóm 2 trở lên",
+                "evaluation": "s11t_max_debt_group >= 2 || s11t_max_debt_group_cif >= 2 || s11t_max_debt_group_other >= 2 || s11t_max_debt_group_other_cif >= 2 || s11a_max_debt_group >= 2 || s11a_nb_other_bad_debt > 0 || s11a_max_debt_group_old_nid >= 2 || s11a_nb_other_bad_debt_old_nid > 0 || s11a_max_debt_group_cif >= 2 || s11a_nb_other_bad_debt_cif > 0",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "cic_late_payment",
+                "title": "(BR12.I) Có dư nợ chậm thanh toán trong 10 ngày",
+                "evaluation": "s11t_amt_overdue_10d > 0 || s11t_amt_overdue_10d_cif > 0 || s11a_amt_overdue_10d > 0 || s11a_amt_overdue_10d_old_nid > 0 || s11a_amt_overdue_10d_cif > 0",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "bad_debt_in_36m",
+                "title": "(BR12.III) Có nợ xấu trong vòng 36 tháng",
+                "evaluation": "s11t_amt_bad_debt_vnd_in_36m > 0 || s11t_amt_bad_debt_vnd_in_36m_cif > 0 || s11t_amt_bad_debt_usd_in_36m > 0 || s11t_amt_bad_debt_usd_in_36m_cif > 0 || s11t_bad_debt_overdue_90d_in_36m || s11t_bad_debt_overdue_90d_in_36m_cif || s11a_amt_bad_debt_vnd_in_36m > 0 || s11a_amt_bad_debt_usd_in_36m > 0 || s11a_amt_bad_debt_vnd_in_36m_old_nid > 0 || s11a_amt_bad_debt_usd_in_36m_old_nid > 0 || s11a_amt_bad_debt_vnd_in_36m_cif > 0 || s11a_amt_bad_debt_usd_in_36m_cif > 0 || s11a_bad_debt_overdue_90d_in_36m || s11a_bad_debt_overdue_90d_in_36m_old_id || s11a_bad_debt_overdue_90d_in_36m_cif",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "condition_group2",
+                "title": "(BR12.II) Có nợ nhóm 2 trong vòng 6 tháng hoặc có nợ xấu trả chậm hơn 30 ngày trong vòng 36 tháng",
+                "evaluation": "s11t_group2_in_6m > 0 || s11t_group2_in_6m_cif > 0 || s11t_bad_debt_overdue_10d_in_6m || s11t_bad_debt_overdue_10d_in_6m_cif || s11a_group2_in_6m > 0 || s11a_group2_in_6m_old_nid > 0 || s11a_group2_in_6m_cif > 0 || s11a_bad_debt_overdue_30d_in_36m || s11a_bad_debt_overdue_30d_in_36m_old_id || s11a_bad_debt_overdue_30d_in_36m_cif",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "vamc",
+                "title": "(BR12.IV) Có dư nợ VAMC",
+                "evaluation": "s11t_vamc == true || s11t_vamc_cif == true || s11a_vamc == true || s11a_vamc_old_nid == true || s11a_vamc_cif == true",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "bad_debt_group",
+                "title": "(BR12.VI) KH có nhóm nợ xấu ngoại bảng",
+                "evaluation": "s11t_bad_debt_group == true || s11t_bad_debt_group_cif == true || s11t_bad_debt_group_other == true || s11t_bad_debt_group_other_cif == true || s11a_bad_debt_group == true || s11a_bad_debt_group_old_nid == true || s11a_bad_debt_group_cif == true",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "pcb_bad_debt_in_1m",
+                "title": "(BR11.I) PCB Có nợ nhóm 2 trở lên trong vòng 1 tháng",
+                "evaluation": "pcb_instalments_max_debt_group_in_1m >= 2 || pcb_noninstalments_max_debt_group_in_1m >= 2 || pcb_cards_max_debt_group_in_1m >= 2 || pcb_instalments_max_debt_group_in_1m_old_nid >= 2 || pcb_noninstalments_max_debt_group_in_1m_old_nid >= 2 || pcb_cards_max_debt_group_in_1m_old_nid >= 2 || pcb_instalments_max_debt_group_in_1m_cif >= 2 || pcb_noninstalments_max_debt_group_in_1m_cif >= 2 || pcb_cards_max_debt_group_in_1m_cif >= 2",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "pcb_bad_debt_in_6m",
+                "title": "(BR11.II) PCB Có nợ nhóm 2 trở lên trong vòng 6 tháng",
+                "evaluation": "pcb_instalments_max_debt_group_in_6m >= 2 || pcb_noninstalments_max_debt_group_in_6m >= 2 || pcb_cards_max_debt_group_in_6m >= 2 || pcb_instalments_max_debt_group_in_6m_old_nid >= 2 || pcb_noninstalments_max_debt_group_in_6m_old_nid >= 2 || pcb_cards_max_debt_group_in_6m_old_nid >= 2 || pcb_instalments_max_debt_group_in_6m_cif >= 2 || pcb_noninstalments_max_debt_group_in_6m_cif >= 2 || pcb_cards_max_debt_group_in_6m_cif >= 2",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "pcb_bad_debt_in_36m",
+                "title": "(BR11.III) PCB Có nợ nhóm 3 trở lên trong vòng 36 tháng",
+                "evaluation": "pcb_instalments_max_debt_group_in_36m >= 3 || pcb_noninstalments_max_debt_group_in_36m >= 3 || pcb_cards_max_debt_group_in_36m >= 3 || pcb_instalments_max_debt_group_in_36m_old_nid >= 3 || pcb_noninstalments_max_debt_group_in_36m_old_nid >= 3 || pcb_cards_max_debt_group_in_36m_old_nid >= 3 || pcb_instalments_max_debt_group_in_36m_cif >= 3 || pcb_noninstalments_max_debt_group_in_36m_cif >= 3 || pcb_cards_max_debt_group_in_36m_cif >= 3",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "pcb_too_many_relationships",
+                "title": "(BR11.V) PCB Có quan hệ tín dụng với nhiều hơn 3 TCTD",
+                "evaluation": "pcb_nb_relationships > 3 || pcb_nb_relationships_old_nid > 3 || pcb_nb_relationships_cif > 3",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "pcb_too_many_relationships_and_high_risk_grade",
+                "title": "(BR11.V) PCB có quan hệ tín dụng với nhiều hơn 2 TCTD và có risk grade thuộc nhóm C, D, E, F",
+                "evaluation": "(pcb_nb_relationships >= 2 || pcb_nb_relationships_old_nid >= 2 || pcb_nb_relationships_cif >= 2) && ascore_risk_grade IN ('C','D','E','F')",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "pcb_cb_contract_code",
+                "title": "(BR24) KH có trên 3 request vay trong 30 ngày",
+                "evaluation": "(pcb_nb_cb_contract_code > 3 || pcb_nb_cb_contract_code_old_nid > 3 || pcb_nb_cb_contract_code_cif > 3) &&  ascore_risk_grade IN ('B','C','D','E','F','G')",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "pcb_granted_unsecured_loan",
+                "title": "(BR25) KH có tổng số tiền tín dụng không có TSĐB từ 30tr trở lên trong 30 ngày",
+                "evaluation": "pcb_unsecured_loan_amount >= 30000000 || pcb_unsecured_loan_amount_old_nid >= 30000000 || pcb_unsecured_loan_amount_cif >= 30000000",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "cookie_id_used_before_with_diff_name",
+                "title": "(FR03) abnormal_cookie",
+                "evaluation": "abnormal_cookie == true && (eligibility_check_status == 'success' && marketing_channel != 'partners')",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "email_used_before_with_diff_name",
+                "title": "abnormal_email",
+                "evaluation": "abnormal_email == true",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "ascore_risk_01",
+                "title": "(BR32.01) Ascore risk",
+                "evaluation": "should_ko_using_ascore && marketing_channel == 'organic' && ascore_risk_grade IN ('C','D','E','F','G')",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "ascore_risk_02",
+                "title": "(BR32.02) Ascore risk",
+                "evaluation": "should_ko_using_ascore && marketing_channel == 'other' && ascore_risk_grade IN ('C','D','E','F','G')",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "ascore_risk_03",
+                "title": "(BR32.03) Ascore risk",
+                "evaluation": "should_ko_using_ascore && marketing_channel == 'partners' && ascore_risk_grade IN ('C','D','E','F','G')",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "ascore_risk_04_01",
+                "title": "(BR32.04_01) Ascore risk",
+                "evaluation": "should_ko_using_ascore && marketing_channel == 'performance_marketing' && marketing_channel_subgroup == 'affiliate' && ascore_risk_grade IN ('B','C','D','E','F','G')",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "ascore_risk_04_02",
+                "title": "(BR32.04_02) Ascore risk",
+                "evaluation": "marketing_channel == 'performance_marketing' && marketing_channel_subgroup == 'evo_app'",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "ascore_risk_04",
+                "title": "(BR32.04) Ascore risk",
+                "evaluation": "should_ko_using_ascore && marketing_channel == 'performance_marketing' && ascore_risk_grade IN ('C','D','E','F','G')",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "ascore_risk_05",
+                "title": "(BR32.05) Ascore risk",
+                "evaluation": "should_ko_using_ascore && marketing_channel == 'esms' && length(sms_offer_product_code) > 0 && ascore_risk_grade IN ('C','D','E','F','G')",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "ascore_risk_06",
+                "title": "(BR32.06) Ascore risk",
+                "evaluation": "should_ko_using_ascore && marketing_channel == 'esms' && length(sms_offer_product_code) == 0 && ascore_risk_grade IN ('C','D','E','F','G')",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "ascore_risk_07",
+                "title": "(BR32.07) Ascore risk grade",
+                "evaluation": "ascore_risk_grade IN ('D','E','F','G')",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "ascore_risk_08",
+                "title": "(BR32.08) Ascore risk",
+                "evaluation": "should_ko_using_ascore_v3 && ascore_v3_calculated > 0 && ascore_v3_calculated < 720",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "dscore_risk",
+                "title": "D-score risk",
+                "evaluation": "dscore >= 90",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "has_ekyc_alert",
+                "title": "(eKYC08) KH bị cảnh báo bởi các dịch vụ eKYC",
+                "evaluation": "has_ekyc_alert == true",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "ascore_pending_reappraising",
+                "title": "Khách hàng chưa có kết quả ascore khi thẩm định lại",
+                "evaluation": "ascore_risk_grade == 'UNDEFINED' && is_reappraising",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "ebank_risk_status",
+                "title": "(BR26) Trạng thái ebank risk của KH",
+                "evaluation": "ebank_risk == true",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "duplicate_approval_rejected",
+                "title": "Tồn tại app có cùng số điện thoại đã được approved hoặc cùng số CMND đã bị rejected",
+                "evaluation": "has_duplicate_approval == true",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "phone_is_ref_of_blacklist",
+                "title": "(BR28.1) Số điện thoại của KH nằm trong danh sách đen",
+                "evaluation": "delinquent_check_phone_is_ref_of_blacklist == true",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "ref_is_blacklist",
+                "title": "(BR28.2) Số điện thoại người thân của KH nằm trong danh sách đen",
+                "evaluation": "delinquent_check_ref_is_blacklist == true",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "low_last_telco_score",
+                "title": "(BR29) User re-apply but have low credit score or low ascore in the last 12 months",
+                "evaluation": "repeated_customer_check_phone_number == true || repeated_customer_check_id_number == true",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "high_risk_channel",
+                "title": "(BR30.1) If the client has utm source is is_affiliate_channel, the lead is to be rejected",
+                "evaluation": "is_affiliate_channel == true",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "cif_check_no_debit_failed",
+                "title": "(BR27) KH có kết quả check cif no debit failed",
+                "evaluation": "((cif_code == 'diff_cif' && cif_code_old_nid == 'same_cif_same_name') || (cif_code == 'same_cif_same_name' && cif_code_old_nid == 'diff_cif')) && cif_no_debit_result == 'failed'",
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "nfc_id_tampering_alert",
+                "title": "(eKYC15) Bị cảnh báo NFC check id card tampering",
+                "evaluation": "nfc_id_tampering_verdict == 'nfc_info_not_match' && array_string_contain(nfc_id_tampering_info,'nfc_id')",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "nfc_verify_id_tampering_alert",
+                "title": "(eKYC15) Bị cảnh báo NFC verify id card tampering",
+                "evaluation": "nfc_verify_id_tampering_verdict == 'nfc_info_not_match' && array_string_contain(nfc_verify_id_tampering_info,'nfc_id')",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "nfc_integrity_status",
+                "title": "(eKYC12) Bị cảnh báo NFC integrity status",
+                "evaluation": "(nfc_integrity_status == 'alert' && nfc_bca_status != 'good') || (nfc_id_tampering_integrity_status == 'alert' && nfc_id_tampering_bca_status != 'good')",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "nfc_clone_status",
+                "title": "(eKYC13) Bị cảnh báo NFC clone status",
+                "evaluation": "(nfc_clone_status == 'alert' && nfc_bca_status != 'good') || (nfc_id_tampering_clone_status == 'alert' && nfc_id_tampering_bca_status != 'good')",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "nfc_bca_status",
+                "title": "(eKYC14) Bị cảnh báo NFC kiểm tra với BCA",
+                "evaluation": "nfc_bca_status == 'alert' || nfc_id_tampering_bca_status == 'alert'",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "nfc_verify_h2h_status",
+                "title": "(eKYC18) Kết quả kiểm tra NFC với TPBank không thành công",
+                "evaluation": "nfc_verify_h2h_status == 'failure'",
+                "is_representative_node": true,
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            }
+        ],
+        "fallback": {
+            "name": "passed_all_rules",
+            "title": "Khách hàng tiếp tục luồng hiện tại",
+            "output": {
+                "status": "accepted"
+            }
+        }
+    }
+}

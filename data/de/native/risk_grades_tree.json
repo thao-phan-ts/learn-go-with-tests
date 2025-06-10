@@ -1,0 +1,55 @@
+{
+    "name": "EVO NATIVE - RISK GRADES TREE",
+    "uuid": "796428a0-60b2-4478-979c-855c4a5cfba2",
+    "client_code": "tpbank",
+    "form_uuid": "a06114d6-d898-4187-82f5-73fe342ef997",
+    "active": true,
+    "engine_type": "risk_grade",
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "income_c2",
+                "title": "Mức độ chắc chắn của thu nhập. Thông tin thẻ tín dụng không có tài sản đảm bảo",
+                "evaluation": "true",
+                "sub_tree_uuid": "44f56c5a-c986-42e9-8ccf-249af983537d"
+            },
+            {
+                "name": "income_c3",
+                "title": "Mức độ chắc chắn của thu nhập. Telco Income Score",
+                "evaluation": "true",
+                "sub_tree_uuid": "ba9f2d20-8d34-4cb8-a1ca-57b77eab6ce0"
+            },
+            {
+                "name": "income_c4",
+                "title": "Mức độ chắc chắn của thu nhập. Credit risk grade",
+                "evaluation": "true",
+                "sub_tree_uuid": "ccda2228-4aa3-452e-a89b-36ffe6a06f3c"
+            },
+            {
+                "name": "manual_cif_check",
+                "title": "Cần phải cif check thủ công hay không",
+                "evaluation": "true",
+                "sub_tree_uuid": "23224f9d-f564-46a8-adcd-5d34b170af3a"
+            },
+            {
+                "name": "ascore",
+                "title": "Rủi ro điểm ascore",
+                "evaluation": "true",
+                "sub_tree_uuid": "02b2f77b-8ad9-4a59-811f-c106ea41470c"
+            },
+            {
+                "name": "pcb_group",
+                "title": "Pcb group",
+                "evaluation": "true",
+                "sub_tree_uuid": "5011cb59-e917-4340-9c3a-e7cf00816426"
+            },
+            {
+                "name": "max_pos_credit_limit",
+                "title": "Tổng hạn mức tối đa có thể được quẹt tại máy POS",
+                "evaluation": "true",
+                "sub_tree_uuid": "b5437831-167a-4120-bc25-eb06a1e2e23f"
+            }
+        ]
+    }
+}

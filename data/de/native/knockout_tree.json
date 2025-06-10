@@ -1,0 +1,29 @@
+{
+    "name": "EVO NATIVE - KNOCKOUT DECISION TREE",
+    "uuid": "207ea140-c0aa-4503-a647-642a95b864d6",
+    "client_code": "tpbank",
+    "form_uuid": "a06114d6-d898-4187-82f5-73fe342ef997",
+    "active": true,
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "is_offline_merchant_flow_with_uw_state_conditions",
+                "title": "TPBank EVO offline merchant flow at final state",
+                "evaluation": "is_offline_merchant == true && valid_uw_state_conditions == true && customer_is_at_store == true",
+                "sub_tree_uuid": "08465a8d-b0f4-4e40-b1b0-132367360e3c"
+            },
+            {
+                "name": "is_offline_merchant_flow",
+                "title": "TPBank EVO offline merchant flow",
+                "evaluation": "is_offline_merchant == true && valid_uw_state_conditions == false",
+                "sub_tree_uuid": "08465a8d-b0f4-4e40-b1b0-132367360e3c"
+            }
+        ],
+        "fallback": {
+            "name": "is_normal_flow",
+            "title": "TPBank EVO normal flow",
+            "sub_tree_uuid": "e8edb17e-43c9-48fa-80b0-217db93256da"
+        }
+    }
+}

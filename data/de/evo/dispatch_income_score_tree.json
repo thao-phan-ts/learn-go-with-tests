@@ -1,0 +1,41 @@
+{
+    "uuid": "61782459-1d74-4ac3-9c6a-a670739f0fea",
+    "name": "TPBANK CHECK DISPATCH INCOME SCORE SERVICE",
+    "client_code": "tpbank",
+    "form_uuid": "7f3ad9fe-3adb-4d6b-bf87-9763f3fc7379",
+    "active": true,
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "income_score",
+                "title": "Khách hàng sử dụng số điện thoại thuộc nhà mạng được TS hỗ trợ",
+                "evaluation": "dispatch_service_name == 'income_score'",
+                "nodes": [
+                    {
+                        "name": "support_income_score",
+                        "title": "Khách hàng được truy vấn Income Score",
+                        "evaluation": "telco_code == 'viettel'",
+                        "output": {
+                            "status": "accepted"
+                        }
+                    }
+                ],
+                "fallback": {
+                    "name": "fallback_income_score",
+                    "title": "Nhà mạng mà khách hàng đang sử dụng chưa hỗ trợ Income Score",
+                    "output": {
+                        "status": "ignored"
+                    }
+                }
+            }
+        ],
+        "fallback": {
+            "name": "fallback_root",
+            "title": "Không thỏa điều kiện",
+            "output": {
+                "status": "ignored"
+            }
+        }
+    }
+}

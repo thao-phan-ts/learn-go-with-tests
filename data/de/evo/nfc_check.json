@@ -1,0 +1,28 @@
+{
+    "name": "TPBANK EVO - NFC CHECK",
+    "uuid": "bb0679f0-e72b-43f3-a9a2-ff85a2ba2d95",
+    "client_code": "tpbank",
+    "form_uuid": "7f3ad9fe-3adb-4d6b-bf87-9763f3fc7379",
+    "active": true,
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "nfc_existed",
+                "title": "KH đã xác thực NFC",
+                "evaluation": "nfc_existed == true",
+                "output": {
+                    "status": "approved",
+                    "next_state": "success"
+                }
+            }
+        ],
+        "fallback": {
+            "name": "accepted",
+            "title": "KH đi tiếp luồng",
+            "output": {
+                "status": "accepted"
+            }
+        }
+    }
+}

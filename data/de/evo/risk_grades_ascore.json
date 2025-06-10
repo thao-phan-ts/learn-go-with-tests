@@ -1,0 +1,193 @@
+{
+    "name": "TPBANK RISK GRADES TREE - ASCORE",
+    "uuid": "e306039d-0e3f-4c03-8a37-9e0bf6fda543",
+    "client_code": "tpbank",
+    "form_uuid": "7f3ad9fe-3adb-4d6b-bf87-9763f3fc7379",
+    "active": true,
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "ts_supported_telcos",
+                "title": "TS supported telcos (Mobifone/Vinaphone)",
+                "evaluation": "is_supported_telco_score == true",
+                "nodes": [
+                    {
+                        "name": "ascore_risk_grade_a",
+                        "title": "Ascore từ 810",
+                        "evaluation": "ascore >= 810",
+                        "output": {
+                            "level": "A",
+                            "multiplier": 3,
+                            "max_credit_limit": 50000000
+                        }
+                    },
+                    {
+                        "name": "ascore_risk_grade_b",
+                        "title": "Ascore từ 760",
+                        "evaluation": "ascore >= 760",
+                        "output": {
+                            "level": "B",
+                            "multiplier": 2.5,
+                            "max_credit_limit": 40000000
+                        }
+                    },
+                    {
+                        "name": "ascore_risk_grade_c",
+                        "title": "Ascore từ 720",
+                        "evaluation": "ascore >= 720",
+                        "output": {
+                            "level": "C",
+                            "multiplier": 1.8,
+                            "max_credit_limit": 30000000
+                        }
+                    },
+                    {
+                        "name": "ascore_risk_grade_d",
+                        "title": "Ascore từ 690",
+                        "evaluation": "ascore >= 690",
+                        "output": {
+                            "level": "D",
+                            "multiplier": 1.2,
+                            "max_credit_limit": 20000000
+                        }
+                    },
+                    {
+                        "name": "ascore_risk_grade_e",
+                        "title": "Ascore từ 670",
+                        "evaluation": "ascore >= 670",
+                        "output": {
+                            "level": "E",
+                            "multiplier": 1.2,
+                            "max_credit_limit": 12000000
+                        }
+                    },
+                    {
+                        "name": "ascore_risk_grade_f",
+                        "title": "Ascore từ 610",
+                        "evaluation": "ascore >= 610",
+                        "output": {
+                            "level": "F",
+                            "multiplier": 1.2,
+                            "max_credit_limit": 10000000
+                        }
+                    },
+                    {
+                        "name": "ascore_risk_grade_g",
+                        "title": "Ascore từ [0-609]",
+                        "evaluation": "ascore > 0 && ascore < 610",
+                        "output": {
+                            "level": "G",
+                            "multiplier": 0,
+                            "max_credit_limit": 0
+                        }
+                    }
+                ],
+                "fallback": {
+                    "name": "fallback_root",
+                    "title": "Chưa có kết quả ascore",
+                    "output": {
+                        "level": "UNDEFINED",
+                        "multiplier": 0,
+                        "max_credit_limit": 50000000
+                    }
+                }
+            }
+        ],
+        "fallback": {
+            "name": "unsupported_telcos",
+            "title": "Unsupported telcos (Viettel and others)",
+            "nodes": [
+                {
+                    "name": "ascore_risk_grade_aa",
+                    "title": "Ascore từ 850",
+                    "evaluation": "ascore_calculated >= 850",
+                    "output": {
+                        "level": "AA",
+                        "multiplier": 3.5,
+                        "max_credit_limit": 75000000
+                    }
+                },
+                {
+                    "name": "ascore_risk_grade_a",
+                    "title": "Ascore từ 825",
+                    "evaluation": "ascore_calculated >= 825",
+                    "output": {
+                        "level": "A",
+                        "multiplier": 3,
+                        "max_credit_limit": 50000000
+                    }
+                },
+                {
+                    "name": "ascore_risk_grade_b",
+                    "title": "Ascore từ 795",
+                    "evaluation": "ascore_calculated >= 795",
+                    "output": {
+                        "level": "B",
+                        "multiplier": 2.5,
+                        "max_credit_limit": 40000000
+                    }
+                },
+                {
+                    "name": "ascore_risk_grade_c",
+                    "title": "Ascore từ 775",
+                    "evaluation": "ascore_calculated >= 775",
+                    "output": {
+                        "level": "C",
+                        "multiplier": 1.8,
+                        "max_credit_limit": 30000000
+                    }
+                },
+                {
+                    "name": "ascore_risk_grade_d",
+                    "title": "Ascore từ 740",
+                    "evaluation": "ascore_calculated >= 740",
+                    "output": {
+                        "level": "D",
+                        "multiplier": 1.2,
+                        "max_credit_limit": 20000000
+                    }
+                },
+                {
+                    "name": "ascore_risk_grade_e",
+                    "title": "Ascore từ 710",
+                    "evaluation": "ascore_calculated >= 710",
+                    "output": {
+                        "level": "E",
+                        "multiplier": 1.2,
+                        "max_credit_limit": 12000000
+                    }
+                },
+                {
+                    "name": "ascore_risk_grade_f",
+                    "title": "Ascore từ 670",
+                    "evaluation": "ascore_calculated >= 670",
+                    "output": {
+                        "level": "F",
+                        "multiplier": 1.2,
+                        "max_credit_limit": 10000000
+                    }
+                },
+                {
+                    "name": "ascore_risk_grade_g",
+                    "title": "Ascore từ [0-670]",
+                    "evaluation": "ascore_calculated > 0 && ascore_calculated < 670",
+                    "output": {
+                        "level": "G",
+                        "multiplier": 0,
+                        "max_credit_limit": 0
+                    }
+                }
+            ],
+            "fallback": {
+                "name": "fallback_root",
+                "title": "Chưa có kết quả ascore",
+                "output": {
+                    "level": "UNDEFINED",
+                    "multiplier": 0,
+                    "max_credit_limit": 50000000
+                }
+            }
+        }
+    }
+}

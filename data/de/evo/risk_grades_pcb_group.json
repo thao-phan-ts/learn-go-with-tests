@@ -1,0 +1,35 @@
+{
+    "name": "TPBANK RISK GRADES TREE - PCB GROUP",
+    "uuid": "d3fde7cc-4d67-44bb-ba61-feedf67d2e0a",
+    "client_code": "tpbank",
+    "form_uuid": "7f3ad9fe-3adb-4d6b-bf87-9763f3fc7379",
+    "active": true,
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "pcb_group_granted",
+                "title": "(PGC01, PGC02) Tồn tại ít nhất 1 hợp đồng có trạng thái pcb granted",
+                "evaluation": "pcb_group_current_id == \"granted\" || pcb_group_old_id == \"granted\"",
+                "output": {
+                    "value": "granted"
+                }
+            },
+            {
+                "name": "pcb_group_not_granted_ever",
+                "title": "(PGC03, PGC04, PGC05) Hợp đồng có trạng thái not granted",
+                "evaluation": "pcb_group_current_id == \"not-granted-ever\" || pcb_group_old_id == \"not-granted-ever\"",
+                "output": {
+                    "value": "not-granted-ever"
+                }
+            }
+        ],
+        "fallback": {
+            "name": "fallback_root",
+            "title": "(PGC06) Không có thông tin trong báo cáo PCB",
+            "output": {
+                "value": "no-pcb-report"
+            }
+        }
+    }
+}

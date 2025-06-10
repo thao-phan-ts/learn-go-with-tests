@@ -1,0 +1,49 @@
+{
+    "uuid": "ed8d1963-4d20-499c-8655-72b3ec7c1d32",
+    "name": "TPBANK CHECK DISPATCH A SERVICE",
+    "client_code": "tpbank",
+    "form_uuid": "7f3ad9fe-3adb-4d6b-bf87-9763f3fc7379",
+    "active": true,
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "check_credit_score",
+                "title": "Khách hàng không cung cấp CMND",
+                "evaluation": "dispatch_service_name == 'credit_score'",
+                "nodes": [
+                    {
+                        "name": "has_credit_score",
+                        "title": "Đã có score",
+                        "evaluation": "length(lead_score) > 0",
+                        "output": {
+                            "status": "ignored"
+                        }
+                    },
+                    {
+                        "name": "has_sms_offer_product",
+                        "title": "Không check credit score, nếu tồn tại sms offer product",
+                        "evaluation": "length(sms_offer_product_code) > 0",
+                        "output": {
+                            "status": "ignored"
+                        }
+                    }
+                ],
+                "fallback": {
+                    "name": "fallback_credit_score",
+                    "title": "Thỏa điều kiện check credit score",
+                    "output": {
+                        "status": "accepted"
+                    }
+                }
+            }
+        ],
+        "fallback": {
+            "name": "fallback_root",
+            "title": "Thỏa điều kiện",
+            "output": {
+                "status": "accepted"
+            }
+        }
+    }
+}

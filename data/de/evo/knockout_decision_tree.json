@@ -1,0 +1,47 @@
+{
+    "name": "TPBANK EVO - KNOCKOUT DECISION TREE",
+    "uuid": "34b3e36e-931e-4a6e-a60e-c7c477032e34",
+    "client_code": "tpbank",
+    "form_uuid": "7f3ad9fe-3adb-4d6b-bf87-9763f3fc7379",
+    "active": true,
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "ts_supported_telcos",
+                "title": "TS supported telcos (Mobifone/Vinaphone)",
+                "evaluation": "is_supported_telco_score == true",
+                "nodes": [
+                    {
+                        "name": "is_offline_merchant_flow",
+                        "title": "TPBank EVO offline merchant flow",
+                        "evaluation": "is_offline_merchant == true",
+                        "sub_tree_uuid": "d4f14abc-b444-4234-a8b4-9b44b93a6a55"
+                    }
+                ],
+                "fallback": {
+                    "name": "is_normal_flow",
+                    "title": "TPBank EVO normal flow",
+                    "sub_tree_uuid": "c37521c6-998b-4f5a-9e35-f3840d3ab8b1"
+                }
+            }
+        ],
+        "fallback": {
+            "name": "unsupported_telcos",
+            "title": "Unsupported telcos (Viettel and others)",
+            "nodes": [
+                {
+                    "name": "is_offline_merchant_flow",
+                    "title": "TPBank EVO offline merchant flow",
+                    "evaluation": "is_offline_merchant == true",
+                    "sub_tree_uuid": "e7f072ae-9919-4699-bd74-b07157f7497a"
+                }
+            ],
+            "fallback": {
+                "name": "is_normal_flow",
+                "title": "TPBank EVO normal flow",
+                "sub_tree_uuid": "3709b379-fba0-435d-aa46-176a338f4d29"
+            }
+        }
+    }
+}

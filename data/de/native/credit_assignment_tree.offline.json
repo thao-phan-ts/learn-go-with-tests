@@ -1,0 +1,116 @@
+{
+    "name": "EVO NATIVE - CREDIT ASSIGNMENT TREE - OFFLINE MERCHANT",
+    "uuid": "b326661d-cc16-4e7e-b8d2-1f4a6a89cb37",
+    "client_code": "tpbank",
+    "form_uuid": "a06114d6-d898-4187-82f5-73fe342ef997",
+    "active": true,
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "ascore_undefined",
+                "title": "ascore risk grade UNDEFINED",
+                "evaluation": "ascore_risk_grade == 'UNDEFINED'",
+                "scoring": "10000000",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "credit_assigment_mwg_reappraising_decision",
+                "title": "Credit assignment for MWG final decision",
+                "evaluation": "lead_source IN ('mwg', 'mwg_pos') && is_reappraising == true",
+                "nodes": [
+                    {
+                        "name": "offline_low_to_grow_credit_limit_mwg_reappraising",
+                        "title": "Khách hàng thuộc nhóm Low and Grow Offline",
+                        "evaluation": "ascore_risk_grade == 'C'",
+                        "scoring": "max_number(pa_credit_limit,\"10000000\")",
+                        "output": {
+                            "status": "accepted"
+                        }
+                    },
+                    {
+                        "name": "ascore_abc_mwg_reappraising",
+                        "title": "Khách hàng có rủi ro xếp hạng tín dụng AA/A/B/C",
+                        "evaluation": "ascore_risk_grade IN ('AA','A','B','C')",
+                        "scoring": "max_number(pa_credit_limit,million_floor(cap_value(min_number(max_number(credit_limit_ic2,min_number(30000000,credit_limit_ic4),min_credit_limit_ic),offline_merchant_max_credit_limit_ic), dscore_cap_limit, dscore_cap_multiplier)))",
+                        "output": {
+                            "status": "accepted"
+                        }
+                    },
+                    {
+                        "name": "ascore_def_credit_limit_ic2_gt0_mwg_reappraising",
+                        "title": "Khách hàng có rủi ro xếp hạng tín dụng D/E/F và credit_limit_ic2 > 0",
+                        "evaluation": "ascore_risk_grade IN ('D','E','F') && credit_limit_ic2 > 0",
+                        "scoring": "max_number(pa_credit_limit,million_floor(cap_value(min_number(max_number(min_number(credit_limit_ic2,credit_limit_ic4),min_credit_limit_ic),offline_merchant_max_credit_limit_ic), dscore_cap_limit, dscore_cap_multiplier)))",
+                        "output": {
+                            "status": "accepted"
+                        }
+                    },
+                    {
+                        "name": "ascore_def_credit_limit_ic2_eq0_mwg_reappraising",
+                        "title": "Khách hàng có rủi ro xếp hạng tín dụng D/E/F và credit_limit_ic2 = 0",
+                        "evaluation": "ascore_risk_grade IN ('D','E','F') && credit_limit_ic2 == 0",
+                        "scoring": "max_number(pa_credit_limit,million_floor(cap_value(min_number(max_number(credit_limit_ic4,min_credit_limit_ic),offline_merchant_max_credit_limit_ic), dscore_cap_limit, dscore_cap_multiplier)))",
+                        "output": {
+                            "status": "accepted"
+                        }
+                    }
+                ],
+                "fallback": {
+                    "name": "min_credit_limit_mwg_reappraising",
+                    "title": "Credit limit is 10000000",
+                    "scoring": "max_number(pa_credit_limit,\"10000000\")",
+                    "output": {
+                        "status": "accepted"
+                    }
+                }
+            },
+            {
+                "name": "offline_low_to_grow_credit_limit",
+                "title": "Khách hàng thuộc nhóm Low and Grow Offline",
+                "evaluation": "ascore_risk_grade == 'C'",
+                "scoring": "10000000",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "ascore_abc",
+                "title": "Khách hàng có rủi ro xếp hạng tín dụng AA/A/B/C",
+                "evaluation": "ascore_risk_grade IN ('AA','A','B','C')",
+                "scoring": "million_floor(cap_value(min_number(max_number(credit_limit_ic2,min_number(30000000,credit_limit_ic4),min_credit_limit_ic),offline_merchant_max_credit_limit_ic), dscore_cap_limit, dscore_cap_multiplier))",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "ascore_def_credit_limit_ic2_gt0",
+                "title": "Khách hàng có rủi ro xếp hạng tín dụng D/E/F và credit_limit_ic2 > 0",
+                "evaluation": "ascore_risk_grade IN ('D','E','F') && credit_limit_ic2 > 0",
+                "scoring": "million_floor(cap_value(min_number(max_number(min_number(credit_limit_ic2,credit_limit_ic4),min_credit_limit_ic),offline_merchant_max_credit_limit_ic), dscore_cap_limit, dscore_cap_multiplier))",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "ascore_def_credit_limit_ic2_eq0",
+                "title": "Khách hàng có rủi ro xếp hạng tín dụng D/E/F và credit_limit_ic2 = 0",
+                "evaluation": "ascore_risk_grade IN ('D','E','F') && credit_limit_ic2 == 0",
+                "scoring": "million_floor(cap_value(min_number(max_number(credit_limit_ic4,min_credit_limit_ic),offline_merchant_max_credit_limit_ic), dscore_cap_limit, dscore_cap_multiplier))",
+                "output": {
+                    "status": "accepted"
+                }
+            }
+        ],
+        "fallback": {
+            "name": "min_credit_limit",
+            "title": "Credit limit is 10000000",
+            "scoring": "10000000",
+            "output": {
+                "status": "accepted"
+            }
+        }
+    }
+}

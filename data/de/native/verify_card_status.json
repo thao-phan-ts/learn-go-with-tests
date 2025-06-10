@@ -1,0 +1,306 @@
+{
+    "name": "EVO NATIVE - VERIFY CARD STATUS",
+    "uuid": "45123c68-e73d-494a-b55c-b3ea6f1fdacc",
+    "client_code": "tpbank",
+    "form_uuid": "a06114d6-d898-4187-82f5-73fe342ef997",
+    "active": true,
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "bad_debt",
+                "title": "(BR12.I) Có nợ nhóm 2 trở lên",
+                "evaluation": "s11t_max_debt_group >= 2 || s11t_max_debt_group_other >= 2 || s11a_max_debt_group >= 2 || s11a_max_debt_group_old_nid >= 2 || s11a_nb_other_bad_debt > 0 || s11a_nb_other_bad_debt_old_nid > 0",
+                "output": {
+                    "status": "shift_state",
+                    "next_state": "card_status.information",
+                    "lock_card": true,
+                    "flow_type": "auto_pcb",
+                    "is_final_verify": true
+                }
+            },
+            {
+                "name": "cic_late_payment",
+                "title": "(BR12.I) Có dư nợ chậm thanh toán trong 10 ngày",
+                "evaluation": "s11t_amt_overdue_10d > 0 || s11a_amt_overdue_10d > 0 || s11a_amt_overdue_10d_old_nid > 0",
+                "output": {
+                    "status": "shift_state",
+                    "next_state": "card_status.information",
+                    "lock_card": true,
+                    "flow_type": "auto_pcb",
+                    "is_final_verify": true
+                }
+            },
+            {
+                "name": "bad_debt_in_36m",
+                "title": "(BR12.III) Có nợ xấu trong vòng 36 tháng",
+                "evaluation": "!(lead_source in ('mwg', 'mwg_pos')) && (s11t_amt_bad_debt_vnd_in_36m > 0 || s11t_amt_bad_debt_usd_in_36m > 0 || s11t_bad_debt_overdue_90d_in_36m || s11a_amt_bad_debt_vnd_in_36m > 0 || s11a_amt_bad_debt_vnd_in_36m_old_nid > 0 || s11a_amt_bad_debt_usd_in_36m > 0 || s11a_amt_bad_debt_usd_in_36m_old_nid > 0 || s11a_bad_debt_overdue_90d_in_36m || s11a_bad_debt_overdue_90d_in_36m_old_id)",
+                "output": {
+                    "status": "shift_state",
+                    "next_state": "card_status.information",
+                    "lock_card": true,
+                    "flow_type": "auto_pcb",
+                    "is_final_verify": true
+                }
+            },
+            {
+                "name": "condition_group2",
+                "title": "(BR12.II) Có nợ nhóm 2 trong vòng 6 tháng hoặc có nợ xấu trả chậm hơn 30 ngày trong vòng 36 tháng",
+                "evaluation": "s11t_group2_in_6m > 0 || s11t_bad_debt_overdue_10d_in_6m || s11a_group2_in_6m > 0 || s11a_group2_in_6m_old_nid > 0 || s11a_bad_debt_overdue_30d_in_36m || s11a_bad_debt_overdue_30d_in_36m_old_id",
+                "output": {
+                    "status": "shift_state",
+                    "next_state": "card_status.information",
+                    "lock_card": true,
+                    "flow_type": "auto_pcb",
+                    "is_final_verify": true
+                }
+            },
+            {
+                "name": "pcb_bad_debt_in_1m",
+                "title": "(BR11.I) PCB Có nợ nhóm 2 trở lên trong vòng 1 tháng",
+                "evaluation": "pcb_instalments_max_debt_group_in_1m >= 2 || pcb_instalments_max_debt_group_in_1m_old_nid >= 2 || pcb_noninstalments_max_debt_group_in_1m >= 2 || pcb_noninstalments_max_debt_group_in_1m_old_nid >= 2 || pcb_cards_max_debt_group_in_1m >= 2 || pcb_cards_max_debt_group_in_1m_old_nid >= 2",
+                "output": {
+                    "status": "shift_state",
+                    "next_state": "card_status.information",
+                    "lock_card": true,
+                    "flow_type": "auto_pcb",
+                    "is_final_verify": true
+                }
+            },
+            {
+                "name": "pcb_bad_debt_in_6m",
+                "title": "(BR11.II) PCB Có nợ nhóm 2 trở lên trong vòng 6 tháng",
+                "evaluation": "pcb_instalments_max_debt_group_in_6m >= 2 || pcb_instalments_max_debt_group_in_6m_old_nid >= 2 || pcb_noninstalments_max_debt_group_in_6m >= 2 || pcb_noninstalments_max_debt_group_in_6m_old_nid >= 2 || pcb_cards_max_debt_group_in_6m >= 2 || pcb_cards_max_debt_group_in_6m_old_nid >= 2",
+                "output": {
+                    "status": "shift_state",
+                    "next_state": "card_status.information",
+                    "lock_card": true,
+                    "flow_type": "auto_pcb",
+                    "is_final_verify": true
+                }
+            },
+            {
+                "name": "pcb_bad_debt_in_36m",
+                "title": "(BR11.III) PCB Có nợ nhóm 3 trở lên trong vòng 36 tháng",
+                "evaluation": "pcb_instalments_max_debt_group_in_36m >= 3 || pcb_instalments_max_debt_group_in_36m_old_nid >= 3 || pcb_noninstalments_max_debt_group_in_36m >= 3 || pcb_noninstalments_max_debt_group_in_36m_old_nid >= 3 || pcb_cards_max_debt_group_in_36m >= 3 || pcb_cards_max_debt_group_in_36m_old_nid >= 3",
+                "output": {
+                    "status": "shift_state",
+                    "next_state": "card_status.information",
+                    "lock_card": true,
+                    "flow_type": "auto_pcb",
+                    "is_final_verify": true
+                }
+            },
+            {
+                "name": "pcb_too_many_relationships",
+                "title": "(BR11.V) PCB Có quan hệ tín dụng với nhiều hơn 3 TCTD",
+                "evaluation": "pcb_nb_relationships > 3 || pcb_nb_relationships_old_nid > 3",
+                "output": {
+                    "status": "shift_state",
+                    "next_state": "card_status.information",
+                    "lock_card": true,
+                    "flow_type": "auto_pcb",
+                    "is_final_verify": true
+                }
+            },
+            {
+                "name": "pcb_too_many_relationships_and_high_risk_grade",
+                "title": "(BR11.V) PCB có quan hệ tín dụng với nhiều hơn 2 TCTD và có risk grade thuộc nhóm C, D, E, F",
+                "evaluation": "!(lead_source in ('mwg', 'mwg_pos')) && (pcb_nb_relationships >= 2 || pcb_nb_relationships_old_nid >= 2) &&  ascore_risk_grade IN ('C','D','E','F')",
+                "output": {
+                    "status": "shift_state",
+                    "next_state": "card_status.information",
+                    "lock_card": true,
+                    "flow_type": "auto_pcb",
+                    "is_final_verify": true
+                }
+            },
+            {
+                "name": "vamc",
+                "title": "(BR12.IV) Có dư nợ VAMC",
+                "evaluation": "s11t_vamc == true || s11a_vamc == true || s11a_vamc_old_nid == true",
+                "output": {
+                    "status": "shift_state",
+                    "next_state": "card_status.information",
+                    "lock_card": true,
+                    "flow_type": "auto_pcb",
+                    "is_final_verify": true
+                }
+            },
+            {
+                "name": "bad_debt_group",
+                "title": "(BR12.VI) KH có nhóm nợ xấu ngoại bảng",
+                "evaluation": "s11t_bad_debt_group == true || s11t_bad_debt_group_other == true || s11a_bad_debt_group == true || s11a_bad_debt_group_old_nid == true",
+                "output": {
+                    "status": "shift_state",
+                    "next_state": "card_status.information",
+                    "lock_card": true,
+                    "flow_type": "auto_pcb",
+                    "is_final_verify": true
+                }
+            },
+            {
+                "name": "ascore_risk_01",
+                "title": "(BR32.01) Ascore risk",
+                "evaluation": "(is_offline_merchant == false || is_normal_flow_from_offline_customer_outside_store == true) && marketing_channel == 'organic' && ascore_risk_grade IN ('C','D','E','F','G')",
+                "output": {
+                    "status": "shift_state",
+                    "next_state": "card_status.information",
+                    "lock_card": true,
+                    "flow_type": "auto_pcb",
+                    "is_final_verify": true
+                }
+            },
+            {
+                "name": "ascore_risk_02",
+                "title": "(BR32.02) Ascore risk",
+                "evaluation": "(is_offline_merchant == false || is_normal_flow_from_offline_customer_outside_store == true) && marketing_channel == 'other' && ascore_risk_grade IN ('C','D','E','F','G')",
+                "output": {
+                    "status": "shift_state",
+                    "next_state": "card_status.information",
+                    "lock_card": true,
+                    "flow_type": "auto_pcb",
+                    "is_final_verify": true
+                }
+            },
+            {
+                "name": "ascore_risk_03",
+                "title": "(BR32.03) Ascore risk",
+                "evaluation": "(is_offline_merchant == false || is_normal_flow_from_offline_customer_outside_store == true) && marketing_channel == 'partners' && ascore_risk_grade IN ('C','D','E','F','G')",
+                "output": {
+                    "status": "shift_state",
+                    "next_state": "card_status.information",
+                    "lock_card": true,
+                    "flow_type": "auto_pcb",
+                    "is_final_verify": true
+                }
+            },
+            {
+                "name": "ascore_risk_04_01",
+                "title": "(BR32.04_01) Ascore risk",
+                "evaluation": "(is_offline_merchant == false || is_normal_flow_from_offline_customer_outside_store == true) && marketing_channel == 'performance_marketing' && marketing_channel_subgroup == 'affiliate' && ascore_risk_grade IN ('B','C','D','E','F','G')",
+                "output": {
+                    "status": "shift_state",
+                    "next_state": "card_status.information",
+                    "lock_card": true,
+                    "flow_type": "auto_pcb",
+                    "is_final_verify": true
+                }
+            },
+            {
+                "name": "ascore_risk_04_02",
+                "title": "(BR32.04_02) Ascore risk",
+                "evaluation": "(is_offline_merchant == false || is_normal_flow_from_offline_customer_outside_store == true) && marketing_channel == 'performance_marketing' && marketing_channel_subgroup == 'evo_app'",
+                "output": {
+                    "status": "shift_state",
+                    "next_state": "card_status.information",
+                    "lock_card": true,
+                    "flow_type": "auto_pcb",
+                    "is_final_verify": true
+                }
+            },
+            {
+                "name": "ascore_risk_04",
+                "title": "(BR32.04) Ascore risk",
+                "evaluation": "(is_offline_merchant == false || is_normal_flow_from_offline_customer_outside_store == true) && marketing_channel == 'performance_marketing' && ascore_risk_grade IN ('C','D','E','F','G')",
+                "output": {
+                    "status": "shift_state",
+                    "next_state": "card_status.information",
+                    "lock_card": true,
+                    "flow_type": "auto_pcb",
+                    "is_final_verify": true
+                }
+            },
+            {
+                "name": "ascore_risk_05",
+                "title": "(BR32.05) Ascore risk",
+                "evaluation": "(is_offline_merchant == false || is_normal_flow_from_offline_customer_outside_store == true) && marketing_channel == 'esms' && length(sms_offer_product_code) > 0 && ascore_risk_grade IN ('C','D','E','F','G')",
+                "output": {
+                    "status": "shift_state",
+                    "next_state": "card_status.information",
+                    "lock_card": true,
+                    "flow_type": "auto_pcb",
+                    "is_final_verify": true
+                }
+            },
+            {
+                "name": "ascore_risk_06",
+                "title": "(BR32.06) Ascore risk",
+                "evaluation": "(is_offline_merchant == false || is_normal_flow_from_offline_customer_outside_store == true) && marketing_channel == 'esms' && length(sms_offer_product_code) == 0 && ascore_risk_grade IN ('C','D','E','F','G')",
+                "output": {
+                    "status": "shift_state",
+                    "next_state": "card_status.information",
+                    "lock_card": true,
+                    "flow_type": "auto_pcb",
+                    "is_final_verify": true
+                }
+            },
+            {
+                "name": "ascore_risk_07",
+                "title": "(BR32.07) Ascore risk",
+                "evaluation": "ascore_risk_grade IN ('D','E','F','G')",
+                "output": {
+                    "status": "shift_state",
+                    "next_state": "card_status.information",
+                    "lock_card": true,
+                    "flow_type": "auto_pcb",
+                    "is_final_verify": true
+                }
+            },
+            {
+                "name": "ascore_risk_08",
+                "title": "(BR32.08) Ascore risk",
+                "evaluation": "(is_offline_merchant == false || is_normal_flow_from_offline_customer_outside_store == true) && ascore_v3_calculated > 0 && ascore_v3_calculated < 720",
+                "output": {
+                    "status": "shift_state",
+                    "next_state": "card_status.information",
+                    "lock_card": true,
+                    "flow_type": "auto_pcb",
+                    "is_final_verify": true
+                }
+            },
+            {
+                "name": "ascore_risk_09",
+                "title": "(BR32.09) Ascore risk",
+                "evaluation": "is_offline_merchant == true && customer_is_at_store == true && ascore_v3_calculated > 0 && ascore_v3_calculated < 690",
+                "output": {
+                    "status": "shift_state",
+                    "next_state": "card_status.information",
+                    "lock_card": true,
+                    "flow_type": "auto_pcb",
+                    "is_final_verify": true
+                }
+            },
+            {
+                "name": "duplicate_approval_rejected",
+                "title": "Tồn tại app có cùng số điện thoại đã được approved hoặc cùng số CMND đã bị rejected",
+                "evaluation": "has_duplicate_approval == true",
+                "output": {
+                    "status": "shift_state",
+                    "next_state": "card_status.information",
+                    "lock_card": true,
+                    "flow_type": "auto_pcb",
+                    "is_final_verify": true
+                }
+            },
+            {
+                "name": "passed_all_rules_and_cic_ready",
+                "title": "Khách hàng AUTO_PCB thoả điều kiện, có đủ kết quả cic và ascore v3",
+                "evaluation": "cic_pending == false && (ascore_cic_status IN ('success','timeout') && ascore_v3_status IN ('success','timeout'))",
+                "output": {
+                    "status": "accepted",
+                    "flow_type": "auto",
+                    "is_final_verify": true
+                }
+            }
+        ],
+        "fallback": {
+            "name": "auto_pcb_passed_all_knockout_rules",
+            "title": "Khách hàng AUTO_PCB thoả mãn tất cả các điều kiện",
+            "output": {
+                "status": "accepted",
+                "flow_type": "auto_pcb"
+            }
+        }
+    }
+}

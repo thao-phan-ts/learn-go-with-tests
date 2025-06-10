@@ -1,0 +1,51 @@
+{
+    "name": "TPBANK RISK GRADES TREE - IDENTITY CONFIDENCE",
+    "uuid": "1045cfc9-5ff6-453f-ba71-5a0819989e0c",
+    "client_code": "tpbank",
+    "form_uuid": "7f3ad9fe-3adb-4d6b-bf87-9763f3fc7379",
+    "active": false,
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "sim_owner_matched",
+                "title": "Họ và tên không dấu cung cấp trên CMND/CCCD khớp với Họ và tên Khách hàng không dấu tra cứu được từ thông tin chủ thuê bao",
+                "evaluation": "phone_owner_match_phone_and_fullname == true",
+                "output": {
+                    "level": 1
+                }
+            },
+            {
+                "name": "is_low_risk",
+                "title": "Tìm thấy số điện thoại KH trong danh sách TSLowRiskList001",
+                "evaluation": "is_low_risk == true",
+                "output": {
+                    "level": 1
+                }
+            },
+            {
+                "name": "is_customer_history_match",
+                "title": "Cặp phone_number và current_nid hoặc cặp phone_number và old_nid được tìm thấy trong bảng customer_history với customer_history.create_at đến ngày hiện tại >=90 ngày",
+                "evaluation": "verify_identity_matched == true || verify_identity_old_id_matched == true",
+                "output": {
+                    "level": 1
+                }
+            },
+            {
+                "name": "sms_marketing_pool",
+                "title": "Không thoả level 1, 2 và Khách hàng thuộc OP SMS",
+                "evaluation": "(lead_source == 'esms' && length(sms_offer_product_code) > 0) || lead_source == 'sms'",
+                "output": {
+                    "level": 3
+                }
+            }
+        ],
+        "fallback": {
+            "name": "fallback_root",
+            "title": "Không thoả mãn bất kì điều kiện nào",
+            "output": {
+                "level": 5
+            }
+        }
+    }
+}

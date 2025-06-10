@@ -1,0 +1,2397 @@
+{
+    "uuid": "a06114d6-d898-4187-82f5-73fe342ef997",
+    "name": "EVO NATIVE FORM",
+    "client_code": "tpbank",
+    "active": true,
+    "fields": [
+        {
+            "title": "Ngày sinh",
+            "name": "birthday",
+            "expression": "force_conv_time(form_data.personalInfo.birthday,'f2006-01-02')",
+            "type": "time"
+        },
+        {
+            "title": "Số CMND cũ",
+            "name": "form_data.personalInfo.oldIDCard",
+            "alias": "old_id_card_number",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Số CMND",
+            "name": "form_data.personalInfo.idCard",
+            "alias": "id_card_number",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Số CMND",
+            "name": "form_data.personalInfo.fullName",
+            "alias": "fullname",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Ngày phát hành CMND",
+            "name": "id_card_issued_date",
+            "expression": "force_conv_time(form_data.personalInfo.idIssueDate,'f2006-01-02')",
+            "type": "time"
+        },
+        {
+            "title": "Ngày hết hạn của CCCD",
+            "name": "id_card_expired_date",
+            "expression": "force_conv_time(form_data.personalInfo.idExpirationDate,'f2006-01-02')",
+            "type": "time"
+        },
+        {
+            "title": "Nghề nghiệp",
+            "name": "form_data.workingInfo.employmentId",
+            "alias": "job_id",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Trạng thái Nghề nghiệp",
+            "name": "form_data.workingInfo.employmentStatusId",
+            "alias": "job_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Hình thức nhận lương",
+            "name": "form_data.workingInfo.salaryPaymentMethodId",
+            "alias": "payment_method_id",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Khách hàng thuộc Nhóm nghề 1",
+            "name": "job_id_in_group_1",
+            "expression": "job_id IN ('E1','E2','E3','E4','E5','E6','E20','E24','E25','E26','E27')",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Khách hàng thuộc Nhóm nghề 2 và hình thức nhận lương tiền mặt",
+            "name": "job_id_in_group_2_and_cash_payment_method",
+            "expression": "job_id IN ('E7','E8','E9','E10','E11','E12','E13','E14','E28','E29','E30','E31','E32','E33','E34','E35') && payment_method_id IN ('1','2','3','4','5','6','7','8','10','11','12','13','14','15','16','17')",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Thu nhập",
+            "name": "form_data.workingInfo.income",
+            "alias": "income",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Tỉnh thành hiện tại",
+            "name": "form_data.contactInfo.curAddressProvinceId",
+            "alias": "current_address_province_id",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Tên công ty",
+            "name": "form_data.contactInfo.companyName",
+            "alias": "company_name",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Lead Score Range",
+            "name": "application.lead_score",
+            "alias": "lead_score",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Lead source",
+            "name": "application.lead_source",
+            "alias": "lead_source",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Trạng thái của hồ sơ",
+            "name": "application.state",
+            "alias": "application_state",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Trạng thái của application",
+            "name": "application.status",
+            "alias": "application_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Telco Code",
+            "name": "application.lead_telco_code",
+            "alias": "telco_code",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Phone Number",
+            "name": "application.lead_phone_number",
+            "alias": "phone_number",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Kết quả compare face. EKYC Face Compare",
+            "name": "ekyc.face.compare_status",
+            "alias": "ekyc_face_compare_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Số lượng khuôn mặt khác số CMND. EKYC Face Retrieval",
+            "name": "ekyc.face.nb_duplicate_nids",
+            "alias": "ekyc_face_nb_duplicate_nids",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Số lượng ký tự tối đa của số CMND trong EKYC Indexed Face",
+            "name": "ekyc.face.max_duplicate_nid_length",
+            "alias": "ekyc_face_max_duplicate_nid_length",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Tên luồng mặc định",
+            "name": "lender_config.name",
+            "alias": "config_flow_name",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Mã định danh luồng",
+            "name": "lender_config.id",
+            "alias": "config_flow_id",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Tên luồng thẩm định online - Lưu trong bảng credit assignment",
+            "name": "de.flow_type",
+            "alias": "de_flow_type",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Output của decision tree",
+            "name": "decision_output.flow_type",
+            "alias": "decision_flow_type",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Phone Owner Status",
+            "name": "service_statuses.phone_owner",
+            "alias": "phone_owner_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Number of PDL Found Status",
+            "name": "pdl_check.result_data.status_stats.found",
+            "alias": "nb_pdl_found_status",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "selfie_blacklist check status",
+            "name": "face_blacklist_check.result_data.collections.selfie_blacklist",
+            "alias": "selfie_blacklist_check_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "tpb_blacklist001_selfie check status",
+            "name": "face_blacklist_check.result_data.collections.tpb_blacklist001_selfie",
+            "alias": "tpb_blacklist001_selfie_check_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "id_cards_blacklist check status",
+            "name": "id_card_blacklist_check.result_data.collections.id_cards_blacklist",
+            "alias": "id_cards_blacklist_check_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "tpb_blacklist001_idcard check status",
+            "name": "id_card_blacklist_check.result_data.collections.tpb_blacklist001_idcard",
+            "alias": "tpb_blacklist001_idcard_check_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Number of PDL Found Status By Check Email",
+            "name": "pdl_email_check.result_data.status_stats.found",
+            "alias": "nb_pdl_email_check_found_status",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Trạng thái pre-screening",
+            "name": "prescreening.result_data.status",
+            "alias": "prescreening_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Mã phân luồng sau khi pre-screening",
+            "name": "prescreening.result_data.code",
+            "alias": "prescreening_code",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Mã cif code sau khi pre-screening",
+            "name": "prescreening.result_data.cif_code",
+            "alias": "cif_code",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Tồn tại cif closed pre-screening",
+            "name": "prescreening.result_data.has_cif_nid_close",
+            "alias": "prescreening_has_cif_nid_close",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Tồn tại cif closed pre-screening cho NationalID khác",
+            "name": "prescreening_old_id.result_data.has_cif_nid_close",
+            "alias": "prescreening_old_id_has_cif_nid_close",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Trạng thái cif nid closed",
+            "name": "has_cif_nid_close",
+            "expression": "prescreening_has_cif_nid_close || prescreening_old_id_has_cif_nid_close",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Mã phân luồng sau khi pre-screening cho NationalID khác",
+            "name": "prescreening_old_id.result_data.code",
+            "alias": "prescreening_old_id_code",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Mã cif code sau khi pre-screening cho NationalID khác",
+            "name": "prescreening_old_id.result_data.cif_code",
+            "alias": "cif_code_old_nid",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Trạng thái check cif no debit",
+            "name": "service_statuses.check_cif_no_debit",
+            "alias": "check_cif_no_debit_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Kết quả check cif no debit",
+            "name": "check_cif_no_debit.result_data.cif_no_debit",
+            "alias": "cif_no_debit_result",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Ebank risk prescreening",
+            "name": "prescreening.result_data.risk_ebank_nid",
+            "alias": "ebank_risk_prescreening",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Ebank risk prescreening old ID",
+            "name": "prescreening_old_id.result_data.risk_ebank_nid",
+            "alias": "ebank_risk_prescreening_old_id",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Ebank risk prescreening status",
+            "name": "ebank_risk",
+            "expression": "ebank_risk_prescreening == 'fraud' || ebank_risk_prescreening_old_id == 'fraud'",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Ebank risk ID is potential fraud",
+            "name": "ebank_risk_id_potential_fraud",
+            "expression": "is_reappraising ? service_statuses.prescreening_potential_fraud == 'timeout' && (ebank_risk_prescreening == 'potential_fraud' || ebank_risk_prescreening_old_id == 'potential_fraud') : ebank_risk_prescreening == 'potential_fraud' || ebank_risk_prescreening_old_id == 'potential_fraud'",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Ebank risk prescreening potential fraud",
+            "name": "prescreening_potential_fraud.result_data.prescreening.risk_ebank_nid",
+            "alias": "ebank_risk_prescreening_potential_fraud",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Ebank risk prescreening potential fraud old ID",
+            "name": "prescreening_potential_fraud.result_data.prescreening_old_id.risk_ebank_nid",
+            "alias": "ebank_risk_prescreening_potential_fraud_old_id",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Ebank risk prescreening potential fraud",
+            "name": "ebank_risk_potential_fraud",
+            "expression": "ebank_risk_prescreening_potential_fraud == 'fraud' || ebank_risk_prescreening_potential_fraud_old_id == 'fraud'",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Có dư nợ gốc VAMC",
+            "name": "h2h_cic_s11a.result_data.s11a.has_vamc",
+            "alias": "s11a_vamc",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Có dư nợ gốc VAMC - CMND cũ",
+            "name": "h2h_cic_s11a_old.result_data.s11a.has_vamc",
+            "alias": "s11a_vamc_old_nid",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Dư nợ xấu VND trong 36 tháng",
+            "name": "h2h_cic_s11a.result_data.s11a.bad_debt_in_60m.amt_vnd_in_36m",
+            "alias": "s11a_amt_bad_debt_vnd_in_36m",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Dư nợ xấu VND trong 36 tháng - CMND cũ",
+            "name": "h2h_cic_s11a_old.result_data.s11a.bad_debt_in_60m.amt_vnd_in_36m",
+            "alias": "s11a_amt_bad_debt_vnd_in_36m_old_nid",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Dư nợ xấu USD trong 36 tháng",
+            "name": "h2h_cic_s11a.result_data.s11a.bad_debt_in_60m.amt_usd_in_36m",
+            "alias": "s11a_amt_bad_debt_usd_in_36m",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Dư nợ xấu USD trong 36 tháng - CMND cũ",
+            "name": "h2h_cic_s11a_old.result_data.s11a.bad_debt_in_60m.amt_usd_in_36m",
+            "alias": "s11a_amt_bad_debt_usd_in_36m_old_nid",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Tổng dư nợ nhóm 2 trong vòng 6 tháng",
+            "name": "h2h_cic_s11a.result_data.s11a.group2_in_12m.amt_vnd_in_6m",
+            "alias": "s11a_group2_in_6m",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Tổng dư nợ nhóm 2 trong vòng 6 tháng - CMND cũ",
+            "name": "h2h_cic_s11a_old.result_data.s11a.group2_in_12m.amt_vnd_in_6m",
+            "alias": "s11a_group2_in_6m_old_nid",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Nhóm nợ cao nhất",
+            "name": "h2h_cic_s11a.result_data.s11a.loan_info.max_debt_group",
+            "alias": "s11a_max_debt_group",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Nhóm nợ cao nhất - CMND cũ",
+            "name": "h2h_cic_s11a_old.result_data.s11a.loan_info.max_debt_group",
+            "alias": "s11a_max_debt_group_old_nid",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Số lượng dư nợ xấu khác",
+            "name": "h2h_cic_s11a.result_data.s11a.loan_info.nb_other_bad_debt",
+            "alias": "s11a_nb_other_bad_debt",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Số lượng dư nợ xấu khác - CMND cũ",
+            "name": "h2h_cic_s11a_old.result_data.s11a.loan_info.nb_other_bad_debt",
+            "alias": "s11a_nb_other_bad_debt_old_nid",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Có nhóm nợ xấu ngoại bảng",
+            "name": "h2h_cic_s11a.result_data.s11a.loan_info.bad_debt_group",
+            "alias": "s11a_bad_debt_group",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Có nhóm nợ xấu ngoại bảng - old id",
+            "name": "h2h_cic_s11a_old.result_data.s11a.loan_info.bad_debt_group",
+            "alias": "s11a_bad_debt_group_old_nid",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Số ngày trả chậm nợ xấu trong vòng 36 tháng - S11A",
+            "name": "h2h_cic_s11a.result_data.s11a.bad_debt_in_36m.delay_day",
+            "alias": "s11a_bad_debt_delay_day_in_36m",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Số ngày trả chậm nợ xấu trong vòng 36 tháng - CMND cũ - S11A",
+            "name": "h2h_cic_s11a_old.result_data.s11a.bad_debt_in_36m.delay_day",
+            "alias": "s11a_bad_debt_delay_day_in_36m_old_id",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Số ngày trả chậm nợ xấu trong vòng 36 tháng - CMND từ CIF - S11A",
+            "name": "h2h_cic_s11a_cif.result_data.s11a.bad_debt_in_36m.delay_day",
+            "alias": "s11a_bad_debt_delay_day_in_36m_cif",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Nợ xấu trả chậm hơn 30 ngày trong vòng 36 tháng - S11A",
+            "name": "s11a_bad_debt_overdue_30d_in_36m",
+            "expression": "s11a_bad_debt_delay_day_in_36m > 30",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Nợ xấu trả chậm hơn 30 ngày trong vòng 36 tháng - CMND cũ - S11A",
+            "name": "s11a_bad_debt_overdue_30d_in_36m_old_id",
+            "expression": "s11a_bad_debt_delay_day_in_36m_old_id > 30",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Nợ xấu trả chậm hơn 30 ngày trong vòng 36 tháng - CMND từ CIF - S11A",
+            "name": "s11a_bad_debt_overdue_30d_in_36m_cif",
+            "expression": "s11a_bad_debt_delay_day_in_36m_cif > 30",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Nợ xấu trả chậm 90 ngày trong vòng 36 tháng - S11A",
+            "name": "s11a_bad_debt_overdue_90d_in_36m",
+            "expression": "s11a_bad_debt_delay_day_in_36m > 90",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Nợ xấu trả chậm 90 ngày trong vòng 36 tháng - CMND cũ - S11A",
+            "name": "s11a_bad_debt_overdue_90d_in_36m_old_id",
+            "expression": "s11a_bad_debt_delay_day_in_36m_old_id > 90",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Nợ xấu trả chậm 90 ngày trong vòng 36 tháng - CMND từ CIF - S11A",
+            "name": "s11a_bad_debt_overdue_90d_in_36m_cif",
+            "expression": "s11a_bad_debt_delay_day_in_36m_cif > 90",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Tổng số tiền chậm thanh toán thẻ trong 10 ngày - S11A",
+            "name": "h2h_cic_s11a.result_data.s11a.late_payment.amt_overdue_10d",
+            "alias": "s11a_amt_overdue_10d",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Tổng số tiền chậm thanh toán thẻ trong 10 ngày - CMND cũ - S11A",
+            "name": "h2h_cic_s11a_old.result_data.s11a.late_payment.amt_overdue_10d",
+            "alias": "s11a_amt_overdue_10d_old_nid",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Tổng số tiền chậm thanh toán thẻ trong 10 ngày - CMND từ CIF - S11A",
+            "name": "h2h_cic_s11a_cif.result_data.s11a.late_payment.amt_overdue_10d",
+            "alias": "s11a_amt_overdue_10d_cif",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Nợ xấu trả chậm 90 ngày trong vòng 36 tháng",
+            "name": "h2h_cic_r14.result_data.r14.history_bad_debt.amt_overdue_90d_in_36m",
+            "alias": "r14_amt_bad_debt",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Nợ xấu trả chậm trong vòng 36 tháng - CMND cũ",
+            "name": "h2h_cic_r14_old.result_data.r14.history_bad_debt.amt_overdue_90d_in_36m",
+            "alias": "r14_amt_bad_debt_old_nid",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Tổng dư nợ thẻ nhóm 2 trong vòng 6 tháng",
+            "name": "h2h_cic_r14.result_data.r14.history_bad_debt.amt_overdue_10d_in_6m",
+            "alias": "r14_group2_in_6m",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Tổng dư nợ thẻ nhóm 2 trong vòng 6 tháng - CMND cũ",
+            "name": "h2h_cic_r14_old.result_data.r14.history_bad_debt.amt_overdue_10d_in_6m",
+            "alias": "r14_group2_in_6m_old_nid",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Tổng số tiền chậm thanh toán thẻ trong 10 ngày",
+            "name": "h2h_cic_r14.result_data.r14.late_payment.amt_overdue_10d",
+            "alias": "r14_amt_overdue_10d",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Tổng số tiền chậm thanh toán thẻ trong 10 ngày - CMND cũ",
+            "name": "h2h_cic_r14_old.result_data.r14.late_payment.amt_overdue_10d",
+            "alias": "r14_amt_overdue_10d_old_nid",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Nhóm nợ vay cao nhất trong vòng 1 tháng",
+            "name": "h2h_pcb.result_data.instalments.max_group_in_1m",
+            "alias": "pcb_instalments_max_debt_group_in_1m",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Nhóm nợ vay cao nhất trong vòng 6 tháng",
+            "name": "h2h_pcb.result_data.instalments.max_group_in_6m",
+            "alias": "pcb_instalments_max_debt_group_in_6m",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Nhóm nợ vay cao nhất trong vòng 36 tháng",
+            "name": "h2h_pcb.result_data.instalments.max_group_in_36m",
+            "alias": "pcb_instalments_max_debt_group_in_36m",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Số lượng quan hệ tín dụng ở các TCTD khác (trừ bank)",
+            "name": "h2h_pcb.result_data.nb_relationships",
+            "alias": "pcb_nb_relationships",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Nhóm nợ thấu chi cao nhất trong vòng 1 tháng",
+            "name": "h2h_pcb.result_data.noninstalments.max_group_in_1m",
+            "alias": "pcb_noninstalments_max_debt_group_in_1m",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Nhóm nợ thấu chi cao nhất trong vòng 6 tháng",
+            "name": "h2h_pcb.result_data.noninstalments.max_group_in_6m",
+            "alias": "pcb_noninstalments_max_debt_group_in_6m",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Nhóm nợ thấu chi cao nhất trong vòng 36 tháng",
+            "name": "h2h_pcb.result_data.noninstalments.max_group_in_36m",
+            "alias": "pcb_noninstalments_max_debt_group_in_36m",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Số lần xuất hiện dư nợ thẻ quá hạn trong vòng 1 tháng",
+            "name": "h2h_pcb.result_data.card.max_group_in_1m",
+            "alias": "pcb_cards_max_debt_group_in_1m",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Số lần xuất hiện dư nợ thẻ quá hạn trong vòng 6 tháng",
+            "name": "h2h_pcb.result_data.card.max_group_in_6m",
+            "alias": "pcb_cards_max_debt_group_in_6m",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Số lần xuất hiện dư nợ thẻ quá hạn trong vòng 36 tháng",
+            "name": "h2h_pcb.result_data.card.max_group_in_36m",
+            "alias": "pcb_cards_max_debt_group_in_36m",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Nhóm nợ vay cao nhất trong vòng 1 tháng - CMND cũ",
+            "name": "h2h_pcb_old.result_data.instalments.max_group_in_1m",
+            "alias": "pcb_instalments_max_debt_group_in_1m_old_nid",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Nhóm nợ vay cao nhất trong vòng 6 tháng - CMND cũ",
+            "name": "h2h_pcb_old.result_data.instalments.max_group_in_6m",
+            "alias": "pcb_instalments_max_debt_group_in_6m_old_nid",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Nhóm nợ vay cao nhất trong vòng 36 tháng - CMND cũ",
+            "name": "h2h_pcb_old.result_data.instalments.max_group_in_36m",
+            "alias": "pcb_instalments_max_debt_group_in_36m_old_nid",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Số lượng quan hệ tín dụng ở các TCTD khác (trừ bank) - CMND cũ",
+            "name": "h2h_pcb_old.result_data.nb_relationships",
+            "alias": "pcb_nb_relationships_old_nid",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Nhóm nợ thấu chi cao nhất trong vòng 1 tháng - CMND cũ",
+            "name": "h2h_pcb_old.result_data.noninstalments.max_group_in_1m",
+            "alias": "pcb_noninstalments_max_debt_group_in_1m_old_nid",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Nhóm nợ thấu chi cao nhất trong vòng 6 tháng - CMND cũ",
+            "name": "h2h_pcb_old.result_data.noninstalments.max_group_in_6m",
+            "alias": "pcb_noninstalments_max_debt_group_in_6m_old_nid",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Nhóm nợ thấu chi cao nhất trong vòng 36 tháng - CMND cũ",
+            "name": "h2h_pcb_old.result_data.noninstalments.max_group_in_36m",
+            "alias": "pcb_noninstalments_max_debt_group_in_36m_old_nid",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Số lần xuất hiện dư nợ thẻ quá hạn trong vòng 1 tháng - CMND cũ",
+            "name": "h2h_pcb_old.result_data.card.max_group_in_1m",
+            "alias": "pcb_cards_max_debt_group_in_1m_old_nid",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Số lần xuất hiện dư nợ thẻ quá hạn trong vòng 6 tháng - CMND cũ",
+            "name": "h2h_pcb_old.result_data.card.max_group_in_6m",
+            "alias": "pcb_cards_max_debt_group_in_6m_old_nid",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Số lần xuất hiện dư nợ thẻ quá hạn trong vòng 36 tháng - CMND cũ",
+            "name": "h2h_pcb_old.result_data.card.max_group_in_36m",
+            "alias": "pcb_cards_max_debt_group_in_36m_old_nid",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "SMS Eligible Offer Product",
+            "name": "get_eligible_offer.result_data.offer.product_code",
+            "alias": "sms_offer_product_code",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Tên dịch vụ đính kèm",
+            "name": "dispatch_config.service_name",
+            "alias": "dispatch_service_name",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Hạn mức thấu chi các khoản thấu chi không TSBĐ từ PCB",
+            "name": "h2h_pcb.result_data.noninstalments.amt_of_the_credits",
+            "alias": "pcb_overdraft_amt_of_the_credits",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hạn mức thấu chi các khoản thấu chi không TSBĐ từ PCB - CMND cũ",
+            "name": "h2h_pcb_old.result_data.noninstalments.amt_of_the_credits",
+            "alias": "pcb_overdraft_amt_of_the_credits_old_nid",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Dư nợ gốc của khoản vay trung hạn của KH không có thông tin tài sản bảo đảm theo CIC S11",
+            "name": "h2h_cic_s11a.result_data.s11a.loan_info.medium_term_outstanding",
+            "alias": "s11a_medium_outstanding",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Dư nợ gốc của khoản vay trung hạn của KH không có thông tin tài sản bảo đảm theo CIC S11 - CMND cũ",
+            "name": "h2h_cic_s11a_old.result_data.s11a.loan_info.medium_term_outstanding",
+            "alias": "s11a_medium_outstanding_old_nid",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Số tiền lãi phải trả cho các khoản nợ không có TSBĐ hàng tháng từ CIC S11",
+            "name": "s11a_interest_monthly_payment",
+            "expression": "s11a_medium_outstanding * 18 / 100 / 12",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Số tiền lãi phải trả cho các khoản nợ không có TSBĐ hàng tháng từ CIC S11 - CMND cũ",
+            "name": "s11a_interest_monthly_payment_old_nid",
+            "expression": "s11a_medium_outstanding_old_nid * 18 / 100 / 12",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Số tiền gốc phải trả cho các khoản nợ không có TSBĐ hàng tháng từ CIC S11",
+            "name": "h2h_cic_s11a.result_data.s11a.loan_info.principal_monthly_payment",
+            "alias": "s11a_principal_monthly_payment",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Số tiền gốc phải trả cho các khoản nợ không có TSBĐ hàng tháng từ CIC S11 - CMND cũ",
+            "name": "h2h_cic_s11a_old.result_data.s11a.loan_info.principal_monthly_payment",
+            "alias": "s11a_principal_monthly_payment_old_nid",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Tổng dư nợ thẻ tín dụng tra cứu từ CIC S11",
+            "name": "h2h_cic_s11a.result_data.s11a.card.total_outstanding",
+            "alias": "s11a_card_total_outstanding",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Tổng dư nợ thẻ tín dụng tra cứu từ CIC S11 - CMND cũ",
+            "name": "h2h_cic_s11a_old.result_data.s11a.card.total_outstanding",
+            "alias": "s11a_card_total_outstanding_old_nid",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Dư nợ khoản vay ngắn hạn của KH không có TSBĐ tra cứu từ CIC S11",
+            "name": "h2h_cic_s11a.result_data.s11a.loan_info.short_term_outstanding",
+            "alias": "s11a_overdraft_total_outstanding",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Dư nợ khoản vay ngắn hạn của KH không có TSBĐ tra cứu từ CIC S11 - CMND cũ",
+            "name": "h2h_cic_s11a_old.result_data.s11a.loan_info.short_term_outstanding",
+            "alias": "s11a_overdraft_total_outstanding_old_nid",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Ascore risk grade",
+            "name": "risk_grade_output.ascore.output.level",
+            "alias": "ascore_risk_grade",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "PCB group - CMND hiện tại",
+            "name": "h2h_pcb.result_data.pcb_group",
+            "alias": "pcb_group_current_id",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "PCB group - CMND cũ",
+            "name": "h2h_pcb_old.result_data.pcb_group",
+            "alias": "pcb_group_old_id",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Trạng thái PCB group tổng hợp",
+            "name": "risk_grade_output.pcb_group.output.value",
+            "alias": "pcb_group",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Income Score Status",
+            "name": "service_statuses.income_score",
+            "alias": "income_score_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Kết quả xử lý EKYC liveness check",
+            "name": "ekyc.face.liveness_status",
+            "alias": "ekyc_face_liveness_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Kết quả check id card tampering",
+            "name": "id_card_tampering.verdict",
+            "alias": "id_card_tampering_verdict",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Điểm của khuôn mặt giống nhất",
+            "name": "ekyc.face.best_search_score",
+            "alias": "ekyc_best_search_score",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Số CMND của khuôn mặt giống nhất",
+            "name": "ekyc.face.best_search_nid",
+            "alias": "ekyc_best_search_nid",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Họ và tên lấy từ OCR",
+            "name": "ekyc.ocr.name",
+            "alias": "ekyc_ocr_name",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Số CMND lấy từ OCR",
+            "name": "ekyc.ocr.id_number",
+            "alias": "ekyc_ocr_id_number",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Ngày tháng năm sinh lấy từ OCR",
+            "name": "ekyc_ocr_birthday",
+            "expression": "force_conv_time(ekyc.ocr.birth_date,'f02/01/2006')",
+            "type": "time"
+        },
+        {
+            "title": "Họ và tên cung cấp không khớp với OCR",
+            "name": "ekyc_ocr_name_mismatch",
+            "expression": "length(ekyc_ocr_name) > 0 && remove_redundant_space(to_ascii_string(to_lower(ekyc_ocr_name))) != remove_redundant_space(to_ascii_string(to_lower(fullname)))",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Số CMND cung cấp không khớp với OCR",
+            "name": "ekyc_ocr_nid_mismatch",
+            "expression": "length(ekyc_ocr_id_number) > 0 && ekyc_ocr_id_number != id_card_number",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Ngày tháng năm sinh cung cấp không khớp với OCR",
+            "name": "ekyc_ocr_dob_mismatch",
+            "expression": "ekyc_ocr_birthday != nil && ekyc_ocr_birthday != birthday",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Tìm thấy khuôn mặt gần giống có số CMND khác với các số CMND đã cung cấp",
+            "name": "ekyc_face_nid_mismatch",
+            "expression": "range_number(ekyc_best_search_score,0.7,0.8) && length(ekyc_best_search_nid) > 0 && ekyc_best_search_nid != id_card_number && ekyc_best_search_nid != old_id_card_number",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Kết quả OCR confidence cho ID Card là UNSURE",
+            "name": "ekyc_ocr_id_card_unsure",
+            "expression": "ekyc.ocr.confidence.id.verdict != nil && to_lower(ekyc.ocr.confidence.id.verdict) == \"unsure\"",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Kết quả Face Liveness Check không thành công",
+            "name": "ekyc_face_liveness_failure",
+            "expression": "length(ekyc_face_liveness_status) > 0 && ekyc_face_liveness_status != 'success'",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Bị cảnh báo bởi các dịch vụ eKYC",
+            "name": "has_ekyc_alert",
+            "expression": "id_card_tampering_verdict == 'alert' || ekyc_face_liveness_failure == true || ekyc_ocr_name_mismatch == true || ekyc_ocr_nid_mismatch == true || ekyc_ocr_dob_mismatch == true || ekyc_face_nid_mismatch == true || ekyc_ocr_id_card_unsure == true",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Không gọi check cic hoặc đã có kết quả cic s11a r14",
+            "name": "cic_ready",
+            "expression": "h2h_cic_s11t_status IN('success','not_found') || (service_statuses.h2h_cic_s11a_r14 == 'cancelled' || (h2h_cic_s11a_status IN('success','not_found') && h2h_cic_r14_status IN('success','not_found')))",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Không gọi check cic hoặc đã có kết quả cic s11a r14 - CMND cũ",
+            "name": "old_cic_ready",
+            "expression": "h2h_cic_s11t_status IN('success','not_found') || (service_statuses.h2h_cic_s11a_r14_old == 'cancelled' || (h2h_cic_s11a_old_status IN('success','not_found') && h2h_cic_r14_old_status IN('success','not_found')))",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Chưa có đủ kết quả cic s11a r14",
+            "name": "cic_pending",
+            "expression": "!cic_ready || !old_cic_ready",
+            "type": "bool",
+            "default_value": true
+        },
+        {
+            "title": "Cần kiểm tra cif thủ công",
+            "name": "risk_grade_output.manual_cif_check.output.value",
+            "alias": "manual_cif_check",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Khách hàng chấp nhận chia sẻ ekyc",
+            "name": "form_data.consent.ekyc",
+            "alias": "ekyc_consent",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Loại khách hàng",
+            "name": "application.customer_type",
+            "alias": "customer_type",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Pre-approved credit limit",
+            "name": "de.credit_limit",
+            "alias": "pa_credit_limit",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Thẩm định đang thực hiện là thẩm định lại (reappraising)",
+            "name": "is_reappraising",
+            "expression": "application_state == 'success' || array_string_contain(conv_array_string(state_info.traversed_states),'success')",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "KH đã hoàn thành bước ký hợp đồng điện tử",
+            "name": "done_esign_step",
+            "expression": "array_string_contain(conv_array_string(state_info.traversed_states),'esign.otp')",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "KH đã hoàn thành bước inform.success",
+            "name": "done_inform_success_step",
+            "expression": "array_string_contain(conv_array_string(state_info.traversed_states),'inform.success')",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "AUTO_PCB ready",
+            "name": "auto_pcb_ready",
+            "expression": "service_statuses.h2h_pcb IN('success','cancelled')",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Trạng thái check eligibility",
+            "name": "service_statuses.eligibility_check",
+            "alias": "eligibility_check_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Nơi ở hiện tại thuộc địa bàn triển khai",
+            "name": "eligibility_check.result_data.eligible_location",
+            "alias": "eligible_location",
+            "type": "bool",
+            "default_value": true
+        },
+        {
+            "title": "Nơi ở hiện tại nằm trong danh sách tỉnh thành có Chi nhánh/Phòng giao dịch",
+            "name": "eligibility_check.result_data.eligible_branch_location",
+            "alias": "eligible_branch_location",
+            "type": "bool",
+            "default_value": true
+        },
+        {
+            "title": "Marketing channel",
+            "name": "eligibility_check.result_data.marketing_channel",
+            "alias": "marketing_channel",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Marketing channel subgroup",
+            "name": "eligibility_check.result_data.marketing_channel_subgroup",
+            "alias": "marketing_channel_subgroup",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Abnormal cookie",
+            "name": "abnormal_check.result_data.abnormal_cookie",
+            "alias": "abnormal_cookie",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Abnormal email",
+            "name": "abnormal_check.result_data.abnormal_email",
+            "alias": "abnormal_email",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Application score without credit score",
+            "name": "ascore_wo_cs.result_data.ascore",
+            "alias": "ascore_wo_cs",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Application score v3 with cic",
+            "name": "ascore_v3.result_data.ascore",
+            "alias": "asv3",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Application score v3 without cic",
+            "name": "ascore_v3_wo_cic.result_data.ascore",
+            "alias": "asv3_wo_cic",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Should check ascore v3 wo cic",
+            "name": "should_check_asv3_wo_cic",
+            "expression": "is_reappraising == true && asv3 == 0",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Should KO using ascore",
+            "name": "should_ko_using_ascore",
+            "expression": "is_reappraising == true || as_cic > 0",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Should KO using ascore v3",
+            "name": "should_ko_using_ascore_v3",
+            "expression": "is_reappraising == true || asv3 > 0",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "AScore v3 status",
+            "name": "service_statuses.ascore_v3",
+            "alias": "ascore_v3_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Ascore v3 calculated",
+            "expression": "asv3 > 0 ? asv3 : asv3_wo_cic",
+            "name": "ascore_v3_calculated",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "D-score triggered by ascore_v3_wo_cic",
+            "name": "ascore_v3_wo_cic.result_data.dscore",
+            "alias": "dscore_from_ascore_v3_wo_cic",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "DScore Cap Limit",
+            "name": "dscore_cap_limit",
+            "expression": "10000000",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "DScore Cap Multiplier",
+            "name": "dscore_cap_multiplier",
+            "expression": "(dscore >= 60) ? (dscore >= 70 ? 0.5 : 0.8) : 1",
+            "type": "float",
+            "default_value": 1
+        },
+        {
+            "title": "Application score with cic",
+            "name": "ascore_cic.result_data.ascore",
+            "alias": "as_cic",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Application score without cic",
+            "name": "ascore_wo_cic.result_data.ascore",
+            "alias": "as_wo_cic",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "AScore status",
+            "name": "service_statuses.ascore_cic",
+            "alias": "ascore_cic_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "AScore without cic status",
+            "name": "service_statuses.ascore_wo_cic",
+            "alias": "ascore_wo_cic_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Ascore calculated",
+            "expression": "as_cic > 0 ? as_cic : as_wo_cic",
+            "name": "ascore_calculated",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "D-score triggered by ascore_wo_cic",
+            "name": "ascore_wo_cic.result_data.dscore",
+            "alias": "dscore",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Trạng thái Low Risk Check",
+            "name": "service_statuses.low_risk_check",
+            "alias": "is_low_risk_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "CIF ID Number",
+            "name": "form_data.cifInfo.idCard",
+            "alias": "cif_id_card_number",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Use new CIF ID number",
+            "name": "form_data.cifInfo.useNewCif",
+            "alias": "use_new_cif",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Manual cif check code based on cif check code of id and old id",
+            "name": "risk_grade_output.manual_cif_check.output.code",
+            "alias": "manual_cif_check_code",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Có dư nợ gốc VAMC - CMND từ CIF",
+            "name": "h2h_cic_s11a_cif.result_data.s11a.has_vamc",
+            "alias": "s11a_vamc_cif",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Dư nợ xấu VND trong 36 tháng - CMND từ CIF",
+            "name": "h2h_cic_s11a_cif.result_data.s11a.bad_debt_in_60m.amt_vnd_in_36m",
+            "alias": "s11a_amt_bad_debt_vnd_in_36m_cif",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Dư nợ xấu USD trong 36 tháng - CMND từ CIF",
+            "name": "h2h_cic_s11a_cif.result_data.s11a.bad_debt_in_60m.amt_usd_in_36m",
+            "alias": "s11a_amt_bad_debt_usd_in_36m_cif",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Tổng dư nợ nhóm 2 trong vòng 6 tháng - CMND từ CIF",
+            "name": "h2h_cic_s11a_cif.result_data.s11a.group2_in_12m.amt_vnd_in_6m",
+            "alias": "s11a_group2_in_6m_cif",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Nhóm nợ cao nhất - CMND từ CIF",
+            "name": "h2h_cic_s11a_cif.result_data.s11a.loan_info.max_debt_group",
+            "alias": "s11a_max_debt_group_cif",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Số lượng dư nợ xấu khác - CMND từ CIF",
+            "name": "h2h_cic_s11a_cif.result_data.s11a.loan_info.nb_other_bad_debt",
+            "alias": "s11a_nb_other_bad_debt_cif",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Có nhóm nợ xấu ngoại bảng - id từ CIF",
+            "name": "h2h_cic_s11a_cif.result_data.s11a.loan_info.bad_debt_group",
+            "alias": "s11a_bad_debt_group_cif",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Nợ xấu trả chậm trong vòng 36 tháng - CMND từ CIF",
+            "name": "h2h_cic_r14_cif.result_data.r14.history_bad_debt.amt_overdue_90d_in_36m",
+            "alias": "r14_amt_bad_debt_cif",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Tổng dư nợ thẻ nhóm 2 trong vòng 6 tháng - CMND từ CIF",
+            "name": "h2h_cic_r14_cif.result_data.r14.history_bad_debt.amt_overdue_10d_in_6m",
+            "alias": "r14_group2_in_6m_cif",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Tổng số tiền chậm thanh toán thẻ trong 10 ngày - CMND từ CIF",
+            "name": "h2h_cic_r14_cif.result_data.r14.late_payment.amt_overdue_10d",
+            "alias": "r14_amt_overdue_10d_cif",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Nhóm nợ vay cao nhất trong vòng 1 tháng - CMND từ CIF",
+            "name": "h2h_pcb_cif.result_data.instalments.max_group_in_1m",
+            "alias": "pcb_instalments_max_debt_group_in_1m_cif",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Nhóm nợ vay cao nhất trong vòng 6 tháng - CMND từ CIF",
+            "name": "h2h_pcb_cif.result_data.instalments.max_group_in_6m",
+            "alias": "pcb_instalments_max_debt_group_in_6m_cif",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Nhóm nợ vay cao nhất trong vòng 36 tháng - CMND từ CIF",
+            "name": "h2h_pcb_cif.result_data.instalments.max_group_in_36m",
+            "alias": "pcb_instalments_max_debt_group_in_36m_cif",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Số lượng quan hệ tín dụng ở các TCTD khác (trừ bank) - CMND từ CIF",
+            "name": "h2h_pcb_cif.result_data.nb_relationships",
+            "alias": "pcb_nb_relationships_cif",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Nhóm nợ thấu chi cao nhất trong vòng 1 tháng - CMND từ CIF",
+            "name": "h2h_pcb_cif.result_data.noninstalments.max_group_in_1m",
+            "alias": "pcb_noninstalments_max_debt_group_in_1m_cif",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Nhóm nợ thấu chi cao nhất trong vòng 6 tháng - CMND từ CIF",
+            "name": "h2h_pcb_cif.result_data.noninstalments.max_group_in_6m",
+            "alias": "pcb_noninstalments_max_debt_group_in_6m_cif",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Nhóm nợ thấu chi cao nhất trong vòng 36 tháng - CMND từ CIF",
+            "name": "h2h_pcb_cif.result_data.noninstalments.max_group_in_36m",
+            "alias": "pcb_noninstalments_max_debt_group_in_36m_cif",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Số lần xuất hiện dư nợ thẻ quá hạn trong vòng 1 tháng - CMND từ CIF",
+            "name": "h2h_pcb_cif.result_data.card.max_group_in_1m",
+            "alias": "pcb_cards_max_debt_group_in_1m_cif",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Số lần xuất hiện dư nợ thẻ quá hạn trong vòng 6 tháng - CMND từ CIF",
+            "name": "h2h_pcb_cif.result_data.card.max_group_in_6m",
+            "alias": "pcb_cards_max_debt_group_in_6m_cif",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Số lần xuất hiện dư nợ thẻ quá hạn trong vòng 36 tháng - CMND từ CIF",
+            "name": "h2h_pcb_cif.result_data.card.max_group_in_36m",
+            "alias": "pcb_cards_max_debt_group_in_36m_cif",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Offline merchant",
+            "name": "eligibility_check.result_data.is_offline_merchant",
+            "alias": "is_offline_merchant",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Trạng thái h2h_cic_s11a",
+            "name": "h2h_cic_s11a.status",
+            "alias": "h2h_cic_s11a_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Trạng thái h2h_cic_s11a_old",
+            "name": "h2h_cic_s11a_old.status",
+            "alias": "h2h_cic_s11a_old_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Trạng thái h2h_cic_s11a_ocr",
+            "name": "service_statuses.h2h_cic_s11a_ocr",
+            "alias": "h2h_cic_s11a_ocr_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Trạng thái h2h_cic_s11a_cif",
+            "name": "service_statuses.h2h_cic_s11a_cif",
+            "alias": "h2h_cic_s11a_cif_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Trạng thái h2h_cic_r14",
+            "name": "h2h_cic_r14.status",
+            "alias": "h2h_cic_r14_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Trạng thái h2h_cic_r14_cif",
+            "name": "service_statuses.h2h_cic_r14_cif",
+            "alias": "h2h_cic_r14_cif_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Trạng thái h2h_cic_r14_old",
+            "name": "h2h_cic_r14_old.status",
+            "alias": "h2h_cic_r14_old_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Trạng thái h2h_pcb",
+            "name": "service_statuses.h2h_pcb",
+            "alias": "h2h_pcb_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Trạng thái h2h_pcb_old",
+            "name": "service_statuses.h2h_pcb_old",
+            "alias": "h2h_pcb_old_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Trạng thái h2h_pcb_cif",
+            "name": "service_statuses.h2h_pcb_cif",
+            "alias": "h2h_pcb_cif_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Trạng thái h2h_cic_s11a_r14",
+            "name": "service_statuses.h2h_cic_s11a_r14",
+            "alias": "h2h_cic_s11a_r14_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Trạng thái h2h_cic_s11a_r14_old",
+            "name": "service_statuses.h2h_cic_s11a_r14_old",
+            "alias": "h2h_cic_s11a_r14_old_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Tồn tại app có cùng số điện thoại đã được approved hoặc cùng số CMND đã bị rejected",
+            "name": "duplicate_approval.is_duplicated",
+            "alias": "has_duplicate_approval",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Số request vay trong 30 ngày - CMND hiện tại",
+            "name": "h2h_pcb.result_data.cb_contract_code.nb_code",
+            "alias": "pcb_nb_cb_contract_code",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Số request vay trong 30 ngày - CMND cũ",
+            "name": "h2h_pcb_old.result_data.cb_contract_code.nb_code",
+            "alias": "pcb_nb_cb_contract_code_old_nid",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Số request vay trong 30 ngày - CMND từ CIF",
+            "name": "h2h_pcb_cif.result_data.cb_contract_code.nb_code",
+            "alias": "pcb_nb_cb_contract_code_cif",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Tổng số tiền tín dụng không có TSĐB trong 30 ngày - CMND hiện tại",
+            "name": "h2h_pcb.result_data.granted_unsecured_loan.total_amount",
+            "alias": "pcb_unsecured_loan_amount",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Tổng số tiền tín dụng không có TSĐB trong 30 ngày - CMND cũ",
+            "name": "h2h_pcb_old.result_data.granted_unsecured_loan.total_amount",
+            "alias": "pcb_unsecured_loan_amount_old_nid",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Tổng số tiền tín dụng không có TSĐB trong 30 ngày - CMND từ CIF",
+            "name": "h2h_pcb_cif.result_data.granted_unsecured_loan.total_amount",
+            "alias": "pcb_unsecured_loan_amount_cif",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Tồn tại số điện thoại (chính) trong danh sách đen tpb (tpb_blacklist)",
+            "name": "delinquent_check.result_data.primary_phone",
+            "alias": "delinquent_check_phone_is_ref_of_blacklist",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Tồn tại số điện thoại (người thân) trong danh sách đen tpb (tpb_blacklist)",
+            "name": "delinquent_check.result_data.reference_phone",
+            "alias": "delinquent_check_ref_is_blacklist",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "User re-apply using the same phone number in the last 12 months, but have low credit score or low ascore",
+            "name": "repeated_customer_check.result_data.phone_number",
+            "alias": "repeated_customer_check_phone_number",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "User re-apply using the same ID number in the last 12 months, but have low credit score or low ascore",
+            "name": "repeated_customer_check.result_data.id_number",
+            "alias": "repeated_customer_check_id_number",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Reject Affiliate group of Performance Marketing channel",
+            "name": "eligibility_check.result_data.is_affiliate_channel",
+            "alias": "is_affiliate_channel",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "High risk store",
+            "name": "eligibility_check.result_data.is_store_high_risk",
+            "alias": "is_store_high_risk",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Min credit limit IC",
+            "name": "min_credit_limit_ic",
+            "expression": "10000000",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Tỷ lệ trả hàng tháng tối thiểu của thẻ tín dụng = 5% (có thể thay đổi theo từng thời kỳ)",
+            "name": "min_payment_ratio",
+            "expression": "5/100",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Credit limit base income with ascore level A/AA/B/C",
+            "name": "credit_limit_base_income_ascore_level_abc",
+            "expression": "max_number(credit_limit_ic2,min_number(30000000,credit_limit_ic4),min_credit_limit_ic)",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Credit limit with ascore level A/AA/B/C",
+            "name": "credit_limit_with_ascore_level_abc",
+            "expression": "min_number(credit_limit_base_income_ascore_level_abc,max_credit_limit_ic)",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hệ số nhân dựa trên xếp hạng rủi ro AScore",
+            "name": "risk_grade_output.ascore.output.multiplier",
+            "alias": "ascore_risk_multiplier",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hệ số nhân tương ứng cho từng loại thu nhập, được quy định ở phần C2 (card_surrogate_monthly_income)",
+            "name": "risk_grade_output.income_c2.output.c_multiplier",
+            "alias": "income_c2_confidence_multiplier",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hệ số nhân dựa trên INCOME_LEVEL, được quy định ở phần C2 (card_surrogate_monthly_income)",
+            "name": "risk_grade_output.income_c2.output.l_multiplier",
+            "alias": "income_c2_level_multiplier",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Tỷ lệ nghĩa vụ trả nợ tháng trên thu nhập tối đa (income_c2_level)",
+            "name": "risk_grade_output.income_c2.output.max_dti",
+            "alias": "income_c2_max_dti",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hệ số nhân tương ứng cho từng loại thu nhập, được quy định ở phần C2 (telco_monthly_income)",
+            "name": "risk_grade_output.income_c3.output.c_multiplier",
+            "alias": "income_c3_confidence_multiplier",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hệ số nhân dựa trên INCOME_LEVEL, được quy định ở phần C2 (telco_monthly_income)",
+            "name": "risk_grade_output.income_c3.output.l_multiplier",
+            "alias": "income_c3_level_multiplier",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Tỷ lệ nghĩa vụ trả nợ tháng trên thu nhập tối đa (income_c3_level)",
+            "name": "risk_grade_output.income_c3.output.max_dti",
+            "alias": "income_c3_max_dti",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hệ số nhân dựa trên INCOME_LEVEL, được quy định ở phần C2 (declared_monthly_income)",
+            "name": "risk_grade_output.income_c4.output.l_multiplier",
+            "alias": "income_c4_level_multiplier",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hệ số nhân tương ứng cho từng loại thu nhập, được quy định ở phần C2 (declared_monthly_income)",
+            "name": "risk_grade_output.income_c4.output.c_multiplier",
+            "alias": "income_c4_confidence_multiplier",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Tỷ lệ nghĩa vụ trả nợ tháng trên thu nhập tối đa (income_c4_level)",
+            "name": "risk_grade_output.income_c4.output.max_dti",
+            "alias": "income_c4_max_dti",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Thu nhập được tính quy đổi từ hạn mức thẻ tín dụng không có tài sản bảo đảm",
+            "name": "card_surrogate_monthly_income",
+            "expression": "max_number(pcb_max_unsecured_active_card_limit,max_unsecured_active_card_limit,pcb_max_unsecured_active_card_limit_old_nid, max_unsecured_active_card_limit_old_id) / 3",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hạn mức thẻ tín dụng không có tài sản bảo đảm CMND",
+            "name": "max_unsecured_active_card_limit",
+            "expression": "s11t_max_unsecured_active_card_limit > 0 ? s11t_max_unsecured_active_card_limit : s11a_max_unsecured_active_card_limit",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hạn mức thẻ tín dụng không có tài sản bảo đảm CMND cũ",
+            "name": "max_unsecured_active_card_limit_old_id",
+            "expression": "s11a_max_unsecured_active_card_limit_old_id > 0 ? s11a_max_unsecured_active_card_limit_old_id : 0",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hạn mức của thẻ tín dụng không tài sản bảo đảm có hạn mức cao nhất của KH tra cứu được từ CIC S11A",
+            "name": "h2h_cic_s11a.result_data.s11a.max_unsecured_active_card_limit",
+            "alias": "s11a_max_unsecured_active_card_limit",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hạn mức của thẻ tín dụng không tài sản bảo đảm có hạn mức cao nhất của KH tra cứu được từ CIC S11A - CMND cũ",
+            "name": "h2h_cic_s11a_old.result_data.s11a.max_unsecured_active_card_limit",
+            "alias": "s11a_max_unsecured_active_card_limit_old_id",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hạn mức của thẻ tín dụng không tài sản bảo đảm có hạn mức cao nhất của KH tra cứu được từ PCB",
+            "name": "h2h_pcb.result_data.card.max_unsecured_active_card_limit",
+            "alias": "pcb_max_unsecured_active_card_limit",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hạn mức của thẻ tín dụng không tài sản bảo đảm có hạn mức cao nhất của KH tra cứu được từ PCB - CMND cũ",
+            "name": "h2h_pcb_old.result_data.card.max_unsecured_active_card_limit",
+            "alias": "pcb_max_unsecured_active_card_limit_old_nid",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hạn mức của thẻ tín dụng không tài sản bảo đảm có hạn mức cao nhất của KH tra cứu được từ CIC R14",
+            "name": "h2h_cic_r14.result_data.r14.max_unsecured_active_card_limit",
+            "alias": "r14_max_unsecured_active_card_limit",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hạn mức của thẻ tín dụng không tài sản bảo đảm có hạn mức cao nhất của KH tra cứu được từ CIC R14 - CMND cũ",
+            "name": "h2h_cic_r14_old.result_data.r14.max_unsecured_active_card_limit",
+            "alias": "r14_max_unsecured_active_card_limit_old_nid",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Predicted Income",
+            "name": "income_score.result_data.predicted_income",
+            "alias": "predicted_income",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Thu nhập tháng được tính từ thu nhập trả về của dịch vụ income score và thu nhập khách hàng cung cấp",
+            "name": "telco_monthly_income",
+            "expression": "min_number(predicted_income,income)",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Income c4 (Dựa vào thông tin thu nhập của user nhập và chặn mức tối đa của credit risk grade)",
+            "name": "declared_monthly_income",
+            "expression": "min_number(income,max_risk_grade_monthly_income)",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Thu nhập tối đa dựa trên credit risk grade",
+            "name": "risk_grade_output.income_c4.output.max_risk_grade_monthly_income",
+            "alias": "max_risk_grade_monthly_income",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "(C.2) Hạn mức tính dựa trên card_surrogate_monthly_income",
+            "name": "credit_limit_ic2",
+            "expression": "card_surrogate_monthly_income * ascore_risk_multiplier * income_c2_confidence_multiplier * income_c2_level_multiplier",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "(C.3) Hạn mức tính dựa trên telco_monthly_income",
+            "name": "credit_limit_ic3",
+            "expression": "telco_monthly_income * ascore_risk_multiplier * income_c3_confidence_multiplier * income_c3_level_multiplier",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "(C.4) Hạn mức tính dựa trên DECLARED_MONTHLY_INCOME",
+            "name": "credit_limit_ic4",
+            "expression": "declared_monthly_income * ascore_risk_multiplier * income_c4_confidence_multiplier * income_c4_level_multiplier",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Max credit limit IC",
+            "name": "max_credit_limit_ic",
+            "expression": "min_number(max_credit_limit_after_debt_obligation, online_max_credit_limit)",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Max credit limit IC - KH offline_merchant",
+            "name": "offline_merchant_max_credit_limit_ic",
+            "expression": "min_number(offline_merchant_max_credit_limit_after_debt_obligation, online_max_credit_limit)",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hạn mức tối đa cho luồng online pcb",
+            "name": "online_max_credit_limit_pcb",
+            "expression": "40000000",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hạn mức tối đa cho luồng online",
+            "name": "online_max_credit_limit",
+            "expression": "decision_flow_type == 'auto_pcb' ? min_number(ascore_max_credit_limit, online_max_credit_limit_pcb) : ascore_max_credit_limit",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hạn mức tối đa dựa trên ascore",
+            "name": "risk_grade_output.ascore.output.max_credit_limit",
+            "alias": "ascore_max_credit_limit",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hạn mức tối đa sau khi trừ nghĩa vụ trả nợ hàng tháng",
+            "name": "max_credit_limit_after_debt_obligation",
+            "expression": "max_number(max_cl_ic2,max_cl_ic3,max_cl_ic4)",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hạn mức tối đa sau khi trừ nghĩa vụ trả nợ hàng tháng - KH offline_merchant",
+            "name": "offline_merchant_max_credit_limit_after_debt_obligation",
+            "expression": "max_number(max_cl_ic2,max_cl_ic3,max_cl_ic4,10000000)",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hạn mức tối đa sau khi trừ nghĩa vụ trả nợ hàng tháng tính dựa trên card_surrogate_monthly_income",
+            "name": "max_cl_ic2",
+            "expression": "max_number(floor(((income_c2_max_dti * card_surrogate_monthly_income) - monthly_obligations) / min_payment_ratio), 0)",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hạn mức tối đa sau khi trừ nghĩa vụ trả nợ hàng tháng tính dựa trên telco_monthly_income",
+            "name": "max_cl_ic3",
+            "expression": "max_number(floor(((income_c3_max_dti * telco_monthly_income) - monthly_obligations) / min_payment_ratio), 0)",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hạn mức tối đa sau khi trừ nghĩa vụ trả nợ hàng tháng tính dựa trên declared_monthly_income",
+            "name": "max_cl_ic4",
+            "expression": "max_number(floor(((income_c4_max_dti * declared_monthly_income) - monthly_obligations) / min_payment_ratio), 0)",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "(D1) Nghĩa vụ trả nợ hàng tháng của các khoản tín dụng không tài sản bảo đảm, ko bao gồm thẻ tín dụng đang đề nghị cấp",
+            "name": "monthly_obligations",
+            "expression": "loan_monthly_payment + card_monthly_payment + overdraft_monthly_payment",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "(D3) Số tiền phải trả cho các khoản nợ không có TSBĐ hàng tháng",
+            "name": "loan_monthly_payment",
+            "expression": "max_number(pcb_instalment_monthly_payment,pcb_instalment_monthly_payment_old_nid,s11a_loan_monthly_payment,s11a_loan_monthly_payment_old_nid,s11t_loan_monthly_payment)",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "(D3) Số tiền phải trả cho các khoản nợ không có TSBĐ hàng tháng từ PCB",
+            "name": "h2h_pcb.result_data.instalments.monthly_payment",
+            "alias": "pcb_instalment_monthly_payment",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "(D3) Số tiền phải trả cho các khoản nợ không có TSBĐ hàng tháng từ PCB - CMND cũ",
+            "name": "h2h_pcb_old.result_data.instalments.monthly_payment",
+            "alias": "pcb_instalment_monthly_payment_old_nid",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "(D3) Số tiền phải trả cho các khoản nợ không có TSBĐ hàng tháng từ CIC S11",
+            "name": "s11a_loan_monthly_payment",
+            "expression": "s11a_principal_monthly_payment + s11a_interest_monthly_payment",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "(D3) Số tiền phải trả cho các khoản nợ không có TSBĐ hàng tháng từ CIC S11 - CMND cũ",
+            "name": "s11a_loan_monthly_payment_old_nid",
+            "expression": "s11a_principal_monthly_payment_old_nid + s11a_interest_monthly_payment_old_nid",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "(D3) Khoản trả hàng tháng cho thẻ tín dụng",
+            "name": "card_monthly_payment",
+            "expression": "max_number(pcb_card_monthly_payment,pcb_card_monthly_payment_old_nid,s11a_card_monthly_payment,s11a_card_monthly_payment_old_nid,s11t_card_monthly_payment)",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "(D3) Khoản trả hàng tháng cho thẻ tín dụng không tài sản bảo đảm được tra cứu từ PCB",
+            "name": "h2h_pcb.result_data.card.monthly_payment",
+            "alias": "pcb_card_monthly_payment",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "(D3) Khoản trả hàng tháng cho thẻ tín dụng không tài sản bảo đảm được tra cứu từ PCB - CMND cũ",
+            "name": "h2h_pcb_old.result_data.card.monthly_payment",
+            "alias": "pcb_card_monthly_payment_old_nid",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "(D3) Khoản trả hàng tháng cho thẻ tín dụng được tra cứu từ CIC S11",
+            "name": "s11a_card_monthly_payment",
+            "expression": "s11a_card_total_outstanding * 5 / 100",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "(D3) Khoản trả hàng tháng cho thẻ tín dụng được tra cứu từ CIC S11 - CMND cũ",
+            "name": "s11a_card_monthly_payment_old_nid",
+            "expression": "s11a_card_total_outstanding_old_nid * 5 / 100",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "(D3) Khoản trả hàng tháng của các khoản thấu chi",
+            "name": "overdraft_monthly_payment",
+            "expression": "max_number(pcb_overdraft_monthly_payment,pcb_overdraft_monthly_payment_old_nid,s11a_overdraft_monthly_payment,s11a_overdraft_monthly_payment_old_nid,s11t_overdraft_monthly_payment)",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "(D3) Khoản trả hàng tháng của các thấu chi không TSBĐ từ PCB",
+            "name": "pcb_overdraft_monthly_payment",
+            "expression": "pcb_overdraft_amt_of_the_credits  * (18 / 100) / 12",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "(D3) Khoản trả hàng tháng của các thấu chi không TSBĐ từ PCB - CMND cũ",
+            "name": "pcb_overdraft_monthly_payment_old_nid",
+            "expression": "pcb_overdraft_amt_of_the_credits_old_nid * (18 / 100) / 12",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "(D3) Khoản trả hàng tháng của các khoản thấu chi không tài sản bảo đảm từ CIC S11",
+            "name": "s11a_overdraft_monthly_payment",
+            "expression": "s11a_overdraft_total_outstanding * 18 / 100 / 12",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "(D3) Khoản trả hàng tháng của các khoản thấu chi không tài sản bảo đảm từ CIC S11 - CMND cũ",
+            "name": "s11a_overdraft_monthly_payment_old_nid",
+            "expression": "s11a_overdraft_total_outstanding_old_nid * 18 / 100 / 12",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Kết quả check id tampering verdict",
+            "name": "nfc_id_tampering.result_data.id_card_tampering.verdict",
+            "alias": "nfc_id_tampering_verdict",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Kết quả check id tampering nfc info",
+            "name": "nfc_id_tampering.result_data.id_card_tampering.info",
+            "alias": "nfc_id_tampering_info",
+            "type": "array_string",
+            "default_value": []
+        },
+        {
+            "title": "Kết quả kiểm tra NFC integrity status từ nfc_id_tampering",
+            "name": "nfc_id_tampering.result_data.integrity_status",
+            "alias": "nfc_id_tampering_integrity_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Kết quả kiểm tra NFC clone status từ nfc_id_tampering",
+            "name": "nfc_id_tampering.result_data.clone_status",
+            "alias": "nfc_id_tampering_clone_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Kết quả kiểm tra NFC với BCA",
+            "name": "nfc_id_tampering.result_data.bca_status",
+            "alias": "nfc_id_tampering_bca_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "NFC Verify Status",
+            "name": "service_statuses.nfc_verify",
+            "alias": "nfc_verify_status",
+            "type": "string"
+        },
+        {
+            "title": "Kết quả NFC verify check id card tampering verdict",
+            "name": "nfc_verify.result_data.id_card_tampering.verdict",
+            "alias": "nfc_verify_id_tampering_verdict",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Kết quả NFC verify check id card tampering info",
+            "name": "nfc_verify.result_data.id_card_tampering.info",
+            "alias": "nfc_verify_id_tampering_info",
+            "type": "array_string",
+            "default_value": []
+        },
+        {
+            "title": "Kết quả kiểm tra NFC với BCA",
+            "name": "nfc_verify.result_data.bca_status",
+            "alias": "nfc_bca_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Kết quả kiểm tra NFC integrity status",
+            "name": "nfc_verify.result_data.integrity_status",
+            "alias": "nfc_integrity_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Kết quả kiểm tra NFC clone status",
+            "name": "nfc_verify.result_data.clone_status",
+            "alias": "nfc_clone_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Kết quả kiểm tra NFC với TPBank",
+            "name": "nfc_verify.result_data.verify_status",
+            "alias": "nfc_verify_h2h_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Kết quả kiểm tra NFC compare face",
+            "name": "nfc_verify.result_data.compare_face.result",
+            "alias": "nfc_compare_face_result",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "KH đã hoàn thành bước scan NFC",
+            "name": "done_scan_nfc_step",
+            "expression": "array_string_contain(conv_array_string(state_info.traversed_states),'ekyc.nfc_scan')",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "KH đã xác thực NFC",
+            "name": "nfc_check.result_data.nfc_existed",
+            "alias": "nfc_existed",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Cờ tính năng cho CO-11617",
+            "name": "feature_flag.enable_reject_cic_at_4th_appraising",
+            "alias": "enable_reject_at_4th_appraising",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Cờ tính năng từ chối hồ sơ nếu cic pending ở lần đánh giá thứ 3",
+            "name": "feature_flag.enable_reject_cic_at_3rd_appraising",
+            "alias": "enable_reject_at_3rd_appraising",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Cờ tính năng từ chối hồ sơ được phân luồng semi",
+            "name": "feature_flag.enable_reject_semi",
+            "alias": "enable_reject_semi",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Trạng thái h2h_cic_s11t",
+            "name": "h2h_cic_s11t.status",
+            "alias": "h2h_cic_s11t_status",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Có dư nợ gốc VAMC",
+            "name": "h2h_cic_s11t.result_data.s11t.has_vamc",
+            "alias": "s11t_vamc",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Dư nợ xấu VND trong 36 tháng",
+            "name": "h2h_cic_s11t.result_data.s11t.bad_debt_in_60m.amt_vnd_in_36m",
+            "alias": "s11t_amt_bad_debt_vnd_in_36m",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Dư nợ xấu USD trong 36 tháng",
+            "name": "h2h_cic_s11t.result_data.s11t.bad_debt_in_60m.amt_usd_in_36m",
+            "alias": "s11t_amt_bad_debt_usd_in_36m",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Tổng dư nợ nhóm 2 trong vòng 6 tháng",
+            "name": "h2h_cic_s11t.result_data.s11t.group2_in_12m.amt_vnd_in_6m",
+            "alias": "s11t_group2_in_6m",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Số ngày trả chậm nợ xấu trong vòng 36 tháng - S11T",
+            "name": "h2h_cic_s11t.result_data.s11t.bad_debt_in_36m.delay_day",
+            "alias": "s11t_bad_debt_delay_day_in_36m",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Số ngày trả chậm nợ xấu trong vòng 6 tháng - S11T",
+            "name": "h2h_cic_s11t.result_data.s11t.bad_debt_in_6m.delay_day",
+            "alias": "s11t_bad_debt_delay_day_in_6m",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Tổng số tiền chậm thanh toán thẻ trong 10 ngày - S11T",
+            "name": "h2h_cic_s11t.result_data.s11t.late_payment.amt_overdue_10d",
+            "alias": "s11t_amt_overdue_10d",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hạn mức của thẻ tín dụng không tài sản bảo đảm có hạn mức cao nhất của KH tra cứu được từ CIC S11T",
+            "name": "h2h_cic_s11t.result_data.s11t.max_unsecured_active_card_limit",
+            "alias": "s11t_max_unsecured_active_card_limit",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Có nhóm nợ xấu ngoại bảng",
+            "name": "h2h_cic_s11t.result_data.s11t.loan_info.bad_debt_group",
+            "alias": "s11t_bad_debt_group",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Số lượng dư nợ xấu khác",
+            "name": "h2h_cic_s11t.result_data.s11t.other_loan_info.max_debt_group",
+            "alias": "s11t_max_debt_group_other",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Có nhóm nợ xấu ngoại bảng khác",
+            "name": "h2h_cic_s11t.result_data.s11t.other_loan_info.bad_debt_group",
+            "alias": "s11t_bad_debt_group_other",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Nợ xấu trả chậm 90 ngày trong vòng 36 tháng - S11T",
+            "name": "s11t_bad_debt_overdue_90d_in_36m",
+            "expression": "s11t_bad_debt_delay_day_in_36m > 90",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Nợ xấu trả chậm hơn 10 ngày trong vòng 6 tháng - S11T",
+            "name": "s11t_bad_debt_overdue_10d_in_6m",
+            "expression": "s11t_bad_debt_delay_day_in_6m >= 10",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Trạng thái h2h_cic_s11t_cif",
+            "name": "h2h_cic_s11t_cif.status",
+            "alias": "h2h_cic_s11t_status_cif",
+            "type": "string",
+            "default_value": ""
+        },
+        {
+            "title": "Có dư nợ gốc VAMC",
+            "name": "h2h_cic_s11t_cif.result_data.s11t.has_vamc",
+            "alias": "s11t_vamc_cif",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Dư nợ xấu VND trong 36 tháng",
+            "name": "h2h_cic_s11t_cif.result_data.s11t.bad_debt_in_60m.amt_vnd_in_36m",
+            "alias": "s11t_amt_bad_debt_vnd_in_36m_cif",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Dư nợ xấu USD trong 36 tháng",
+            "name": "h2h_cic_s11t_cif.result_data.s11t.bad_debt_in_60m.amt_usd_in_36m",
+            "alias": "s11t_amt_bad_debt_usd_in_36m_cif",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Tổng dư nợ nhóm 2 trong vòng 6 tháng",
+            "name": "h2h_cic_s11t_cif.result_data.s11t.group2_in_12m.amt_vnd_in_6m",
+            "alias": "s11t_group2_in_6m_cif",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Số ngày trả chậm nợ xấu trong vòng 36 tháng - S11T",
+            "name": "h2h_cic_s11t_cif.result_data.s11t.bad_debt_in_36m.delay_day",
+            "alias": "s11t_bad_debt_delay_day_in_36m_cif",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Số ngày trả chậm nợ xấu trong vòng 6 tháng - S11T",
+            "name": "h2h_cic_s11t_cif.result_data.s11t.bad_debt_in_6m.delay_day",
+            "alias": "s11t_bad_debt_delay_day_in_6m_cif",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Tổng số tiền chậm thanh toán thẻ trong 10 ngày - S11T",
+            "name": "h2h_cic_s11t_cif.result_data.s11t.late_payment.amt_overdue_10d",
+            "alias": "s11t_amt_overdue_10d_cif",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Hạn mức của thẻ tín dụng không tài sản bảo đảm có hạn mức cao nhất của KH tra cứu được từ CIC S11T",
+            "name": "h2h_cic_s11t_cif.result_data.s11t.max_unsecured_active_card_limit",
+            "alias": "s11t_max_unsecured_active_card_limit_cif",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Tổng dư nợ thẻ tín dụng tra cứu từ CIC S11T",
+            "name": "h2h_cic_s11t_cif.result_data.s11t.card.total_outstanding",
+            "alias": "s11t_card_total_outstanding_cif",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Dư nợ gốc của khoản vay trung hạn của KH không có thông tin tài sản bảo đảm theo CIC S11T",
+            "name": "h2h_cic_s11t_cif.result_data.s11t.loan_info.medium_term_outstanding",
+            "alias": "s11t_medium_outstanding_cif",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Số tiền gốc phải trả cho các khoản nợ không có TSBĐ hàng tháng từ CIC S11T",
+            "name": "h2h_cic_s11t_cif.result_data.s11t.loan_info.principal_monthly_payment",
+            "alias": "s11t_principal_monthly_payment_cif",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Dư nợ khoản vay ngắn hạn của KH không có TSBĐ tra cứu từ CIC S11T",
+            "name": "h2h_cic_s11t_cif.result_data.s11t.loan_info.short_term_outstanding",
+            "alias": "s11t_overdraft_total_outstanding_cif",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Nhóm nợ cao nhất",
+            "name": "h2h_cic_s11t_cif.result_data.s11t.loan_info.max_debt_group",
+            "alias": "s11t_max_debt_group_cif",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Có nhóm nợ xấu ngoại bảng",
+            "name": "h2h_cic_s11t_cif.result_data.s11t.loan_info.bad_debt_group",
+            "alias": "s11t_bad_debt_group_cif",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Số lượng dư nợ xấu khác",
+            "name": "h2h_cic_s11t_cif.result_data.s11t.other_loan_info.max_debt_group",
+            "alias": "s11t_max_debt_group_other_cif",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Có nhóm nợ xấu ngoại bảng khác",
+            "name": "h2h_cic_s11t_cif.result_data.s11t.other_loan_info.bad_debt_group",
+            "alias": "s11t_bad_debt_group_other_cif",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Nợ xấu trả chậm 90 ngày trong vòng 36 tháng - S11T",
+            "name": "s11t_bad_debt_overdue_90d_in_36m_cif",
+            "expression": "s11t_bad_debt_delay_day_in_36m_cif > 90",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Nợ xấu trả chậm hơn 10 ngày trong vòng 6 tháng - S11T",
+            "name": "s11t_bad_debt_overdue_10d_in_6m_cif",
+            "expression": "s11t_bad_debt_delay_day_in_6m_cif >= 10",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "(D3) Số tiền phải trả cho các khoản nợ không có TSBĐ hàng tháng từ CIC S11T",
+            "name": "s11t_loan_monthly_payment",
+            "expression": "s11t_principal_monthly_payment + s11t_interest_monthly_payment",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Số tiền lãi phải trả cho các khoản nợ không có TSBĐ hàng tháng từ CIC S11T",
+            "name": "s11t_interest_monthly_payment",
+            "expression": "s11t_medium_outstanding * 18 / 100 / 12",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Dư nợ gốc của khoản vay trung hạn của KH không có thông tin tài sản bảo đảm theo CIC S11T",
+            "name": "h2h_cic_s11t.result_data.s11t.loan_info.medium_term_outstanding",
+            "alias": "s11t_medium_outstanding",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Số tiền gốc phải trả cho các khoản nợ không có TSBĐ hàng tháng từ CIC S11T",
+            "name": "h2h_cic_s11t.result_data.s11t.loan_info.principal_monthly_payment",
+            "alias": "s11t_principal_monthly_payment",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Nhóm nợ cao nhất",
+            "name": "h2h_cic_s11t.result_data.s11t.loan_info.max_debt_group",
+            "alias": "s11t_max_debt_group",
+            "type": "int",
+            "default_value": 0
+        },
+        {
+            "title": "Tổng dư nợ thẻ tín dụng tra cứu từ CIC S11T",
+            "name": "h2h_cic_s11t.result_data.s11t.card.total_outstanding",
+            "alias": "s11t_card_total_outstanding",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "(D3) Khoản trả hàng tháng cho thẻ tín dụng được tra cứu từ CIC S11T",
+            "name": "s11t_card_monthly_payment",
+            "expression": "s11t_card_total_outstanding * 5 / 100",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "Dư nợ khoản vay ngắn hạn của KH không có TSBĐ tra cứu từ CIC S11T",
+            "name": "h2h_cic_s11t.result_data.s11t.loan_info.short_term_outstanding",
+            "alias": "s11t_overdraft_total_outstanding",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "(D3) Khoản trả hàng tháng của các khoản thấu chi không tài sản bảo đảm từ CIC S11T",
+            "name": "s11t_overdraft_monthly_payment",
+            "expression": "s11t_overdraft_total_outstanding * 18 / 100 / 12",
+            "type": "float",
+            "default_value": 0
+        },
+        {
+            "title": "State conditions to define underwriting customer by location and background",
+            "name": "valid_uw_state_conditions",
+            "expression": "(is_reappraising || application_state == 'appraising.fourth_approval') && lead_source IN (\"mwg_pos\",\"evo_native\")",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Customer distance is valid from store",
+            "name": "distance_detection.result_data.is_valid_distance",
+            "alias": "customer_distance_valid",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Customer background is at store",
+            "name": "store_detection.result_data.is_at_store",
+            "alias": "customer_background_is_at_store",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Customer is at store",
+            "name": "customer_is_at_store",
+            "expression": "customer_distance_valid == true || customer_background_is_at_store == true",
+            "type": "bool",
+            "default_value": false
+        },
+        {
+            "title": "Normal flow from offline customer outside store",
+            "name": "is_normal_flow_from_offline_customer_outside_store",
+            "expression": "is_offline_merchant == true && customer_is_at_store == false",
+            "type": "bool",
+            "default_value": false
+        }
+    ]
+}

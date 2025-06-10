@@ -1,0 +1,64 @@
+{
+    "name": "TPBANK RISK GRADES TREE v1",
+    "uuid": "36921b7a-e585-4a34-80f5-575594b2ae8d",
+    "client_code": "tpbank",
+    "form_uuid": "7f3ad9fe-3adb-4d6b-bf87-9763f3fc7379",
+    "active": true,
+    "engine_type": "risk_grade",
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "income_c2",
+                "title": "Mức độ chắc chắn của thu nhập. Thông tin thẻ tín dụng không có tài sản đảm bảo",
+                "evaluation": "true",
+                "sub_tree_uuid": "ae9320bf-15ca-4bb4-9d53-6457bee19719"
+            },
+            {
+                "name": "income_c3",
+                "title": "Mức độ chắc chắn của thu nhập. Telco Income Score",
+                "evaluation": "true",
+                "sub_tree_uuid": "aa09c2f3-0f73-4cf8-9687-a24419d1153f"
+            },
+            {
+                "name": "income_c4",
+                "title": "Mức độ chắc chắn của thu nhập. Credit risk grade",
+                "evaluation": "true",
+                "sub_tree_uuid": "8e6ca292-6663-45b6-960b-89346979b6c3"
+            },
+            {
+                "name": "manual_cif_check",
+                "title": "Cần phải cif check thủ công hay không",
+                "evaluation": "true",
+                "sub_tree_uuid": "3645c297-583a-4887-8379-743f419d08f3"
+            },
+            {
+                "name": "ascore",
+                "title": "Rủi ro điểm ascore",
+                "evaluation": "true",
+                "sub_tree_uuid": "e306039d-0e3f-4c03-8a37-9e0bf6fda543"
+            },
+            {
+                "name": "pcb_group",
+                "title": "Pcb group",
+                "evaluation": "true",
+                "sub_tree_uuid": "d3fde7cc-4d67-44bb-ba61-feedf67d2e0a"
+            },
+            {
+                "name": "max_pos_credit_limit",
+                "title": "Tổng hạn mức tối đa có thể được quẹt tại máy POS",
+                "evaluation": "true",
+                "nodes": [
+                    {
+                        "name": "max_pos_credit_limit_default",
+                        "title": "Hạn mức tối đa có thể được quẹt tại máy POS mặc định",
+                        "evaluation": "true",
+                        "output": {
+                            "value": 75000000
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

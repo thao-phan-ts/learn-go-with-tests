@@ -1,0 +1,83 @@
+{
+    "name": "EVO NATIVE - RISK GRADES TREE - INCOME C2",
+    "uuid": "44f56c5a-c986-42e9-8ccf-249af983537d",
+    "client_code": "tpbank",
+    "form_uuid": "a06114d6-d898-4187-82f5-73fe342ef997",
+    "active": true,
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "card_surrogate_monthly_income_level_1",
+                "title": "Thoả điều kiện level 1",
+                "evaluation": "floor(card_surrogate_monthly_income) >= 15000000",
+                "output": {
+                    "level": 1,
+                    "confidence": 1,
+                    "c_multiplier": 1.1,
+                    "l_multiplier": 1.2,
+                    "max_dti": 0.6
+                }
+            },
+            {
+                "name": "card_surrogate_monthly_income_level_2",
+                "title": "Thoả điều kiện level 2",
+                "evaluation": "floor(card_surrogate_monthly_income) >= 10000000",
+                "output": {
+                    "level": 2,
+                    "confidence": 1,
+                    "c_multiplier": 1.1,
+                    "l_multiplier": 1.1,
+                    "max_dti": 0.55
+                }
+            },
+            {
+                "name": "card_surrogate_monthly_income_level_3",
+                "title": "Thoả điều kiện level 3",
+                "evaluation": "floor(card_surrogate_monthly_income) >= 7000000",
+                "output": {
+                    "level": 3,
+                    "confidence": 1,
+                    "c_multiplier": 1.1,
+                    "l_multiplier": 1,
+                    "max_dti": 0.5
+                }
+            },
+            {
+                "name": "card_surrogate_monthly_income_level_4",
+                "title": "Thoả điều kiện level 4",
+                "evaluation": "floor(card_surrogate_monthly_income) >= 5000000",
+                "output": {
+                    "level": 4,
+                    "confidence": 1,
+                    "c_multiplier": 1.1,
+                    "l_multiplier": 0.9,
+                    "max_dti": 0.4
+                }
+            },
+            {
+                "name": "card_surrogate_monthly_income_level_5",
+                "title": "Thoả điều kiện level 5",
+                "evaluation": "floor(card_surrogate_monthly_income) > 0",
+                "output": {
+                    "level": 5,
+                    "confidence": 1,
+                    "c_multiplier": 1.1,
+                    "l_multiplier": 0,
+                    "max_dti": 0
+                }
+            }
+        ],
+        "fallback": {
+            "name": "fallback_root",
+            "title": "Không thoả mãn bất kì điều kiện về thẻ tín dụng không có tài sản đảm bảo",
+            "output": {
+                "level": 0,
+                "confidence": 0,
+                "c_multiplier": 0,
+                "l_multiplier": 0,
+                "max_dti": 0
+            }
+        }
+    }
+}

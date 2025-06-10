@@ -1,0 +1,267 @@
+{
+    "name": "TPBANK RISK GRADES TREE - MANUAL CIF CHECK TREE V1",
+    "uuid": "3645c297-583a-4887-8379-743f419d08f3",
+    "client_code": "tpbank",
+    "form_uuid": "7f3ad9fe-3adb-4d6b-bf87-9763f3fc7379",
+    "active": true,
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "cif_pending",
+                "title": "Pending prescreesning or prescreening old id",
+                "evaluation": "cif_code == '' || (length(old_id_card_number) > 0 && cif_code_old_nid == '')",
+                "output": {
+                    "value": true,
+                    "code": "cif_pending"
+                }
+            },
+            {
+                "name": "no_exist",
+                "evaluation": "cif_code == 'no_exist'",
+                "nodes": [
+                    {
+                        "name": "cif001_reopen",
+                        "evaluation": "length(old_id_card_number) == 0 && has_cif_nid_close == true",
+                        "output": {
+                            "value": true,
+                            "code": "cif_reopen"
+                        }
+                    },
+                    {
+                        "name": "cif001",
+                        "evaluation": "length(old_id_card_number) == 0 && has_cif_nid_close == false",
+                        "output": {
+                            "value": false
+                        }
+                    },
+                    {
+                        "name": "cif002_reopen",
+                        "evaluation": "cif_code_old_nid == 'no_exist' && has_cif_nid_close == true",
+                        "output": {
+                            "value": true,
+                            "code": "cif_reopen"
+                        }
+                    },
+                    {
+                        "name": "cif002",
+                        "evaluation": "cif_code_old_nid == 'no_exist' && has_cif_nid_close == false",
+                        "output": {
+                            "value": false
+                        }
+                    },
+                    {
+                        "name": "fa001",
+                        "evaluation": "cif_code_old_nid == 'diff_phone'",
+                        "output": {
+                            "value": true,
+                            "code": "diff_phone"
+                        }
+                    }
+                ],
+                "fallback": {
+                    "name": "fa002",
+                    "output": {
+                        "value": true,
+                        "code": "diff_cif"
+                    }
+                }
+            },
+            {
+                "name": "same_cif",
+                "evaluation": "cif_code == 'same_cif'",
+                "nodes": [
+                    {
+                        "name": "fa003",
+                        "evaluation": "length(old_id_card_number) == 0",
+                        "output": {
+                            "value": true,
+                            "code": "diff_info"
+                        }
+                    },
+                    {
+                        "name": "fa004",
+                        "evaluation": "cif_code_old_nid == 'diff_nation_id'",
+                        "output": {
+                            "value": true,
+                            "code": "diff_info"
+                        }
+                    },
+                    {
+                        "name": "cif004",
+                        "evaluation": "cif_code_old_nid == 'diff_nation_id_same_name'",
+                        "output": {
+                            "value": false
+                        }
+                    }
+                ],
+                "fallback": {
+                    "name": "fa005",
+                    "output": {
+                        "value": true,
+                        "code": "diff_cif"
+                    }
+                }
+            },
+            {
+                "name": "same_cif_same_name",
+                "evaluation": "cif_code == 'same_cif_same_name'",
+                "nodes": [
+                    {
+                        "name": "cif006",
+                        "evaluation": "length(old_id_card_number) == 0",
+                        "output": {
+                            "value": false
+                        }
+                    },
+                    {
+                        "name": "cif007",
+                        "evaluation": "cif_code_old_nid == 'diff_nation_id_same_name'",
+                        "output": {
+                            "value": false
+                        }
+                    },
+                    {
+                        "name": "cif008",
+                        "evaluation": "cif_code_old_nid == 'diff_nation_id'",
+                        "output": {
+                            "value": false
+                        }
+                    },
+                    {
+                        "name": "cif018",
+                        "evaluation": "cif_code_old_nid == 'same_cif_same_name'",
+                        "output": {
+                            "value": false
+                        }
+                    },
+                    {
+                        "name": "fa025",
+                        "evaluation": "cif_code_old_nid == 'diff_cif' && cif_no_debit_result == 'pass'",
+                        "output": {
+                            "value": false
+                        }
+                    }
+                ],
+                "fallback": {
+                    "name": "fa006",
+                    "output": {
+                        "value": true,
+                        "code": "diff_cif"
+                    }
+                }
+            },
+            {
+                "name": "fa007",
+                "evaluation": "cif_code == 'diff_phone'",
+                "output": {
+                    "value": true,
+                    "code": "diff_phone"
+                }
+            },
+            {
+                "name": "diff_cif",
+                "evaluation": "cif_code == 'diff_cif'",
+                "nodes": [
+                    {
+                        "name": "fa027",
+                        "evaluation": "cif_code_old_nid == 'same_cif_same_name' && cif_no_debit_result == 'pass'",
+                        "output": {
+                            "value": false
+                        }
+                    }
+                ],
+                "fallback": {
+                    "name": "fa008",
+                    "output": {
+                        "value": true,
+                        "code": "diff_cif"
+                    }
+                }
+            },
+            {
+                "name": "diff_nation_id",
+                "evaluation": "cif_code == 'diff_nation_id'",
+                "nodes": [
+                    {
+                        "name": "cif012",
+                        "evaluation": "cif_code_old_nid == 'same_cif_same_name'",
+                        "output": {
+                            "value": false
+                        }
+                    },
+                    {
+                        "name": "fa009",
+                        "evaluation": "cif_code_old_nid == 'same_cif'",
+                        "output": {
+                            "value": true,
+                            "code": "diff_info"
+                        }
+                    }
+                ],
+                "fallback": {
+                    "name": "fa010_fa011",
+                    "output": {
+                        "value": true,
+                        "code": "diff_cif"
+                    }
+                }
+            },
+            {
+                "name": "diff_nation_id_same_name",
+                "evaluation": "cif_code == 'diff_nation_id_same_name'",
+                "nodes": [
+                    {
+                        "name": "cif014",
+                        "evaluation": "cif_code_old_nid == 'same_cif_same_name'",
+                        "output": {
+                            "value": false
+                        }
+                    },
+                    {
+                        "name": "diff_nation_id",
+                        "evaluation": "length(old_id_card_number) == 0 || cif_code_old_nid == 'same_cif'",
+                        "nodes": [
+                            {
+                                "name": "fa020",
+                                "evaluation": "length(cif_id_card_number) > 0 && use_new_cif == true",
+                                "output": {
+                                    "value": false
+                                }
+                            },
+                            {
+                                "name": "fa021",
+                                "evaluation": "length(cif_id_card_number) > 0 && use_new_cif == false",
+                                "output": {
+                                    "value": true,
+                                    "code": "diff_nation_id"
+                                }
+                            }
+                        ],
+                        "fallback": {
+                            "name": "fa016",
+                            "output": {
+                                "value": true,
+                                "code": "diff_cif"
+                            }
+                        }
+                    }
+                ],
+                "fallback": {
+                    "name": "fa016",
+                    "output": {
+                        "value": true,
+                        "code": "diff_cif"
+                    }
+                }
+            }
+        ],
+        "fallback": {
+            "name": "fa018",
+            "output": {
+                "value": true,
+                "code": "diff_cif"
+            }
+        }
+    }
+}

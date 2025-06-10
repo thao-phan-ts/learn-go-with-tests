@@ -1,0 +1,425 @@
+{
+    "name": "TPBANK EVO - OFFLINE MERCHANT - FULL DECISION TREE",
+    "uuid": "a554c4bd-1414-4a42-85a0-b7f585122fae",
+    "client_code": "tpbank",
+    "form_uuid": "7f3ad9fe-3adb-4d6b-bf87-9763f3fc7379",
+    "active": true,
+    "root": {
+        "name": "root",
+        "title": "TPBANK EVO - OFFLINE MERCHANT - FULL DECISION TREE",
+        "nodes": [
+            {
+                "name": "prescreening.blacklist",
+                "title": "Khách hàng nằm trong danh sách đen",
+                "evaluation": "prescreening_code == 'prescreening.blacklist' || prescreening_old_id_code == 'prescreening.blacklist'",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "prescreening.duplicated",
+                "title": "Khách hàng đã đăng kí hoặc đã mở thẻ trước đó",
+                "evaluation": "prescreening_code IN ('prescreening.duplicated','prescreening.existed_card') || prescreening_old_id_code IN ('prescreening.duplicated','prescreening.existed_card')",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "ekyc_unmatched_faces",
+                "title": "(eKYC06) Hình CMND và hình selfie không khớp",
+                "evaluation": "ekyc_face_compare_status == 'unmatched'",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "ekyc_face_nb_duplicate_nids_rule_1",
+                "title": "(eKYC07) Tìm thấy khuôn mặt KH trong cơ sở dữ liệu hiện tại với số CMND khác với số CMND mà Khách hàng cung cấp",
+                "evaluation": "ekyc_face_nb_duplicate_nids > 0 && length(old_id_card_number) > 0",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "ekyc_face_nb_duplicate_nids_rule_2",
+                "title": "(eKYC07) Tìm thấy khuôn mặt KH trong cơ sở dữ liệu hiện tại với số CMND khác với số CMND mà Khách hàng cung cấp",
+                "evaluation": "ekyc_face_nb_duplicate_nids > 0 && length(old_id_card_number) == 0 && !(ekyc_face_max_duplicate_nid_length == 9 && length(id_card_number) == 12)",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "id_card_expired",
+                "title": "(BR17) CMND quá hạn sử dụng",
+                "evaluation": "id_card_issued_date != nil && time_age(id_card_issued_date) >= 15",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "cccd_expired",
+                "title": "(BR17) CCCD quá hạn sử dụng",
+                "evaluation": "id_card_expired_date != nil && range_time(id_card_expired_date,'0001-01-01',time_now())",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "age_not_in_range",
+                "title": "(BR03) Tuổi < 22 hoặc > 60",
+                "evaluation": "birthday != nil && !range_number(time_year(time_now()) - time_year(birthday) + 1, 22, 60)",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "has_pdl_found_status",
+                "title": "(BR02) Có hồ sơ vay với PDL",
+                "evaluation": "nb_pdl_found_status > 0",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "has_pdl_email_check_found_status",
+                "title": "(BR02) Có hồ sơ vay với PDL sử dụng email",
+                "evaluation": "nb_pdl_email_check_found_status > 0",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "selfie_in_tpb_blacklist",
+                "title": "(eKYC10.01) Ảnh selfie nằm trong tập tpbank blacklist",
+                "evaluation": "tpb_blacklist001_selfie_check_status == 'found'",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "selfie_in_ts_blacklist",
+                "title": "(eKYC10.02) Ảnh selfie nằm trong tập ts blacklist",
+                "evaluation": "selfie_blacklist_check_status == 'found'",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "idcard_face_in_tpb_blacklist",
+                "title": "(eKYC11.01) Ảnh CMND mặt trước nằm trong tập tpbank blacklist",
+                "evaluation": "tpb_blacklist001_idcard_check_status == 'found'",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "idcard_face_in_ts_blacklist",
+                "title": "(eKYC11.02) Ảnh CMND mặt trước nằm trong tập ts blacklist",
+                "evaluation": "id_cards_blacklist_check_status == 'found'",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "job_not_in_range",
+                "title": "Khách hàng có việc làm không thỏa điều kiện",
+                "evaluation": "job_status == 'ES_5' || job_id IN ('E1','E2','E3','E4','E5','E6','E20','E24','E25','E26','E27','E15') || (job_id IN ('E7','E8','E9','E10','E11','E12','E13','E14','E15','E28','E29','E30','E31','E32','E33','E34','E35') && payment_method_id IN ('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17'))",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "income_under_cut_off",
+                "title": "(BR05) Lương nhỏ hơn 5 triệu",
+                "evaluation": "income > 0 && income < 5000000",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "current_address_not_in_supported_places",
+                "title": "(BR06) Nơi ở hiện tại không thuộc địa bàn triển khai",
+                "evaluation": "eligible_location == false",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "bad_debt",
+                "title": "(BR12.I) Có nợ nhóm 2 trở lên",
+                "evaluation": "s11a_max_debt_group >= 2 || s11a_max_debt_group_old_nid >= 2 || s11a_max_debt_group_cif >= 2 || s11a_nb_other_bad_debt > 0 || s11a_nb_other_bad_debt_old_nid > 0 || s11a_nb_other_bad_debt_cif > 0",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "cic_late_payment",
+                "title": "(BR12.I) Có dư nợ chậm thanh toán trong 10 ngày",
+                "evaluation": "r14_amt_overdue_10d > 0 || r14_amt_overdue_10d_old_nid > 0 || r14_amt_overdue_10d_cif > 0",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "condition_group2",
+                "title": "(BR12.II) Có nợ nhóm 2 trong vòng 6 tháng",
+                "evaluation": "s11a_group2_in_6m > 0 || s11a_group2_in_6m_old_nid > 0 || s11a_group2_in_6m_cif > 0 || r14_group2_in_6m > 0 || r14_group2_in_6m_old_nid > 0 || r14_group2_in_6m_cif > 0",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "bad_debt_in_36m",
+                "title": "(BR12.III) Có nợ xấu trong vòng 36 tháng",
+                "evaluation": "s11a_amt_bad_debt_vnd_in_36m > 0 || s11a_amt_bad_debt_vnd_in_36m_old_nid > 0 || s11a_amt_bad_debt_vnd_in_36m_cif > 0 || s11a_amt_bad_debt_usd_in_36m > 0 || s11a_amt_bad_debt_usd_in_36m_old_nid > 0 || s11a_amt_bad_debt_usd_in_36m_cif > 0 || r14_amt_bad_debt > 0 || r14_amt_bad_debt_old_nid > 0 || r14_amt_bad_debt_cif > 0",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "vamc",
+                "title": "(BR12.IV) Có dư nợ VAMC",
+                "evaluation": "s11a_vamc == true || s11a_vamc_old_nid == true || s11a_vamc_cif == true",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "pcb_bad_debt_in_1m",
+                "title": "(BR11.I) PCB Có nợ nhóm 2 trở lên trong vòng 1 tháng",
+                "evaluation": "pcb_instalments_max_debt_group_in_1m >= 2 || pcb_instalments_max_debt_group_in_1m_old_nid >= 2 || pcb_instalments_max_debt_group_in_1m_cif >= 2 || pcb_noninstalments_max_debt_group_in_1m >= 2 || pcb_noninstalments_max_debt_group_in_1m_old_nid >= 2 || pcb_noninstalments_max_debt_group_in_1m_cif >= 2 || pcb_cards_max_debt_group_in_1m >= 2 || pcb_cards_max_debt_group_in_1m_old_nid >= 2 || pcb_cards_max_debt_group_in_1m_cif >= 2",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "pcb_bad_debt_in_6m",
+                "title": "(BR11.II) PCB Có nợ nhóm 2 trở lên trong vòng 6 tháng",
+                "evaluation": "pcb_instalments_max_debt_group_in_6m >= 2 || pcb_instalments_max_debt_group_in_6m_old_nid >= 2 || pcb_instalments_max_debt_group_in_6m_cif >= 2 || pcb_noninstalments_max_debt_group_in_6m >= 2 || pcb_noninstalments_max_debt_group_in_6m_old_nid >= 2 || pcb_noninstalments_max_debt_group_in_6m_cif >= 2 || pcb_cards_max_debt_group_in_6m >= 2 || pcb_cards_max_debt_group_in_6m_old_nid >= 2 || pcb_cards_max_debt_group_in_6m_cif >= 2",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "pcb_bad_debt_in_36m",
+                "title": "(BR11.III) PCB Có nợ nhóm 3 trở lên trong vòng 36 tháng",
+                "evaluation": "pcb_instalments_max_debt_group_in_36m >= 3 || pcb_instalments_max_debt_group_in_36m_old_nid >= 3 || pcb_instalments_max_debt_group_in_36m_cif >= 3 || pcb_noninstalments_max_debt_group_in_36m >= 3 || pcb_noninstalments_max_debt_group_in_36m_old_nid >= 3 || pcb_noninstalments_max_debt_group_in_36m_cif >= 3 || pcb_cards_max_debt_group_in_36m >= 3 || pcb_cards_max_debt_group_in_36m_old_nid >= 3 || pcb_cards_max_debt_group_in_36m_cif >= 3",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "pcb_too_many_relationships",
+                "title": "(BR11.V) PCB Có quan hệ tín dụng với nhiều hơn 3 TCTD",
+                "evaluation": "pcb_nb_relationships > 3 || pcb_nb_relationships_old_nid > 3 || pcb_nb_relationships_cif > 3",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "pcb_too_many_relationships_and_high_risk_grade",
+                "title": "(BR11.V) PCB có quan hệ tín dụng với nhiều hơn 2 TCTD và có risk grade thuộc nhóm C, D, E, F",
+                "evaluation": "(pcb_nb_relationships >= 2 || pcb_nb_relationships_old_nid >= 2 || pcb_nb_relationships_cif >= 2) &&  ascore_risk_grade IN ('C','D','E','F')",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "pcb_cb_contract_code",
+                "title": "(BR24) KH có trên 3 request vay trong 30 ngày",
+                "evaluation": "(pcb_nb_cb_contract_code > 3 || pcb_nb_cb_contract_code_old_nid > 3 || pcb_nb_cb_contract_code_cif > 3) &&  ascore_risk_grade IN ('B','C','D','E','F','G')",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "pcb_granted_unsecured_loan",
+                "title": "(BR25) KH có tổng số tiền tín dụng không có TSĐB từ 30tr trở lên trong 30 ngày",
+                "evaluation": "pcb_unsecured_loan_amount >= 30000000 || pcb_unsecured_loan_amount_old_nid >= 30000000 || pcb_unsecured_loan_amount_cif >= 30000000",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "ebank_risk_potential_fraud",
+                "title": "(BR26) Trạng thái ebank risk potential fraud của KH",
+                "evaluation": "ebank_risk_potential_fraud == true",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "ebank_risk_status",
+                "title": "(BR26) Trạng thái ebank risk của KH",
+                "evaluation": "ebank_risk == true",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "cookie_id_used_before_with_diff_name",
+                "title": "(FR03) abnormal_cookie",
+                "evaluation": "abnormal_cookie == true && marketing_channel != 'partners'",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "email_used_before_with_diff_name",
+                "title": "abnormal_email",
+                "evaluation": "abnormal_email == true",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "ascore_risk_25",
+                "title": "(BR20.25) Ascore risk",
+                "evaluation": "ascore_risk_grade in ('F','G')",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "dscore_risk",
+                "title": "D-score risk",
+                "evaluation": "dscore >= 90",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "has_ekyc_alert",
+                "title": "(eKYC08) KH bị cảnh báo bởi các dịch vụ eKYC",
+                "evaluation": "has_ekyc_alert == true",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "cif_check_no_debit_failed",
+                "title": "(BR27) KH có kết quả check cif no debit failed",
+                "evaluation": "manual_cif_check == false && cif_no_debit_result == 'failed'",
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "cif_check_no_debit_pass",
+                "title": "KH có kết quả check cif no debit pass",
+                "evaluation": "manual_cif_check == false && cif_no_debit_result == 'pass'",
+                "sub_tree_uuid": "920063ac-bdc2-4127-b96d-9901b459e6dd"
+            },
+            {
+                "name": "manual_cif_check",
+                "title": "Need manual cif check",
+                "evaluation": "manual_cif_check == true",
+                "nodes": [
+                    {
+                        "name": "cif_update_retry",
+                        "title": "Update cif retry",
+                        "evaluation": "(manual_cif_check_code == 'diff_nation_id' && de_flow_type == 'diff_nation_id') || (manual_cif_check_code == 'diff_phone' && de_flow_type == 'diff_phone') || (manual_cif_check_code == 'diff_cif' && de_flow_type == 'diff_cif') || (manual_cif_check_code == 'diff_info' && de_flow_type == 'diff_info')",
+                        "output": {
+                            "status": "shift_state",
+                            "next_state": "cif.confirm",
+                            "ui_flow": [
+                                "cif.confirm",
+                                "appraising.cif"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "cif_update_diff_info",
+                        "title": "Update cif same cif diff info",
+                        "evaluation": "manual_cif_check_code == 'diff_info'",
+                        "output": {
+                            "status": "flow_changed",
+                            "flow_type": "diff_info",
+                            "next_state": "cif.confirm",
+                            "switch_flow": {
+                                "tags": {
+                                    "flow_type": "diff_info"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "cif_update_diff_nation_id",
+                        "title": "Update cif diff nation id",
+                        "evaluation": "manual_cif_check_code == 'diff_nation_id'",
+                        "output": {
+                            "status": "flow_changed",
+                            "flow_type": "diff_nation_id",
+                            "next_state": "cif.confirm",
+                            "switch_flow": {
+                                "tags": {
+                                    "flow_type": "diff_nation_id"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "cif_update_diff_phone",
+                        "title": "Update cif diff phone",
+                        "evaluation": "manual_cif_check_code == 'diff_phone'",
+                        "output": {
+                            "status": "flow_changed",
+                            "flow_type": "diff_phone",
+                            "next_state": "cif.confirm",
+                            "switch_flow": {
+                                "tags": {
+                                    "flow_type": "diff_phone"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "cif_reopen",
+                        "title": "Cif reopen",
+                        "evaluation": "manual_cif_check_code == 'cif_reopen'",
+                        "output": {
+                            "status": "flow_changed",
+                            "flow_type": "cif_reopen",
+                            "next_state": "cif.confirm",
+                            "switch_flow": {
+                                "tags": {
+                                    "flow_type": "cif_reopen"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "fallback": {
+                    "name": "cif_update_diff_cif",
+                    "title": "Update cif diff cif",
+                    "output": {
+                        "status": "flow_changed",
+                        "flow_type": "diff_cif",
+                        "next_state": "cif.confirm",
+                        "switch_flow": {
+                            "tags": {
+                                "flow_type": "diff_cif"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "name": "ascore_pending_reappraising",
+                "title": "Khách hàng chưa có kết quả ascore khi thẩm định lại",
+                "evaluation": "ascore_risk_grade == 'UNDEFINED' && is_reappraising",
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "duplicate_approval_rejected",
+                "title": "Tồn tại app có cùng số điện thoại đã được approved",
+                "evaluation": "application_state == 'success' && has_duplicate_approval == true",
+                "output": {
+                    "status": "rejected",
+                    "flow_type": "rejection"
+                }
+            },
+            {
+                "name": "phone_is_ref_of_blacklist",
+                "title": "(BR28.1) Số điện thoại của KH nằm trong danh sách đen",
+                "evaluation": "delinquent_check_phone_is_ref_of_blacklist == true",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "ref_is_blacklist",
+                "title": "(BR28.2) Số điện thoại người thân của KH nằm trong danh sách đen",
+                "evaluation": "delinquent_check_ref_is_blacklist == true",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "low_last_telco_score",
+                "title": "(BR29) User re-apply but have low credit score or low ascore in the last 12 months",
+                "evaluation": "repeated_customer_check_phone_number == true || repeated_customer_check_id_number == true",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            },
+            {
+                "name": "high_risk_channel",
+                "title": "(BR30.1) If the client has utm source is is_affiliate_channel, the lead is to be rejected",
+                "evaluation": "is_affiliate_channel == true && done_app_form_personal_info",
+                "is_representative_node": true,
+                "sub_tree_uuid": "f1a4ed81-4dca-4f20-99e8-5c95f243fab0"
+            }
+        ],
+        "fallback": {
+            "name": "passed_all_knockout_rules",
+            "title": "Phân luồng khách hàng thoả mãn tất cả các điều kiện",
+            "sub_tree_uuid": "920063ac-bdc2-4127-b96d-9901b459e6dd"
+        }
+    }
+}

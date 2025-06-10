@@ -1,0 +1,245 @@
+{
+    "name": "TPBANK RISK GRADES TREE - CREDIT",
+    "uuid": "cfc3917c-8553-4386-959c-1fc413e7bf4d",
+    "client_code": "tpbank",
+    "form_uuid": "7f3ad9fe-3adb-4d6b-bf87-9763f3fc7379",
+    "active": false,
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "telco_code_viettel",
+                "title": "Số điện thoại thuộc nhà mạng Viettel",
+                "evaluation": "telco_code == 'viettel'",
+                "nodes": [
+                    {
+                        "name": "vt_credit_score_level_a",
+                        "title": "Credit Score từ [800-850]",
+                        "evaluation": "range_number(min_score(lead_score),800,850)",
+                        "output": {
+                            "level": "A",
+                            "multiplier": 3
+                        }
+                    },
+                    {
+                        "name": "vt_credit_score_level_b",
+                        "title": "Credit Score từ [750-799]",
+                        "evaluation": "range_number(min_score(lead_score),750,799)",
+                        "output": {
+                            "level": "B",
+                            "multiplier": 2.5
+                        }
+                    },
+                    {
+                        "name": "vt_credit_score_level_c",
+                        "title": "Credit Score từ [725-749]",
+                        "evaluation": "range_number(min_score(lead_score),725,749)",
+                        "output": {
+                            "level": "C",
+                            "multiplier": 1.8
+                        }
+                    },
+                    {
+                        "name": "vt_credit_score_level_d",
+                        "title": "Credit Score từ [700-724]",
+                        "evaluation": "range_number(min_score(lead_score),700,724)",
+                        "output": {
+                            "level": "D",
+                            "multiplier": 1.2
+                        }
+                    },
+                    {
+                        "name": "vt_credit_score_level_e",
+                        "title": "Credit Score từ [670-699]",
+                        "evaluation": "range_number(min_score(lead_score),670,699)",
+                        "output": {
+                            "level": "E",
+                            "multiplier": 1.2
+                        }
+                    },
+                    {
+                        "name": "vt_credit_score_level_f",
+                        "title": "Credit Score từ [635-669]",
+                        "evaluation": "range_number(min_score(lead_score),635,669)",
+                        "output": {
+                            "level": "F",
+                            "multiplier": 1.2
+                        }
+                    },
+                    {
+                        "name": "vt_credit_score_level_g",
+                        "title": "Credit Score từ [300-634]",
+                        "evaluation": "range_number(min_score(lead_score),300,634)",
+                        "output": {
+                            "level": "G",
+                            "multiplier": 0
+                        }
+                    }
+                ],
+                "fallback": {
+                    "name": "fallback_root",
+                    "title": "Không thoả mãn bất kì score range nào",
+                    "output": {
+                        "level": "UNDEFINED",
+                        "multiplier": 0
+                    }
+                }
+            },
+            {
+                "name": "telco_code_mobifone",
+                "title": "Số điện thoại thuộc nhà mạng Mobifone",
+                "evaluation": "telco_code == 'mobifone'",
+                "nodes": [
+                    {
+                        "name": "mbf_credit_score_level_a",
+                        "title": "Credit Score từ [800-850]",
+                        "evaluation": "range_number(min_score(lead_score),800,850)",
+                        "output": {
+                            "level": "A",
+                            "multiplier": 3
+                        }
+                    },
+                    {
+                        "name": "mbf_credit_score_level_b",
+                        "title": "Credit Score từ [750-799]",
+                        "evaluation": "range_number(min_score(lead_score),750,799)",
+                        "output": {
+                            "level": "B",
+                            "multiplier": 2.5
+                        }
+                    },
+                    {
+                        "name": "mbf_credit_score_level_c",
+                        "title": "Credit Score từ [715-749]",
+                        "evaluation": "range_number(min_score(lead_score),715,749)",
+                        "output": {
+                            "level": "C",
+                            "multiplier": 1.8
+                        }
+                    },
+                    {
+                        "name": "mbf_credit_score_level_d",
+                        "title": "Credit Score từ [685-714]",
+                        "evaluation": "range_number(min_score(lead_score),685,714)",
+                        "output": {
+                            "level": "D",
+                            "multiplier": 1.2
+                        }
+                    },
+                    {
+                        "name": "mbf_credit_score_level_e",
+                        "title": "Credit Score từ [650-684]",
+                        "evaluation": "range_number(min_score(lead_score),650,684)",
+                        "output": {
+                            "level": "E",
+                            "multiplier": 1.2
+                        }
+                    },
+                    {
+                        "name": "mbf_credit_score_level_f",
+                        "title": "Credit Score từ [635-649]",
+                        "evaluation": "range_number(min_score(lead_score),635,649)",
+                        "output": {
+                            "level": "F",
+                            "multiplier": 1.2
+                        }
+                    },
+                    {
+                        "name": "mbf_credit_score_level_g",
+                        "title": "Credit Score từ [300-634]",
+                        "evaluation": "range_number(min_score(lead_score),300,634)",
+                        "output": {
+                            "level": "G",
+                            "multiplier": 0
+                        }
+                    }
+                ],
+                "fallback": {
+                    "name": "fallback_root",
+                    "title": "Không thoả mãn bất kì score range nào",
+                    "output": {
+                        "level": "UNDEFINED",
+                        "multiplier": 0
+                    }
+                }
+            }
+        ],
+        "fallback": {
+            "name": "fallback_to_other_telcos",
+            "title": "Số điện thoại thuộc nhà mạng khác",
+            "nodes": [
+                {
+                    "name": "credit_score_level_a",
+                    "title": "Credit Score từ [775-850]",
+                    "evaluation": "range_number(min_score(lead_score),775,850)",
+                    "output": {
+                        "level": "A",
+                        "multiplier": 3
+                    }
+                },
+                {
+                    "name": "credit_score_level_b",
+                    "title": "Credit Score từ [725-774]",
+                    "evaluation": "range_number(min_score(lead_score),725,774)",
+                    "output": {
+                        "level": "B",
+                        "multiplier": 2.5
+                    }
+                },
+                {
+                    "name": "credit_score_level_c",
+                    "title": "Credit Score từ [685-724]",
+                    "evaluation": "range_number(min_score(lead_score),685,724)",
+                    "output": {
+                        "level": "C",
+                        "multiplier": 1.8
+                    }
+                },
+                {
+                    "name": "credit_score_level_d",
+                    "title": "Credit Score từ [650-684]",
+                    "evaluation": "range_number(min_score(lead_score),650,684)",
+                    "output": {
+                        "level": "D",
+                        "multiplier": 1.2
+                    }
+                },
+                {
+                    "name": "credit_score_level_e",
+                    "title": "Credit Score từ [630-649]",
+                    "evaluation": "range_number(min_score(lead_score),630,649)",
+                    "output": {
+                        "level": "E",
+                        "multiplier": 1.2
+                    }
+                },
+                {
+                    "name": "credit_score_level_f",
+                    "title": "Credit Score từ [600-629]",
+                    "evaluation": "range_number(min_score(lead_score),600,629)",
+                    "output": {
+                        "level": "F",
+                        "multiplier": 1.2
+                    }
+                },
+                {
+                    "name": "credit_score_level_g",
+                    "title": "Credit Score từ [300-599]",
+                    "evaluation": "range_number(min_score(lead_score),300,599)",
+                    "output": {
+                        "level": "G",
+                        "multiplier": 0
+                    }
+                }
+            ],
+            "fallback": {
+                "name": "fallback_root",
+                "title": "Không thoả mãn bất kì score range nào",
+                "output": {
+                    "level": "UNDEFINED",
+                    "multiplier": 0
+                }
+            }
+        }
+    }
+}

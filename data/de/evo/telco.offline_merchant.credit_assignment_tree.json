@@ -1,0 +1,83 @@
+{
+    "name": "TPBANK EVO - OFFLINE MERCHANT - CREDIT ASSIGNMENT TREE v1",
+    "uuid": "77fd511d-cc1e-4e59-b320-420adcf3df35",
+    "client_code": "tpbank",
+    "form_uuid": "7f3ad9fe-3adb-4d6b-bf87-9763f3fc7379",
+    "active": true,
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "ascore_undefined",
+                "title": "ascore risk grade UNDEFINED",
+                "evaluation": "ascore_risk_grade == 'UNDEFINED'",
+                "scoring": "5000000",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "ascore_abc_income_score",
+                "title": "Khách hàng có rủi ro xếp hạng tín dụng A/B/C và có điểm income score",
+                "evaluation": "telco_code IN ('mobifone','vinaphone') && ascore_risk_grade IN ('A','B','C') && predicted_income > 0",
+                "scoring": "million_floor(cap_value(min_number(max_number(credit_limit_ic2,credit_limit_ic3,min_credit_limit_ic),offline_merchant_max_credit_limit_ic), dscore_cap_limit, dscore_cap_multiplier))",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "ascore_def_income_score_max_ic1_ic2_gt0",
+                "title": "Khách hàng có rủi ro xếp hạng tín dụng D/E/F và có điểm income score",
+                "evaluation": "telco_code IN ('mobifone','vinaphone') && ascore_risk_grade IN ('D','E','F') && predicted_income > 0 && credit_limit_ic2 > 0",
+                "scoring": "million_floor(cap_value(min_number(max_number(min_number(credit_limit_ic2,credit_limit_ic3),min_credit_limit_ic),offline_merchant_max_credit_limit_ic), dscore_cap_limit, dscore_cap_multiplier))",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "ascore_def_income_score_max_ic1_ic2_eq0",
+                "title": "Khách hàng có rủi ro xếp hạng tín dụng D/E/F và có điểm income score",
+                "evaluation": "telco_code IN ('mobifone','vinaphone') && ascore_risk_grade IN ('D','E','F') && predicted_income > 0",
+                "scoring": "million_floor(cap_value(min_number(max_number(credit_limit_ic3,min_credit_limit_ic),offline_merchant_max_credit_limit_ic), dscore_cap_limit, dscore_cap_multiplier))",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "ascore_abc_no_income_score",
+                "title": "Khách hàng có rủi ro xếp hạng tín dụng A/B/C và không có điểm income score",
+                "evaluation": "telco_code IN ('mobifone','vinaphone') && ascore_risk_grade IN ('A','B','C') && predicted_income == 0",
+                "scoring": "million_floor(cap_value(min_number(max_number(credit_limit_ic2,min_number(30000000,credit_limit_ic4),min_credit_limit_ic),offline_merchant_max_credit_limit_ic), dscore_cap_limit, dscore_cap_multiplier))",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "ascore_def_no_income_score_max_ic1_ic2_gt0",
+                "title": "Khách hàng có rủi ro xếp hạng tín dụng D/E/F và không có điểm income score",
+                "evaluation": "telco_code IN ('mobifone','vinaphone') && ascore_risk_grade IN ('D','E','F') && predicted_income == 0 && credit_limit_ic2 > 0",
+                "scoring": "million_floor(cap_value(min_number(max_number(min_number(credit_limit_ic2,credit_limit_ic4),min_credit_limit_ic),offline_merchant_max_credit_limit_ic), dscore_cap_limit, dscore_cap_multiplier))",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "ascore_def_no_income_score_max_ic1_ic2_eq0",
+                "title": "Khách hàng có rủi ro xếp hạng tín dụng D/E/F và không có điểm income score",
+                "evaluation": "telco_code IN ('mobifone','vinaphone') && ascore_risk_grade IN ('D','E','F') && predicted_income == 0 && credit_limit_ic2 == 0",
+                "scoring": "million_floor(cap_value(min_number(max_number(credit_limit_ic4,min_credit_limit_ic),offline_merchant_max_credit_limit_ic), dscore_cap_limit, dscore_cap_multiplier))",
+                "output": {
+                    "status": "accepted"
+                }
+            }
+        ],
+        "fallback": {
+            "name": "min_credit_limit",
+            "title": "Credit limit is 5000000",
+            "scoring": "5000000",
+            "output": {
+                "status": "accepted"
+            }
+        }
+    }
+}

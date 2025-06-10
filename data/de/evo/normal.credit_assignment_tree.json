@@ -1,0 +1,83 @@
+{
+    "name": "TPBANK EVO - NORMAL - CREDIT ASSIGNMENT TREE v1",
+    "uuid": "e503181b-1abd-4b34-9416-aa753187e5f1",
+    "client_code": "tpbank",
+    "form_uuid": "7f3ad9fe-3adb-4d6b-bf87-9763f3fc7379",
+    "active": true,
+    "root": {
+        "name": "root",
+        "nodes": [
+            {
+                "name": "is_semi_flow",
+                "title": "Khách hàng được phân luồng semi",
+                "evaluation": "ascore_risk_grade == 'UNDEFINED'",
+                "scoring": "10000000",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "high_risk_segment_group",
+                "title": "Khách hàng thuộc nhóm rủi ro cao",
+                "evaluation": "ascore_risk_grade IN ('AA','A','B') && ascore_v3_calculated > 0 && ascore_v3_calculated < 760",
+                "scoring": "10000000",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "low_max_credit_limit",
+                "title": "Khách hàng có hạn mức tín dụng thấp, được phân hạng mức 10 triệu",
+                "evaluation": "max_credit_limit_ic < min_credit_limit_ic",
+                "scoring": "10000000",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "cred_abc_no_income_score",
+                "title": "Khách hàng có rủi ro xếp hạng tín dụng AA/A/B/C và không có điểm income score",
+                "evaluation": "ascore_risk_grade IN ('AA','A','B','C') && predicted_income == 0",
+                "scoring": "million_floor(cap_value(min_number(max_number(credit_limit_ic2,min_number(30000000,credit_limit_ic4),min_credit_limit_ic),max_credit_limit_ic), dscore_cap_limit, dscore_cap_multiplier))",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "cred_def_no_income_score_max_ic1_ic2_gt0",
+                "title": "Khách hàng có rủi ro xếp hạng tín dụng D/E/F và không có điểm income score",
+                "evaluation": "ascore_risk_grade IN ('D','E','F') && predicted_income == 0 && credit_limit_ic2 > 0",
+                "scoring": "million_floor(cap_value(min_number(max_number(min_number(credit_limit_ic2,credit_limit_ic4),min_credit_limit_ic),max_credit_limit_ic), dscore_cap_limit, dscore_cap_multiplier))",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "cred_def_no_income_score_max_ic1_ic2_eq0",
+                "title": "Khách hàng có rủi ro xếp hạng tín dụng D/E/F và không có điểm income score",
+                "evaluation": "ascore_risk_grade IN ('D','E','F') && predicted_income == 0 && credit_limit_ic2 == 0",
+                "scoring": "million_floor(cap_value(min_number(max_number(credit_limit_ic4,min_credit_limit_ic),max_credit_limit_ic), dscore_cap_limit, dscore_cap_multiplier))",
+                "output": {
+                    "status": "accepted"
+                }
+            },
+            {
+                "name": "undefined_cred_or_no_income_score",
+                "title": "Khách hàng không đánh giá được xếp hạng tín dụng và không có điểm income score",
+                "evaluation": "ascore_risk_grade IN ('', 'UNDEFINED') && predicted_income == 0",
+                "scoring": "million_floor(cap_value(min_number(max_number((3 *  card_surrogate_monthly_income),min_credit_limit_ic),max_credit_limit_ic), dscore_cap_limit, dscore_cap_multiplier))",
+                "output": {
+                    "status": "accepted"
+                }
+            }
+        ],
+        "fallback": {
+            "name": "low_credit_limit",
+            "title": "Credit limit is 10000000",
+            "scoring": "10000000",
+            "output": {
+                "status": "accepted"
+            }
+        }
+    }
+}
