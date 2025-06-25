@@ -1,0 +1,40 @@
+{
+    "selected_node": {
+        "name": "root",
+        "title": "",
+        "is_representative_node": false
+    },
+    "used_parameter": null,
+    "score": 0,
+    "next": {
+        "selected_node": {
+            "name": "is_normal_flow",
+            "title": "TPBank EVO normal flow",
+            "is_representative_node": false
+        },
+        "used_parameter": null,
+        "score": 0,
+        "next": {
+            "selected_node": {
+                "name": "root",
+                "title": "",
+                "is_representative_node": false
+            },
+            "used_parameter": null,
+            "score": 0,
+            "next": {
+                "selected_node": {
+                    "name": "passed_all_rules",
+                    "title": "Khách hàng tiếp tục luồng hiện tại",
+                    "is_representative_node": false
+                },
+                "used_parameter": null,
+                "score": 0,
+                "output": {
+                    "status": "accepted"
+                }
+            }
+        }
+    },
+    "revision": "6607991a-7c85-42ee-b6ed-36a51fed754c"
+}

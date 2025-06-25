@@ -2,5 +2,10 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/submodules" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/submodules/de_base" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/submodules/decision_engine" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/submodules/digital_journey" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/submodules/platform_integration" vcs="Git" />
   </component>
 </project>
