@@ -1,0 +1,473 @@
+{
+    "application": {
+        "campaign_code": "",
+        "created_by": "",
+        "customer_type": "",
+        "data_source": "",
+        "deleted_at": {
+            "Time": "0001-01-01T00:00:00Z",
+            "Valid": false
+        },
+        "flow_selected_at": "2025-06-25T08:42:04Z",
+        "form_step": "",
+        "form_version": 0,
+        "id": 11,
+        "id_number": "375372237794",
+        "last_appraised_at": "0001-01-01T00:00:00Z",
+        "lead_client_code": "tpbank",
+        "lead_collected_data": {
+            "request_params": {
+                "dynamic_qr": false,
+                "utm_source": "ts_source"
+            }
+        },
+        "lead_created_at": "2025-06-25T08:42:04Z",
+        "lead_distributor": "",
+        "lead_expired_at": "2025-07-25T15:42:04Z",
+        "lead_id": 0,
+        "lead_phone_number": "84905953543",
+        "lead_product_code": "tpb_evo_native",
+        "lead_product_type": "credit_card",
+        "lead_score": "",
+        "lead_source": "evo_native",
+        "lead_telco_code": "mobifone",
+        "lead_unique_token": "8UaxJLAA",
+        "lender_id": 9,
+        "lock_expired_at": "0001-01-01T00:00:00Z",
+        "lock_reason": "",
+        "lock_state": "",
+        "locked_at": "0001-01-01T00:00:00Z",
+        "other_id_number": "648636014600",
+        "state": "appraising.third_approval",
+        "state_at": "2025-06-25T08:42:06Z",
+        "state_info": {
+            "current_index": 1,
+            "flow_track": null,
+            "state_track": [
+                {
+                    "at": "2025-06-25T15:42:05.087396+07:00",
+                    "event": "completed",
+                    "from": "otp",
+                    "note": "",
+                    "to": "app_form.basic_info"
+                },
+                {
+                    "at": "2025-06-25T15:42:05.087421+07:00",
+                    "event": "completed",
+                    "from": "otp",
+                    "note": "",
+                    "to": "app_form.basic_info"
+                },
+                {
+                    "at": "2025-06-25T08:42:06.036454749Z",
+                    "event": "completed",
+                    "from": "intro",
+                    "note": "",
+                    "to": "appraising.third_approval"
+                }
+            ]
+        },
+        "status": "pending",
+        "status_at": "0001-01-01T00:00:00Z",
+        "ui_flow": null,
+        "ui_flow_settings": null
+    },
+    "ascore_v3_wo_cic": {
+        "application_id": 11,
+        "created_at": "2025-06-25T08:42:05Z",
+        "dispatched_at": "2025-06-25T15:42:05Z",
+        "dispatched_id": "f59c5303-d564-47e8-881b-9daa1f691cea",
+        "id": 100,
+        "input_data": {
+            "form_data": {
+                "id_number": "375372237794",
+                "old_id_number": "648636014600"
+            }
+        },
+        "raw_data": null,
+        "result_data": {
+            "ascore": 760,
+            "dscore": 79
+        },
+        "service_name": "ascore_v3_wo_cic",
+        "status": "success",
+        "updated_at": "2025-06-25T08:42:05Z"
+    },
+    "ascore_wo_cic": {
+        "application_id": 11,
+        "created_at": "2025-06-25T08:42:05Z",
+        "dispatched_at": "2025-06-25T15:42:05Z",
+        "dispatched_id": "d52f5276-f975-4806-be98-1e7edfbb895a",
+        "id": 109,
+        "input_data": {
+            "form_data": {
+                "id_number": "375372237794",
+                "old_id_number": "648636014600"
+            }
+        },
+        "raw_data": null,
+        "result_data": {
+            "ascore": 825,
+            "dscore": 0
+        },
+        "service_name": "ascore_wo_cic",
+        "status": "success",
+        "updated_at": "2025-06-25T08:42:05Z"
+    },
+    "decision_output": {
+        "status": "accepted"
+    },
+    "ekyc": {
+        "face": {
+            "best_search_nid": "375372237794",
+            "best_search_score": 0.9,
+            "compare_score": 0,
+            "compare_status": "",
+            "liveness_score": 0,
+            "liveness_status": "success",
+            "process_status": "",
+            "sanity_check_score": 0,
+            "sanity_check_status": "",
+            "search_face_result": {
+                "faces": [
+                    {
+                        "id_number": "375372237794",
+                        "image_id": "898ec833-d235-4c13-831d-bcbc8e2c7d2c",
+                        "metadata": {
+                            "phone_number": "84905953543",
+                            "unique_token": "8UaxJLAA"
+                        },
+                        "score": 0.9
+                    }
+                ],
+                "response": {
+                    "faces": [
+                        [
+                            {
+                                "id": "2c982808-6def-41fb-95d6-45dc7d56b7ed",
+                                "image_id": "4250f0ac-8639-40f8-b326-6ee7e589591f",
+                                "metadata": [
+                                    {
+                                        "field": "national_id",
+                                        "value": "375372237794"
+                                    },
+                                    {
+                                        "field": "phone_number",
+                                        "value": "84905953543"
+                                    },
+                                    {
+                                        "field": "unique_token",
+                                        "value": "8UaxJLAA"
+                                    }
+                                ],
+                                "score": 0.9
+                            }
+                        ]
+                    ],
+                    "request_id": "bf749c69-1e2c-482d-a68a-b270f1b7ecd0",
+                    "status": "success"
+                }
+            },
+            "search_face_status": ""
+        },
+        "ocr": {
+            "birth_date": "25/06/1970",
+            "card_type": "vn.cccd",
+            "confidence": null,
+            "district_code": "",
+            "expiry_date": "",
+            "gender": "",
+            "id_number": "375372237794",
+            "issued_date": "25/06/2020",
+            "issued_place": "",
+            "name": "WfHbBXgCCwSEjMRoXmOkMfZO",
+            "native_place": "",
+            "process_status": "",
+            "province_code": "",
+            "sanity_check_result": "",
+            "sanity_check_score": 0,
+            "sanity_check_status": "",
+            "ward_code": ""
+        }
+    },
+    "eligibility_check": {
+        "application_id": 11,
+        "created_at": "2025-06-25T08:42:04Z",
+        "dispatched_at": "2025-06-25T15:42:05Z",
+        "dispatched_id": "afae4583-feec-40eb-b476-ab8f3c68e364",
+        "id": 68,
+        "input_data": null,
+        "raw_data": null,
+        "result_data": {
+            "eligible_branch_location": true,
+            "eligible_location": true,
+            "is_affiliate_channel": false,
+            "is_offline_merchant": false,
+            "marketing_channel": "esms",
+            "marketing_channel_subgroup": "other"
+        },
+        "service_name": "eligibility_check",
+        "status": "success",
+        "updated_at": "2025-06-25T08:42:05Z"
+    },
+    "feature_flag": {},
+    "form_data": {
+        "cardInfo": {
+            "cardCategory": "credit_card"
+        },
+        "cifInfo": {},
+        "contactInfo": {
+            "companyAddress": "242 iThyKHWcsPXSfOMSPDBaTbCu",
+            "companyAddressDistId": "760",
+            "companyAddressProvinceId": "79",
+            "companyAddressWardId": "26743",
+            "companyName": "kcQpEgKoFpchUCJVObLpCUTq",
+            "curAddress": "639 KuDpWGkxrJQpOrAVvBsJSQdG",
+            "curAddressDistId": "2",
+            "curAddressProvinceId": "1",
+            "curAddressWardId": "43",
+            "familyAddress": "296 jBVWKtjRYNkPsUgrrRqtfKZD",
+            "familyBookAddressDistId": "1",
+            "familyBookAddressProvinceId": "1",
+            "familyBookAddressWardId": "1",
+            "pickupCardAddress": "Office Address"
+        },
+        "personalInfo": {
+            "birthday": "1970-06-25",
+            "email": "juEQEDRcxS@ts.com",
+            "fullName": "WfHbBXgCCwSEjMRoXmOkMfZO",
+            "gender": "1",
+            "idCard": "375372237794",
+            "idExpirationDate": "2040-06-25",
+            "idIssueDate": "2020-06-25",
+            "idIssuePlaceId": "01",
+            "oldIDCard": "648636014600",
+            "secretQuestion": "Hermann Gmeiner"
+        },
+        "referenceInfo": {
+            "referencePhone1": "0922479352",
+            "referencePhone2": "0939951893"
+        },
+        "workingInfo": {
+            "employmentId": "E36",
+            "employmentStatusId": "ES_1",
+            "income": 5000000,
+            "salaryPaymentMethodId": "18"
+        }
+    },
+    "get_eligible_offer": {
+        "application_id": 11,
+        "created_at": "2025-06-25T08:42:05Z",
+        "dispatched_at": "2025-06-25T15:42:05Z",
+        "dispatched_id": "7384326412",
+        "id": 92,
+        "input_data": null,
+        "raw_data": null,
+        "result_data": {
+            "id": 97366,
+            "offer": {
+                "product_code": "tpb_01",
+                "product_type": "tpb_01"
+            },
+            "subscriber_info": {
+                "score_range": "629-629",
+                "verify": "new"
+            },
+            "telco_code": "mobifone"
+        },
+        "service_name": "get_eligible_offer",
+        "status": "success",
+        "updated_at": "2025-06-25T08:42:05Z"
+    },
+    "lender_config": {
+        "id": 10701,
+        "name": "v1.0.vt_full_decision_tree",
+        "tags": [
+            {
+                "name": "campaign_type",
+                "value": "self_registration"
+            },
+            {
+                "name": "telco_code",
+                "value": "viettel"
+            },
+            {
+                "name": "telco_code",
+                "value": "mobifone"
+            },
+            {
+                "name": "telco_code",
+                "value": "vinaphone"
+            },
+            {
+                "name": "lead_source",
+                "value": "evo_native"
+            },
+            {
+                "name": "product_code",
+                "value": "tpb_evo_native"
+            },
+            {
+                "name": "lead_source",
+                "value": "esms"
+            }
+        ]
+    },
+    "prescreening": {
+        "application_id": 11,
+        "created_at": "2025-06-25T08:42:05Z",
+        "dispatched_at": "2025-06-25T15:42:04Z",
+        "dispatched_id": "5cf710d5-d45b-42ae-9d14-1b59ece5fadf",
+        "id": 70,
+        "input_data": {
+            "birthday": "25/06/1970",
+            "full_name": "WfHbBXgCCwSEjMRoXmOkMfZO",
+            "national_id": "375372237794",
+            "phone_number": "84905953543",
+            "unique_token": "8UaxJLAA"
+        },
+        "raw_data": null,
+        "result_data": {
+            "cif_code": "no_exist",
+            "form_data": {},
+            "has_cif_nid_close": false,
+            "matched_phone": false,
+            "status": "accepted"
+        },
+        "service_name": "prescreening",
+        "status": "success",
+        "updated_at": "2025-06-25T08:42:05Z"
+    },
+    "prescreening_old_id": {
+        "application_id": 11,
+        "created_at": "2025-06-25T08:42:05Z",
+        "dispatched_at": "2025-06-25T15:42:04Z",
+        "dispatched_id": "b5fcc410-d4b1-40a5-9c13-4bb5f16a0037",
+        "id": 84,
+        "input_data": {
+            "birthday": "25/06/1970",
+            "full_name": "WfHbBXgCCwSEjMRoXmOkMfZO",
+            "national_id": "648636014600",
+            "phone_number": "84905953543",
+            "unique_token": "8UaxJLAA"
+        },
+        "raw_data": null,
+        "result_data": {
+            "cif_code": "no_exist",
+            "form_data": {},
+            "has_cif_nid_close": false,
+            "matched_phone": false,
+            "status": "accepted"
+        },
+        "service_name": "prescreening_old_id",
+        "status": "success",
+        "updated_at": "2025-06-25T08:42:05Z"
+    },
+    "risk_grade_output": {
+        "ascore": {
+            "output": {
+                "level": "A",
+                "max_credit_limit": 50000000,
+                "multiplier": 3
+            },
+            "score": 0
+        },
+        "income_c2": {
+            "output": {
+                "c_multiplier": 0,
+                "confidence": 0,
+                "l_multiplier": 0,
+                "level": 0,
+                "max_dti": 0
+            },
+            "score": 0
+        },
+        "income_c3": {
+            "output": {
+                "c_multiplier": 0,
+                "confidence": 0,
+                "l_multiplier": 0,
+                "level": 0,
+                "max_dti": 0
+            },
+            "score": 0
+        },
+        "income_c4": {
+            "output": {
+                "c_multiplier": 0.9,
+                "confidence": 1,
+                "l_multiplier": 0.9,
+                "level": 4,
+                "max_dti": 0.4,
+                "max_risk_grade_monthly_income": 20000000
+            },
+            "score": 0
+        },
+        "manual_cif_check": {
+            "output": {
+                "value": false
+            },
+            "score": 0
+        },
+        "max_pos_credit_limit": {
+            "output": {
+                "value": 75000000
+            },
+            "score": 0
+        },
+        "pcb_group": {
+            "output": {
+                "value": "no-pcb-report"
+            },
+            "score": 0
+        }
+    },
+    "service_completed": false,
+    "service_statuses": {
+        "abnormal_check": "pending",
+        "ascore_cic": "pending",
+        "ascore_v3": "pending",
+        "ascore_v3_wo_cic": "success",
+        "ascore_wo_cic": "success",
+        "check_cif_no_debit": "pending",
+        "delinquent_check": "pending",
+        "distance_detection": "pending",
+        "eligibility_check": "success",
+        "face_blacklist_check": "pending",
+        "get_eligible_offer": "success",
+        "h2h_cic_r14": "pending",
+        "h2h_cic_r14_cif": "pending",
+        "h2h_cic_r14_old": "pending",
+        "h2h_cic_s11a": "pending",
+        "h2h_cic_s11a_cif": "pending",
+        "h2h_cic_s11a_old": "pending",
+        "h2h_cic_s11a_r14": "pending",
+        "h2h_cic_s11a_r14_old": "pending",
+        "h2h_cic_s11t": "pending",
+        "h2h_cic_s11t_cif": "pending",
+        "h2h_pcb": "pending",
+        "h2h_pcb_cif": "pending",
+        "h2h_pcb_old": "pending",
+        "id_card_blacklist_check": "pending",
+        "id_card_tampering": "pending",
+        "nfc_id_tampering": "pending",
+        "nfc_verify": "pending",
+        "pdl_check": "pending",
+        "pdl_email_check": "pending",
+        "prescreening": "success",
+        "prescreening_old_id": "success",
+        "repeated_customer_check": "pending",
+        "store_detection": "pending"
+    },
+    "state_info": {
+        "initial_flow": 10701,
+        "traversed_flows": [
+            10701
+        ],
+        "traversed_states": [
+            "otp",
+            "otp",
+            "intro"
+        ]
+    }
+}
