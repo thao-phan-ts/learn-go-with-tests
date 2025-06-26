@@ -8,11 +8,11 @@
             "Time": "0001-01-01T00:00:00Z",
             "Valid": false
         },
-        "flow_selected_at": "2025-06-25T08:42:04Z",
+        "flow_selected_at": "2025-06-26T06:58:43Z",
         "form_step": "",
         "form_version": 0,
         "id": 11,
-        "id_number": "375372237794",
+        "id_number": "677573740270",
         "last_appraised_at": "0001-01-01T00:00:00Z",
         "lead_client_code": "tpbank",
         "lead_collected_data": {
@@ -21,45 +21,45 @@
                 "utm_source": "ts_source"
             }
         },
-        "lead_created_at": "2025-06-25T08:42:04Z",
+        "lead_created_at": "2025-06-26T06:58:43Z",
         "lead_distributor": "",
-        "lead_expired_at": "2025-07-25T15:42:04Z",
+        "lead_expired_at": "2025-07-26T13:58:43Z",
         "lead_id": 0,
-        "lead_phone_number": "84905953543",
+        "lead_phone_number": "84902353773",
         "lead_product_code": "tpb_evo_native",
         "lead_product_type": "credit_card",
         "lead_score": "",
         "lead_source": "evo_native",
         "lead_telco_code": "mobifone",
-        "lead_unique_token": "8UaxJLAA",
+        "lead_unique_token": "nmtnSRQ4",
         "lender_id": 9,
         "lock_expired_at": "0001-01-01T00:00:00Z",
         "lock_reason": "",
         "lock_state": "",
         "locked_at": "0001-01-01T00:00:00Z",
-        "other_id_number": "648636014600",
+        "other_id_number": "797002339567",
         "state": "appraising.third_approval",
-        "state_at": "2025-06-25T08:42:06Z",
+        "state_at": "2025-06-26T06:58:44Z",
         "state_info": {
             "current_index": 1,
             "flow_track": null,
             "state_track": [
                 {
-                    "at": "2025-06-25T15:42:05.087396+07:00",
+                    "at": "2025-06-26T13:58:43.903228+07:00",
                     "event": "completed",
                     "from": "otp",
                     "note": "",
                     "to": "app_form.basic_info"
                 },
                 {
-                    "at": "2025-06-25T15:42:05.087421+07:00",
+                    "at": "2025-06-26T13:58:43.903236+07:00",
                     "event": "completed",
                     "from": "otp",
                     "note": "",
                     "to": "app_form.basic_info"
                 },
                 {
-                    "at": "2025-06-25T08:42:06.036454749Z",
+                    "at": "2025-06-26T06:58:44.813559426Z",
                     "event": "completed",
                     "from": "intro",
                     "note": "",
@@ -72,37 +72,36 @@
         "ui_flow": null,
         "ui_flow_settings": null
     },
-    "ascore_v3_wo_cic": {
+    "ascore_v3": {
         "application_id": 11,
-        "created_at": "2025-06-25T08:42:05Z",
-        "dispatched_at": "2025-06-25T15:42:05Z",
-        "dispatched_id": "f59c5303-d564-47e8-881b-9daa1f691cea",
-        "id": 100,
+        "created_at": "2025-06-26T06:58:44Z",
+        "dispatched_at": "2025-06-26T13:58:44Z",
+        "dispatched_id": "ce8deda5-1305-4d48-a7f1-ea2e31237798",
+        "id": 97,
         "input_data": {
             "form_data": {
-                "id_number": "375372237794",
-                "old_id_number": "648636014600"
+                "id_number": "677573740270",
+                "old_id_number": "797002339567"
             }
         },
         "raw_data": null,
         "result_data": {
-            "ascore": 760,
-            "dscore": 79
+            "ascore": 761
         },
-        "service_name": "ascore_v3_wo_cic",
+        "service_name": "ascore_v3",
         "status": "success",
-        "updated_at": "2025-06-25T08:42:05Z"
+        "updated_at": "2025-06-26T06:58:44Z"
     },
     "ascore_wo_cic": {
         "application_id": 11,
-        "created_at": "2025-06-25T08:42:05Z",
-        "dispatched_at": "2025-06-25T15:42:05Z",
-        "dispatched_id": "d52f5276-f975-4806-be98-1e7edfbb895a",
-        "id": 109,
+        "created_at": "2025-06-26T06:58:44Z",
+        "dispatched_at": "2025-06-26T13:58:44Z",
+        "dispatched_id": "165ee751-e5cf-44c5-aaa1-d10647b69ed6",
+        "id": 114,
         "input_data": {
             "form_data": {
-                "id_number": "375372237794",
-                "old_id_number": "648636014600"
+                "id_number": "677573740270",
+                "old_id_number": "797002339567"
             }
         },
         "raw_data": null,
@@ -112,11 +111,14 @@
         },
         "service_name": "ascore_wo_cic",
         "status": "success",
-        "updated_at": "2025-06-25T08:42:05Z"
+        "updated_at": "2025-06-26T06:58:44Z"
+    },
+    "decision_output": {
+        "status": "accepted"
     },
     "ekyc": {
         "face": {
-            "best_search_nid": "375372237794",
+            "best_search_nid": "677573740270",
             "best_search_score": 0.9,
             "compare_score": 0,
             "compare_status": "",
@@ -128,11 +130,11 @@
             "search_face_result": {
                 "faces": [
                     {
-                        "id_number": "375372237794",
-                        "image_id": "898ec833-d235-4c13-831d-bcbc8e2c7d2c",
+                        "id_number": "677573740270",
+                        "image_id": "3e8a2ffe-93d2-45c2-90c9-cdd00e599de5",
                         "metadata": {
-                            "phone_number": "84905953543",
-                            "unique_token": "8UaxJLAA"
+                            "phone_number": "84902353773",
+                            "unique_token": "nmtnSRQ4"
                         },
                         "score": 0.9
                     }
@@ -146,38 +148,38 @@
                                 "metadata": [
                                     {
                                         "field": "national_id",
-                                        "value": "375372237794"
+                                        "value": "677573740270"
                                     },
                                     {
                                         "field": "phone_number",
-                                        "value": "84905953543"
+                                        "value": "84902353773"
                                     },
                                     {
                                         "field": "unique_token",
-                                        "value": "8UaxJLAA"
+                                        "value": "nmtnSRQ4"
                                     }
                                 ],
                                 "score": 0.9
                             }
                         ]
                     ],
-                    "request_id": "bf749c69-1e2c-482d-a68a-b270f1b7ecd0",
+                    "request_id": "65549a15-fa35-4477-bd28-3bbf170ed212",
                     "status": "success"
                 }
             },
             "search_face_status": ""
         },
         "ocr": {
-            "birth_date": "25/06/1970",
+            "birth_date": "26/06/1974",
             "card_type": "vn.cccd",
             "confidence": null,
             "district_code": "",
             "expiry_date": "",
             "gender": "",
-            "id_number": "375372237794",
-            "issued_date": "25/06/2020",
+            "id_number": "677573740270",
+            "issued_date": "26/06/2012",
             "issued_place": "",
-            "name": "WfHbBXgCCwSEjMRoXmOkMfZO",
+            "name": "UFgueleuJVyCHSlzhALJVKDg",
             "native_place": "",
             "process_status": "",
             "province_code": "",
@@ -189,10 +191,10 @@
     },
     "eligibility_check": {
         "application_id": 11,
-        "created_at": "2025-06-25T08:42:04Z",
-        "dispatched_at": "2025-06-25T15:42:05Z",
-        "dispatched_id": "afae4583-feec-40eb-b476-ab8f3c68e364",
-        "id": 68,
+        "created_at": "2025-06-26T06:58:43Z",
+        "dispatched_at": "2025-06-26T13:58:44Z",
+        "dispatched_id": "2ebf177d-6453-485f-9e09-b1d1bf5d0e75",
+        "id": 66,
         "input_data": null,
         "raw_data": null,
         "result_data": {
@@ -200,12 +202,12 @@
             "eligible_location": true,
             "is_affiliate_channel": false,
             "is_offline_merchant": false,
-            "marketing_channel": "esms",
+            "marketing_channel": "partners",
             "marketing_channel_subgroup": "other"
         },
         "service_name": "eligibility_check",
         "status": "success",
-        "updated_at": "2025-06-25T08:42:05Z"
+        "updated_at": "2025-06-26T06:58:44Z"
     },
     "feature_flag": {},
     "form_data": {
@@ -214,36 +216,36 @@
         },
         "cifInfo": {},
         "contactInfo": {
-            "companyAddress": "242 iThyKHWcsPXSfOMSPDBaTbCu",
+            "companyAddress": "863 pHlecEjcTBjVVVBofBNtcYNt",
             "companyAddressDistId": "760",
             "companyAddressProvinceId": "79",
             "companyAddressWardId": "26743",
-            "companyName": "kcQpEgKoFpchUCJVObLpCUTq",
-            "curAddress": "639 KuDpWGkxrJQpOrAVvBsJSQdG",
+            "companyName": "ssLrKUudrPShvmVvnRlBXaem",
+            "curAddress": "240 QAdytfOummHvCGaEiwLDgUNV",
             "curAddressDistId": "2",
             "curAddressProvinceId": "1",
             "curAddressWardId": "43",
-            "familyAddress": "296 jBVWKtjRYNkPsUgrrRqtfKZD",
+            "familyAddress": "46 bXUdPqhwAelnNXHzUbfewtOx",
             "familyBookAddressDistId": "1",
             "familyBookAddressProvinceId": "1",
             "familyBookAddressWardId": "1",
             "pickupCardAddress": "Office Address"
         },
         "personalInfo": {
-            "birthday": "1970-06-25",
-            "email": "juEQEDRcxS@ts.com",
-            "fullName": "WfHbBXgCCwSEjMRoXmOkMfZO",
+            "birthday": "1974-06-26",
+            "email": "GJQIjDISES@ts.com",
+            "fullName": "UFgueleuJVyCHSlzhALJVKDg",
             "gender": "1",
-            "idCard": "375372237794",
-            "idExpirationDate": "2040-06-25",
-            "idIssueDate": "2020-06-25",
+            "idCard": "677573740270",
+            "idExpirationDate": "2040-06-26",
+            "idIssueDate": "2012-06-26",
             "idIssuePlaceId": "01",
-            "oldIDCard": "648636014600",
+            "oldIDCard": "797002339567",
             "secretQuestion": "Hermann Gmeiner"
         },
         "referenceInfo": {
-            "referencePhone1": "0922479352",
-            "referencePhone2": "0939951893"
+            "referencePhone1": "0980990703",
+            "referencePhone2": "0930171322"
         },
         "workingInfo": {
             "employmentId": "E36",
@@ -254,27 +256,86 @@
     },
     "get_eligible_offer": {
         "application_id": 11,
-        "created_at": "2025-06-25T08:42:05Z",
-        "dispatched_at": "2025-06-25T15:42:05Z",
-        "dispatched_id": "7384326412",
-        "id": 92,
+        "created_at": "2025-06-26T06:58:44Z",
+        "dispatched_at": "2025-06-26T13:58:44Z",
+        "dispatched_id": "1347823219",
+        "id": 89,
         "input_data": null,
         "raw_data": null,
         "result_data": {
-            "id": 97366,
+            "id": 70961,
             "offer": {
-                "product_code": "tpb_01",
-                "product_type": "tpb_01"
+                "product_code": "",
+                "product_type": ""
             },
             "subscriber_info": {
-                "score_range": "629-629",
+                "score_range": "699-699",
                 "verify": "new"
             },
             "telco_code": "mobifone"
         },
         "service_name": "get_eligible_offer",
         "status": "success",
-        "updated_at": "2025-06-25T08:42:05Z"
+        "updated_at": "2025-06-26T06:58:44Z"
+    },
+    "h2h_cic_s11t": {
+        "application_id": 11,
+        "created_at": "2025-06-26T06:58:44Z",
+        "dispatched_at": "2025-06-26T13:58:44Z",
+        "dispatched_id": "1654c84b-a47a-4925-a267-d0840b6f6378",
+        "id": 101,
+        "input_data": {
+            "dispatch_info": {
+                "dispatch_config": {
+                    "use_id_card_fields": [
+                        "id_number"
+                    ]
+                }
+            },
+            "form_data": {
+                "id_number": "677573740270"
+            }
+        },
+        "raw_data": null,
+        "result_data": {
+            "s11t": {
+                "bad_debt_in_36m": {
+                    "delay_day": 0
+                },
+                "bad_debt_in_60m": {
+                    "amt_usd_in_36m": 0,
+                    "amt_vnd_in_36m": 0
+                },
+                "bad_debt_in_6m": {
+                    "delay_day": 0
+                },
+                "card": {
+                    "total_outstanding": 0
+                },
+                "group2_in_12m": {
+                    "amt_vnd_in_6m": 0
+                },
+                "has_vamc": false,
+                "late_payment": {
+                    "amt_overdue_10d": 0
+                },
+                "loan_info": {
+                    "bad_debt_group": false,
+                    "max_debt_group": 0,
+                    "medium_term_outstanding": 0,
+                    "nb_other_bad_debt": 0,
+                    "principal_monthly_payment": 0,
+                    "short_term_outstanding": 0
+                },
+                "max_unsecured_active_card_limit": 0,
+                "other_loan_info": {
+                    "bad_debt_group": false
+                }
+            }
+        },
+        "service_name": "h2h_cic_s11t",
+        "status": "success",
+        "updated_at": "2025-06-26T06:58:44Z"
     },
     "lender_config": {
         "id": 10701,
@@ -312,16 +373,16 @@
     },
     "prescreening": {
         "application_id": 11,
-        "created_at": "2025-06-25T08:42:05Z",
-        "dispatched_at": "2025-06-25T15:42:04Z",
-        "dispatched_id": "5cf710d5-d45b-42ae-9d14-1b59ece5fadf",
+        "created_at": "2025-06-26T06:58:43Z",
+        "dispatched_at": "2025-06-26T13:58:43Z",
+        "dispatched_id": "c1fc5d30-1b47-45b5-8549-0d04afed4206",
         "id": 70,
         "input_data": {
-            "birthday": "25/06/1970",
-            "full_name": "WfHbBXgCCwSEjMRoXmOkMfZO",
-            "national_id": "375372237794",
-            "phone_number": "84905953543",
-            "unique_token": "8UaxJLAA"
+            "birthday": "26/06/1974",
+            "full_name": "UFgueleuJVyCHSlzhALJVKDg",
+            "national_id": "677573740270",
+            "phone_number": "84902353773",
+            "unique_token": "nmtnSRQ4"
         },
         "raw_data": null,
         "result_data": {
@@ -333,20 +394,20 @@
         },
         "service_name": "prescreening",
         "status": "success",
-        "updated_at": "2025-06-25T08:42:05Z"
+        "updated_at": "2025-06-26T06:58:43Z"
     },
     "prescreening_old_id": {
         "application_id": 11,
-        "created_at": "2025-06-25T08:42:05Z",
-        "dispatched_at": "2025-06-25T15:42:04Z",
-        "dispatched_id": "b5fcc410-d4b1-40a5-9c13-4bb5f16a0037",
-        "id": 84,
+        "created_at": "2025-06-26T06:58:43Z",
+        "dispatched_at": "2025-06-26T13:58:43Z",
+        "dispatched_id": "e9317ad8-9afa-41c0-b045-96673a46cf84",
+        "id": 82,
         "input_data": {
-            "birthday": "25/06/1970",
-            "full_name": "WfHbBXgCCwSEjMRoXmOkMfZO",
-            "national_id": "648636014600",
-            "phone_number": "84905953543",
-            "unique_token": "8UaxJLAA"
+            "birthday": "26/06/1974",
+            "full_name": "UFgueleuJVyCHSlzhALJVKDg",
+            "national_id": "797002339567",
+            "phone_number": "84902353773",
+            "unique_token": "nmtnSRQ4"
         },
         "raw_data": null,
         "result_data": {
@@ -358,7 +419,7 @@
         },
         "service_name": "prescreening_old_id",
         "status": "success",
-        "updated_at": "2025-06-25T08:42:05Z"
+        "updated_at": "2025-06-26T06:58:43Z"
     },
     "risk_grade_output": {
         "ascore": {
@@ -423,8 +484,8 @@
     "service_statuses": {
         "abnormal_check": "pending",
         "ascore_cic": "pending",
-        "ascore_v3": "pending",
-        "ascore_v3_wo_cic": "success",
+        "ascore_v3": "success",
+        "ascore_v3_wo_cic": "pending",
         "ascore_wo_cic": "success",
         "check_cif_no_debit": "pending",
         "delinquent_check": "pending",
@@ -440,7 +501,7 @@
         "h2h_cic_s11a_old": "pending",
         "h2h_cic_s11a_r14": "pending",
         "h2h_cic_s11a_r14_old": "pending",
-        "h2h_cic_s11t": "pending",
+        "h2h_cic_s11t": "success",
         "h2h_cic_s11t_cif": "pending",
         "h2h_pcb": "pending",
         "h2h_pcb_cif": "pending",
