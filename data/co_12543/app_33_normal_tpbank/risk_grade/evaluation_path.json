@@ -1,0 +1,651 @@
+{
+    "selected_node": {
+        "name": "root",
+        "title": "",
+        "is_representative_node": false
+    },
+    "used_parameter": {
+        "application": {
+            "campaign_code": "",
+            "created_by": "",
+            "customer_type": "",
+            "data_source": "",
+            "deleted_at": {
+                "Time": "0001-01-01T00:00:00Z",
+                "Valid": false
+            },
+            "flow_selected_at": "2025-06-26T05:37:21Z",
+            "form_step": "",
+            "form_version": 0,
+            "id": 3,
+            "id_number": "144864940503",
+            "last_appraised_at": "0001-01-01T00:00:00Z",
+            "lead_client_code": "tpbank",
+            "lead_collected_data": {
+                "request_params": {
+                    "dynamic_qr": false,
+                    "utm_source": "ts_source"
+                }
+            },
+            "lead_created_at": "2025-06-26T05:37:21Z",
+            "lead_distributor": "",
+            "lead_expired_at": "2025-07-26T05:37:21Z",
+            "lead_id": 0,
+            "lead_phone_number": "84902810916",
+            "lead_product_code": "tpb_01",
+            "lead_product_type": "credit_card",
+            "lead_score": "",
+            "lead_source": "organic",
+            "lead_telco_code": "mobifone",
+            "lead_unique_token": "99Qtx1rz",
+            "lender_id": 9,
+            "lock_expired_at": "0001-01-01T00:00:00Z",
+            "lock_reason": "",
+            "lock_state": "",
+            "locked_at": "0001-01-01T00:00:00Z",
+            "other_id_number": "424865028424",
+            "state": "appraising.third_approval",
+            "state_at": "2025-06-26T05:37:22Z",
+            "state_info": {
+                "current_index": 1,
+                "flow_track": null,
+                "state_track": [
+                    {
+                        "at": "2025-06-26T05:37:22.025009471Z",
+                        "event": "completed",
+                        "from": "otp",
+                        "note": "",
+                        "to": "app_form.basic_info"
+                    },
+                    {
+                        "at": "2025-06-26T05:37:22.025020381Z",
+                        "event": "completed",
+                        "from": "otp",
+                        "note": "",
+                        "to": "app_form.basic_info"
+                    },
+                    {
+                        "at": "2025-06-26T05:37:22.852382927Z",
+                        "event": "completed",
+                        "from": "intro",
+                        "note": "",
+                        "to": "appraising.third_approval"
+                    }
+                ]
+            },
+            "status": "pending",
+            "status_at": "0001-01-01T00:00:00Z",
+            "ui_flow": null,
+            "ui_flow_settings": null
+        },
+        "ascore_v3": {
+            "application_id": 3,
+            "created_at": "2025-06-26T05:37:22Z",
+            "dispatched_at": "2025-06-26T05:37:22Z",
+            "dispatched_id": "6f243d8a-0776-4f42-96ae-19419b64583c",
+            "id": 129,
+            "input_data": {
+                "form_data": {
+                    "id_number": "144864940503",
+                    "old_id_number": "424865028424"
+                }
+            },
+            "raw_data": null,
+            "result_data": {
+                "ascore": 760
+            },
+            "service_name": "ascore_v3",
+            "status": "success",
+            "updated_at": "2025-06-26T05:37:22Z"
+        },
+        "ascore_wo_cic": {
+            "application_id": 3,
+            "created_at": "2025-06-26T05:37:22Z",
+            "dispatched_at": "2025-06-26T05:37:22Z",
+            "dispatched_id": "12208e85-c243-4938-a5a7-0234f6c36a97",
+            "id": 304,
+            "input_data": {
+                "form_data": {
+                    "id_number": "144864940503",
+                    "old_id_number": "424865028424"
+                }
+            },
+            "raw_data": null,
+            "result_data": {
+                "ascore": 825,
+                "dscore": 0
+            },
+            "service_name": "ascore_wo_cic",
+            "status": "success",
+            "updated_at": "2025-06-26T05:37:22Z"
+        },
+        "ekyc": {
+            "face": {
+                "best_search_nid": "144864940503",
+                "best_search_score": 0.9,
+                "compare_score": 0,
+                "compare_status": "",
+                "liveness_score": 0,
+                "liveness_status": "success",
+                "process_status": "",
+                "sanity_check_score": 0,
+                "sanity_check_status": "",
+                "search_face_result": {
+                    "faces": [
+                        {
+                            "id_number": "144864940503",
+                            "image_id": "1cf45d1b-5bf2-49ff-892f-8f055a9f8a7c",
+                            "metadata": {
+                                "phone_number": "84902810916",
+                                "unique_token": "99Qtx1rz"
+                            },
+                            "score": 0.9
+                        }
+                    ],
+                    "response": {
+                        "faces": [
+                            [
+                                {
+                                    "id": "2c982808-6def-41fb-95d6-45dc7d56b7ed",
+                                    "image_id": "4250f0ac-8639-40f8-b326-6ee7e589591f",
+                                    "metadata": [
+                                        {
+                                            "field": "national_id",
+                                            "value": "144864940503"
+                                        },
+                                        {
+                                            "field": "phone_number",
+                                            "value": "84902810916"
+                                        },
+                                        {
+                                            "field": "unique_token",
+                                            "value": "99Qtx1rz"
+                                        }
+                                    ],
+                                    "score": 0.9
+                                }
+                            ]
+                        ],
+                        "request_id": "261c351f-1e90-468d-ba08-9a304bc749cf",
+                        "status": "success"
+                    }
+                },
+                "search_face_status": ""
+            },
+            "ocr": {
+                "birth_date": "26/06/1992",
+                "card_type": "vn.cccd",
+                "confidence": null,
+                "district_code": "",
+                "expiry_date": "",
+                "gender": "",
+                "id_number": "144864940503",
+                "issued_date": "26/06/2020",
+                "issued_place": "",
+                "name": "CXbDeCYiNQHqCbkuDFmyqEzp",
+                "native_place": "",
+                "process_status": "",
+                "province_code": "",
+                "sanity_check_result": "",
+                "sanity_check_score": 0,
+                "sanity_check_status": "",
+                "ward_code": ""
+            }
+        },
+        "eligibility_check": {
+            "application_id": 3,
+            "created_at": "2025-06-26T05:37:21Z",
+            "dispatched_at": "2025-06-26T05:37:22Z",
+            "dispatched_id": "b2a2e8f4-66fd-427f-ad5b-195d4fb27c1f",
+            "id": 10,
+            "input_data": null,
+            "raw_data": null,
+            "result_data": {
+                "eligible_branch_location": true,
+                "eligible_location": true,
+                "is_affiliate_channel": false,
+                "is_offline_merchant": false,
+                "marketing_channel": "organic",
+                "marketing_channel_subgroup": "other"
+            },
+            "service_name": "eligibility_check",
+            "status": "success",
+            "updated_at": "2025-06-26T05:37:22Z"
+        },
+        "feature_flag": {},
+        "form_data": {
+            "cardInfo": {
+                "cardCategory": "credit_card"
+            },
+            "cifInfo": {},
+            "contactInfo": {
+                "companyAddress": "782 eCaHoLLJZtHHiIRkhMIigrSz",
+                "companyAddressDistId": "760",
+                "companyAddressProvinceId": "79",
+                "companyAddressWardId": "26743",
+                "companyName": "BCYaXqUegVTYbVYuTuHEvrkT",
+                "curAddress": "548 SIFTpAhvsSqMVwQHxPJwNYZv",
+                "curAddressDistId": "2",
+                "curAddressProvinceId": "1",
+                "curAddressWardId": "43",
+                "familyAddress": "708 tQekJLoodnYhHFdqEoiHajho",
+                "familyBookAddressDistId": "1",
+                "familyBookAddressProvinceId": "1",
+                "familyBookAddressWardId": "1",
+                "pickupCardAddress": "Office Address"
+            },
+            "personalInfo": {
+                "birthday": "1992-06-26",
+                "email": "yXkDPMEUxB@ts.com",
+                "fullName": "CXbDeCYiNQHqCbkuDFmyqEzp",
+                "gender": "1",
+                "idCard": "144864940503",
+                "idExpirationDate": "2040-06-26",
+                "idIssueDate": "2020-06-26",
+                "idIssuePlaceId": "01",
+                "oldIDCard": "424865028424",
+                "secretQuestion": "Hermann Gmeiner"
+            },
+            "referenceInfo": {
+                "referencePhone1": "0956477861",
+                "referencePhone2": "0995414218"
+            },
+            "workingInfo": {
+                "employmentId": "E36",
+                "employmentStatusId": "ES_1",
+                "income": 5000000,
+                "salaryPaymentMethodId": "18"
+            }
+        },
+        "get_eligible_offer": {
+            "application_id": 3,
+            "created_at": "2025-06-26T05:37:22Z",
+            "dispatched_at": "2025-06-26T05:37:22Z",
+            "dispatched_id": "5395561122",
+            "id": 101,
+            "input_data": null,
+            "raw_data": null,
+            "result_data": {
+                "id": 23737,
+                "offer": {
+                    "product_code": "",
+                    "product_type": ""
+                },
+                "subscriber_info": {
+                    "score_range": "606-606",
+                    "verify": "new"
+                },
+                "telco_code": "mobifone"
+            },
+            "service_name": "get_eligible_offer",
+            "status": "success",
+            "updated_at": "2025-06-26T05:37:22Z"
+        },
+        "h2h_cic_r14": {
+            "application_id": 3,
+            "created_at": "2025-06-26T05:37:22Z",
+            "dispatched_at": "2025-06-26T05:37:22Z",
+            "dispatched_id": "c3c2c0fd-bca1-425c-b720-550781fcadbb",
+            "id": 226,
+            "input_data": {
+                "dispatch_info": {
+                    "dispatch_config": {
+                        "use_id_card_fields": [
+                            "id_number"
+                        ]
+                    }
+                },
+                "form_data": {
+                    "id_number": "144864940503"
+                }
+            },
+            "raw_data": null,
+            "result_data": {
+                "r14": {
+                    "history_bad_debt": {
+                        "amt_overdue_10d_in_6m": 0,
+                        "amt_overdue_90d_in_36m": 0
+                    },
+                    "late_payment": {
+                        "amt_overdue_10d": 0
+                    },
+                    "max_unsecured_active_card_limit": 0
+                }
+            },
+            "service_name": "h2h_cic_r14",
+            "status": "success",
+            "updated_at": "2025-06-26T05:37:22Z"
+        },
+        "h2h_cic_r14_old": {
+            "application_id": 3,
+            "created_at": "2025-06-26T05:37:22Z",
+            "dispatched_at": "2025-06-26T05:37:22Z",
+            "dispatched_id": "86470d65-9e93-4641-985f-51b35bc97e90",
+            "id": 265,
+            "input_data": {
+                "dispatch_info": {
+                    "dispatch_config": {
+                        "use_id_card_fields": [
+                            "old_id_number"
+                        ]
+                    }
+                },
+                "form_data": {
+                    "old_id_number": "424865028424"
+                }
+            },
+            "raw_data": null,
+            "result_data": {
+                "r14": {
+                    "history_bad_debt": {
+                        "amt_overdue_10d_in_6m": 0,
+                        "amt_overdue_90d_in_36m": 0
+                    },
+                    "late_payment": {
+                        "amt_overdue_10d": 0
+                    },
+                    "max_unsecured_active_card_limit": 0
+                }
+            },
+            "service_name": "h2h_cic_r14_old",
+            "status": "success",
+            "updated_at": "2025-06-26T05:37:22Z"
+        },
+        "h2h_cic_s11a": {
+            "application_id": 3,
+            "created_at": "2025-06-26T05:37:22Z",
+            "dispatched_at": "2025-06-26T05:37:22Z",
+            "dispatched_id": "0b51c381-f1ab-40ef-b62f-455dfaf28024",
+            "id": 140,
+            "input_data": {
+                "dispatch_info": {
+                    "dispatch_config": {
+                        "use_id_card_fields": [
+                            "id_number"
+                        ]
+                    }
+                },
+                "form_data": {
+                    "id_number": "144864940503"
+                }
+            },
+            "raw_data": null,
+            "result_data": {
+                "s11a": {
+                    "bad_debt_in_36m": {
+                        "delay_day": 0
+                    },
+                    "bad_debt_in_60m": {
+                        "amt_usd_in_36m": 0,
+                        "amt_vnd_in_36m": 0
+                    },
+                    "bad_debt_in_6m": {
+                        "delay_day": 0
+                    },
+                    "card": {
+                        "total_outstanding": 0
+                    },
+                    "group2_in_12m": {
+                        "amt_vnd_in_6m": 0
+                    },
+                    "has_vamc": false,
+                    "late_payment": {
+                        "amt_overdue_10d": 0
+                    },
+                    "loan_info": {
+                        "bad_debt_group": false,
+                        "max_debt_group": 0,
+                        "medium_term_outstanding": 0,
+                        "nb_other_bad_debt": 0,
+                        "principal_monthly_payment": 0,
+                        "short_term_outstanding": 0
+                    },
+                    "max_unsecured_active_card_limit": 0,
+                    "other_loan_info": {
+                        "bad_debt_group": false
+                    }
+                }
+            },
+            "service_name": "h2h_cic_s11a",
+            "status": "success",
+            "updated_at": "2025-06-26T05:37:22Z"
+        },
+        "h2h_cic_s11a_old": {
+            "application_id": 3,
+            "created_at": "2025-06-26T05:37:22Z",
+            "dispatched_at": "2025-06-26T05:37:22Z",
+            "dispatched_id": "964842ac-7b2b-46b5-9678-16c26b069d5e",
+            "id": 180,
+            "input_data": {
+                "dispatch_info": {
+                    "dispatch_config": {
+                        "use_id_card_fields": [
+                            "old_id_number"
+                        ]
+                    }
+                },
+                "form_data": {
+                    "old_id_number": "424865028424"
+                }
+            },
+            "raw_data": null,
+            "result_data": {
+                "s11a": {
+                    "bad_debt_in_36m": {
+                        "delay_day": 0
+                    },
+                    "bad_debt_in_60m": {
+                        "amt_usd_in_36m": 0,
+                        "amt_vnd_in_36m": 0
+                    },
+                    "bad_debt_in_6m": {
+                        "delay_day": 0
+                    },
+                    "card": {
+                        "total_outstanding": 0
+                    },
+                    "group2_in_12m": {
+                        "amt_vnd_in_6m": 0
+                    },
+                    "has_vamc": false,
+                    "late_payment": {
+                        "amt_overdue_10d": 0
+                    },
+                    "loan_info": {
+                        "bad_debt_group": false,
+                        "max_debt_group": 0,
+                        "medium_term_outstanding": 0,
+                        "nb_other_bad_debt": 0,
+                        "principal_monthly_payment": 0,
+                        "short_term_outstanding": 0
+                    },
+                    "max_unsecured_active_card_limit": 0,
+                    "other_loan_info": {
+                        "bad_debt_group": false
+                    }
+                }
+            },
+            "service_name": "h2h_cic_s11a_old",
+            "status": "success",
+            "updated_at": "2025-06-26T05:37:22Z"
+        },
+        "lender_config": {
+            "id": 10000,
+            "name": "v1.0.non-score.knockout_decision_tree",
+            "tags": [
+                {
+                    "name": "campaign_type",
+                    "value": "self_registration"
+                },
+                {
+                    "name": "telco_code",
+                    "value": "viettel"
+                },
+                {
+                    "name": "telco_code",
+                    "value": "mobifone"
+                },
+                {
+                    "name": "lead_source",
+                    "value": "quick_approval"
+                }
+            ]
+        },
+        "prescreening": {
+            "application_id": 3,
+            "created_at": "2025-06-26T05:37:21Z",
+            "dispatched_at": "2025-06-26T05:37:21Z",
+            "dispatched_id": "45290e52-e625-465b-ad4a-b90cab5909a4",
+            "id": 35,
+            "input_data": {
+                "birthday": "26/06/1992",
+                "full_name": "CXbDeCYiNQHqCbkuDFmyqEzp",
+                "national_id": "144864940503",
+                "phone_number": "84902810916",
+                "unique_token": "99Qtx1rz"
+            },
+            "raw_data": null,
+            "result_data": {
+                "cif_code": "no_exist",
+                "form_data": {},
+                "has_cif_nid_close": false,
+                "matched_phone": false,
+                "status": "accepted"
+            },
+            "service_name": "prescreening",
+            "status": "success",
+            "updated_at": "2025-06-26T05:37:21Z"
+        },
+        "prescreening_old_id": {
+            "application_id": 3,
+            "created_at": "2025-06-26T05:37:21Z",
+            "dispatched_at": "2025-06-26T05:37:21Z",
+            "dispatched_id": "b7874922-a667-40f5-adb5-432fba8a0539",
+            "id": 77,
+            "input_data": {
+                "birthday": "26/06/1992",
+                "full_name": "CXbDeCYiNQHqCbkuDFmyqEzp",
+                "national_id": "424865028424",
+                "phone_number": "84902810916",
+                "unique_token": "99Qtx1rz"
+            },
+            "raw_data": null,
+            "result_data": {
+                "cif_code": "no_exist",
+                "form_data": {},
+                "has_cif_nid_close": false,
+                "matched_phone": false,
+                "status": "accepted"
+            },
+            "service_name": "prescreening_old_id",
+            "status": "success",
+            "updated_at": "2025-06-26T05:37:21Z"
+        },
+        "service_completed": false,
+        "service_statuses": {
+            "abnormal_check": "pending",
+            "ascore_cic": "pending",
+            "ascore_v3": "success",
+            "ascore_v3_wo_cic": "pending",
+            "ascore_wo_cic": "success",
+            "de": "pending",
+            "delinquent_check": "pending",
+            "eligibility_check": "success",
+            "get_eligible_offer": "success",
+            "h2h_cic_r14": "success",
+            "h2h_cic_r14_cif": "pending",
+            "h2h_cic_r14_old": "success",
+            "h2h_cic_s11a": "success",
+            "h2h_cic_s11a_cif": "pending",
+            "h2h_cic_s11a_old": "success",
+            "h2h_cic_s11a_r14": "pending",
+            "h2h_cic_s11a_r14_cif": "pending",
+            "h2h_cic_s11a_r14_old": "pending",
+            "h2h_cic_s11t": "pending",
+            "h2h_cic_s11t_cif": "pending",
+            "h2h_pcb": "pending",
+            "h2h_pcb_cif": "pending",
+            "h2h_pcb_old": "pending",
+            "id_card_tampering": "pending",
+            "low_risk_check": "pending",
+            "nfc_verify": "pending",
+            "pdl_check": "pending",
+            "pdl_email_check": "pending",
+            "prescreening": "success",
+            "prescreening_old_id": "success",
+            "repeated_customer_check": "pending"
+        },
+        "state_info": {
+            "initial_flow": 10000,
+            "traversed_flows": [
+                10000
+            ],
+            "traversed_states": [
+                "otp",
+                "otp",
+                "intro"
+            ]
+        }
+    },
+    "score": 0,
+    "output": {
+        "ascore": {
+            "output": {
+                "level": "A",
+                "max_credit_limit": 50000000,
+                "multiplier": 3
+            },
+            "score": 0
+        },
+        "income_c2": {
+            "output": {
+                "c_multiplier": 0,
+                "confidence": 0,
+                "l_multiplier": 0,
+                "level": 0,
+                "max_dti": 0
+            },
+            "score": 0
+        },
+        "income_c3": {
+            "output": {
+                "c_multiplier": 0,
+                "confidence": 0,
+                "l_multiplier": 0,
+                "level": 0,
+                "max_dti": 0
+            },
+            "score": 0
+        },
+        "income_c4": {
+            "output": {
+                "c_multiplier": 0.9,
+                "confidence": 1,
+                "l_multiplier": 0.9,
+                "level": 4,
+                "max_dti": 0.4,
+                "max_risk_grade_monthly_income": 20000000
+            },
+            "score": 0
+        },
+        "manual_cif_check": {
+            "output": {
+                "value": false
+            },
+            "score": 0
+        },
+        "max_pos_credit_limit": {
+            "output": {
+                "value": 75000000
+            },
+            "score": 0
+        },
+        "pcb_group": {
+            "output": {
+                "value": "no-pcb-report"
+            },
+            "score": 0
+        }
+    },
+    "revision": "322bcc9d-6155-4252-98cc-3a75d235baae"
+}

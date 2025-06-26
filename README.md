@@ -66,8 +66,8 @@ mkdir -p data/<app_id>_<flow_type>
 
 # Create the 'credit_assignment' directory and its files
 mkdir -p data/<app_id>/credit_assignment
-touch data/<app_id>/credit_assignment/evaluation_path.json
-touch data/<app_id>/credit_assignment/application_matrix.json
+cd data/<app_id>/credit_assignment
+touch evaluation_path.json application_matrix.json
 
 # Create the 'risk_grade' directory and its files
 mkdir -p data/<app_id>/risk_grade
