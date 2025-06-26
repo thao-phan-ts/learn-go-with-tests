@@ -1,0 +1,68 @@
+{
+    "selected_node": {
+        "name": "root",
+        "title": "",
+        "is_representative_node": false
+    },
+    "used_parameter": null,
+    "score": 0,
+    "next": {
+        "selected_node": {
+            "name": "is_normal_flow",
+            "title": "TPBank EVO normal flow",
+            "is_representative_node": false
+        },
+        "used_parameter": null,
+        "score": 0,
+        "next": {
+            "selected_node": {
+                "name": "root",
+                "title": "",
+                "is_representative_node": false
+            },
+            "used_parameter": null,
+            "score": 0,
+            "next": {
+                "selected_node": {
+                    "name": "passed_all_knockout_rules",
+                    "title": "Phân luồng khách hàng thoả mãn tất cả các điều kiện",
+                    "is_representative_node": false
+                },
+                "used_parameter": null,
+                "score": 0,
+                "next": {
+                    "selected_node": {
+                        "name": "is_normal_flow",
+                        "title": "Phân luồng khách hàng normal",
+                        "is_representative_node": false
+                    },
+                    "used_parameter": null,
+                    "score": 0,
+                    "next": {
+                        "selected_node": {
+                            "name": "root",
+                            "title": "",
+                            "is_representative_node": false
+                        },
+                        "used_parameter": null,
+                        "score": 0,
+                        "next": {
+                            "selected_node": {
+                                "name": "not_found_suitable_flow",
+                                "title": "Khách hàng không thỏa điều kiện mở thẻ",
+                                "is_representative_node": false
+                            },
+                            "used_parameter": null,
+                            "score": 0,
+                            "output": {
+                                "flow_type": "rejection",
+                                "status": "rejected"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "revision": "1c68dedf-d701-48de-b9f7-75f1ea87574e"
+}
