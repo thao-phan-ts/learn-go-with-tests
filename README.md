@@ -59,8 +59,22 @@ Read de -> get
 ```
 
 
-	
 
 
+# Navigate to the 'data' directory or create it if it doesn't exist
+mkdir -p data/<app_id>_<flow_type>
 
+# Create the 'credit_assignment' directory and its files
+mkdir -p data/<app_id>/credit_assignment
+touch data/<app_id>/credit_assignment/evaluation_path.json
+touch data/<app_id>/credit_assignment/application_matrix.json
 
+# Create the 'risk_grade' directory and its files
+mkdir -p data/<app_id>/risk_grade
+touch data/<app_id>/risk_grade/evaluation_path.json
+touch data/<app_id>/risk_grade/application_matrix.json
+
+# Create the 'evaluate' directory and its files
+mkdir -p data/<app_id>/evaluate
+touch data/<app_id>/evaluate/evaluation_path.json
+touch data/<app_id>/evaluate/application_matrix.json
